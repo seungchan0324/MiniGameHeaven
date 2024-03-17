@@ -24,16 +24,18 @@ import javax.swing.border.Border;
 
 class GamePanel extends JFrame {
 	JFrame frame = new JFrame("Swipe Block Crack!!");
-	JPanel panelNorth, panelMain, panelSouth;
+	static JPanel panelNorth, panelMain, panelSouth;
 	JLabel imageLabel;
 	private Point endPoint;
-	private final static int panelMainBottom = 532;
+    private MyBall ball;
+	final static int panelMainBottom = 532;
 	private final static int ballMiddlePointY = 543;
-	private final static int gameStartPointX = 270;
-	private static int ballMiddlePointX = 281;
-	private static int ballPointX = gameStartPointX;
-	private static int endPointX, endPointY;
-	JLabel la = new JLabel("No Mouse Event");
+	private final static int gameStartPointX = 259;
+	static int ballMiddlePointX = 270;
+	static int ballPointX = gameStartPointX;
+	static int endPointX, endPointY;
+	static int deltaX, deltaY, panelCornerX, panelCornerY, duplicateY;
+	static double length;
 
 	GamePanel() {
 
@@ -63,12 +65,12 @@ class GamePanel extends JFrame {
 			}
 		};
 		panelSouth = new JPanel();
-
+		
+        
 		setLayout(new BorderLayout());
 		add(panelNorth, BorderLayout.NORTH);
 		add(panelMain, BorderLayout.CENTER);
 		add(panelSouth, BorderLayout.SOUTH);
-		panelMain.add(la);
 
 		panelNorth.setLayout(new BorderLayout());
 		panelNorth.setPreferredSize(new Dimension(540, 120));
@@ -94,49 +96,52 @@ class GamePanel extends JFrame {
 			public void mouseDragged(MouseEvent e) {
 				endPoint = e.getPoint();
 
-				int X = e.getX();
-				int Y = e.getY();
-
 				// 기준점에서부터의 거리 계산
-				int deltaX = X - 281;
-				int deltaY = Y - 543;
+				deltaX = e.getX() - ballMiddlePointX;
+				deltaY = e.getY() - 543;
 
 				// 기준점에서부터 패널 모서리까지의 벡터
-				int panelCornerX = 540 - 281;
-				int panelCornerY = 0 - 543;
+				panelCornerX = 540 - ballMiddlePointX;
+				panelCornerY = 0 - 543;
 
 				// 패널 모서리까지의 거리 계산
-				double length = Math.sqrt(panelCornerX * panelCornerX + panelCornerY * panelCornerY);
+				length = Math.sqrt(panelCornerX * panelCornerX + panelCornerY * panelCornerY);
 
 				// 패널 모서리까지의 비율로 직선의 끝점 설정
 
-				int duplicateY;
-				if (X < 281) {
-					duplicateY = (int) ((30.0 / 281) * X + 513);
+				if (e.getX() < ballMiddlePointX) {
+					duplicateY = (int) ((30.0 / ballMiddlePointX) * e.getX() + 513);
 				} else {
-					duplicateY = (int) ((-30.0 / 259) * X + 575);
+					duplicateY = (int) ((-30.0 / 259) * e.getX() + 575);
 				}
 
-				la.setText("MousePressed(" + e.getX() + "," + e.getY() + ")" + duplicateY);
-
-				if (Y > duplicateY) {
-					if (X < 281) {
+				if (e.getY() > duplicateY) {
+					if (e.getX() < ballMiddlePointX) {
 						endPointX = 0;
 					} else {
 						endPointX = 540;
 					}
 				} else {
 					// 패널 모서리까지의 비율로 직선의 끝점 설정
-					endPointX = (int) (281 + deltaX * (length / Math.sqrt(deltaX * deltaX + deltaY * deltaY)));
+					endPointX = (int) (ballMiddlePointX + deltaX * (length / Math.sqrt(deltaX * deltaX + deltaY * deltaY)));
 				}
 
-				endPointY = Y > duplicateY ? 513
-						: (int) (543 + deltaY * (length / Math.sqrt(deltaX * deltaX + deltaY * deltaY)));
-				;
+				endPointY = e.getY() > duplicateY ? 513 : (int) (543 + deltaY * (length / Math.sqrt(deltaX * deltaX + deltaY * deltaY)));;
 				repaint();
 			}
 		});
 
+		panelMain.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+		            ball = new MyBall();
+		            panelMain.add(ball);
+		            panelMain.revalidate(); // 컴포넌트 구조 변경을 Swing에 알려줍니다.
+		            panelMain.repaint(); // JPanel을 다시 그리도록 요청합니다.
+			}
+
+		});
 	}
 
 }
