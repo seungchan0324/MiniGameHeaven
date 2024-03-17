@@ -29,7 +29,7 @@ class MyPanel1 extends JPanel implements ActionListener {
 			//setSize(), setPreferrendSize() 쓸 수 있는게 다름
 			setDoubleBuffered(true);//그림을 넣을 메모리 활성화. 없어도 되긴함..
 			//이미지 파일 객체 생성
-			File input = new File("C:\\Users\\nah32\\OneDrive\\바탕 화면\\MiniGameHeaven\\Ball-removebg-preview.png");
+			File input = new File("c://temp//Ball.png");
 			try {
 				//imput에 가져온 이미지 파일을 버퍼이미지에 저장
 				image = ImageIO.read(input);
@@ -72,6 +72,7 @@ class MyPanel1 extends JPanel implements ActionListener {
 		// repaint 메소드가 없으면 그림이 이동하지 않는다.
 		repaint();
 	}
+	
 }
 
 // 메인 클래스는 JFrame 객체가 된다.

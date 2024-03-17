@@ -23,20 +23,21 @@ class MyBall extends JPanel implements ActionListener {
 		// setSize(), setPreferrendSize() 쓸 수 있는게 다름
 		setDoubleBuffered(true);// 그림을 넣을 메모리 활성화. 없어도 되긴함..
 		// 이미지 파일 객체 생성
-		File input = new File("C:\\Users\\nah32\\OneDrive\\바탕 화면\\MiniGameHeaven\\Ball.png");
+		File input = new File("C:\\temp\\Ball.png");
 		try {
-			//imput에 가져온 이미지 파일을 버퍼이미지에 저장
+			// imput에 가져온 이미지 파일을 버퍼이미지에 저장
 			image = ImageIO.read(input);
-		}catch(IOException e) { //예외처리
+		} catch (IOException e) { // 예외처리
 			e.printStackTrace();
-		} //이미지를 읽는다.
+		} // 이미지를 읽는다.
 		x = GamePanel.ballPointX;
 		y = GamePanel.panelMainBottom;
 
 		// 타이머 생성자, 1이상이면 어떤 값이 들어와도 동일한 결과가 수행되며
 		// 0이하에서는 매우 빠른 속도로 움직인다.
-		timer = new Timer(1, this);
+		timer = new Timer(10, this); // 10ms 간격으로 actionPerformed 호출
 		timer.start(); // 타이머 객체를 생성하고 시작
+		
 	}
 
 	// MyPanel1 메소드는 초기 이미지 조건 파일 객체 등 생성만 담당하고
@@ -62,14 +63,27 @@ class MyBall extends JPanel implements ActionListener {
 		// repaint 메소드가 없으면 그림이 이동하지 않는다.
 		repaint();
 	}
+	
+	
+	
+	public void updatePosition() {
+        // 여기서 원하는 위치로 공을 이동시킬 수 있도록 구현합니다.
+        // 예를 들어, x, y 값을 새로운 위치로 설정하고 repaint() 메소드를 호출하여 다시 그리도록 합니다.
+		x += 20 * (30 / GamePanel.ballMiddlePointX);
+		y -= 20 * (30 / 259);
+	    
+	    // 패널을 다시 그리도록 repaint() 메서드를 호출합니다.
+	    repaint();
+    }
+	
 }
 
 public class BallStart {
 
 	public BallStart() {
 
-		new MyBall();
-
+		GamePanel.panelMain.add(new MyBall());
+		
 	}
 
 }
