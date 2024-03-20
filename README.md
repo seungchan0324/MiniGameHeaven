@@ -1,2 +1,0 @@
-# MiniGameHeaven
-Our first project

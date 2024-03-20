@@ -59,7 +59,7 @@ public class Main extends JPanel {
 
 		// 마우스와 공 사이에 점선을 그립니다.
 		if (showDashedLine) {
-			g.setColor(new Color(0, 0, 255, 128)); // 파란색 및 투명도 설정
+			g.setColor(new Color(0, 0, 255, 50)); // 파란색 및 투명도 설정
 			g.drawLine(ball.getX(), ball.getY(), mouseX, mouseY); // 공과 마우스 사이에 선 그리기
 		}
 
