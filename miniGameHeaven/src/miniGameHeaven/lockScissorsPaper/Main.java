@@ -101,9 +101,9 @@ public class Main extends JFrame implements ActionListener {
 				repaint();
 				isStopped = !isStopped;
 				try {
-				    Thread.sleep(1000); // 3초 동안 기다립니다.
+					Thread.sleep(1000); // 3초 동안 기다립니다.
 				} catch (InterruptedException er) {
-				    er.printStackTrace();
+					er.printStackTrace();
 				}
 				isStopped = !isStopped;
 			}
@@ -119,9 +119,9 @@ public class Main extends JFrame implements ActionListener {
 				repaint();
 				isStopped = !isStopped;
 				try {
-				    Thread.sleep(1000); // 3초 동안 기다립니다.
+					Thread.sleep(1000); // 3초 동안 기다립니다.
 				} catch (InterruptedException er) {
-				    er.printStackTrace();
+					er.printStackTrace();
 				}
 				isStopped = !isStopped;
 			}
@@ -137,9 +137,9 @@ public class Main extends JFrame implements ActionListener {
 				repaint();
 				isStopped = !isStopped;
 				try {
-				    Thread.sleep(1000); // 3초 동안 기다립니다.
+					Thread.sleep(1000); // 3초 동안 기다립니다.
 				} catch (InterruptedException er) {
-				    er.printStackTrace();
+					er.printStackTrace();
 				}
 				isStopped = !isStopped;
 			}
@@ -169,7 +169,6 @@ public class Main extends JFrame implements ActionListener {
 			label.setIcon(images[index]);
 		}
 	}
-
 
 	public static String arena(Icon icon) {
 		String enemy = Main.label.getIcon().toString();
@@ -210,12 +209,12 @@ public class Main extends JFrame implements ActionListener {
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(() -> {
 			Main frame = new Main();
 			frame.setVisible(true);
 		});
 	}
-	
+
 }
