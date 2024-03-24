@@ -1,17 +1,18 @@
 package interfaces;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
-public class MyInformationPanel extends JPanel {
+public class MyInformationPanel extends JPanel implements ActionListener {
 	private RoundedButton characterupbutton[];
 	private JLabel characteruptext[];
 	private JPanel moneypanel, selectpanel;
@@ -20,13 +21,18 @@ public class MyInformationPanel extends JPanel {
 	private RoundedPanel gamescores[];
 	private JLabel gamename[];
 	private JLabel gamescore[];
-	private String gamenames[] = { "날아! 날아!", "이슬비", "패널티 24", "바다스토리", "클릭! 클릭!", "우주로" };
+	private String gamenames[] = { "날아! 날아!", "이슬비", "패널티 24", "바다스토리", "드래곤 알까기", "우주로" };
 	private Font characteruptextfont = new Font(Font.SANS_SERIF, Font.BOLD, 16);
 	private Font moneyfont = new Font(Font.SANS_SERIF, Font.BOLD, 30);
 	private Font gamenamefont = new Font("맑은 고딕", Font.BOLD, 20);
 	private Font gamescorefont = new Font("맑은 고딕", Font.BOLD, 16);
 	private ImageIcon moneyimage = new ImageIcon("money.png");
 	private int cnt = 0;
+	private DecimalFormat moneyformat;
+	private String moneycomma;
+	private MyInformationCharacter character;
+	private Timer timer = new Timer(2, this);
+	static long money = 1000000;
 
 	public MyInformationPanel() {
 
@@ -59,7 +65,9 @@ public class MyInformationPanel extends JPanel {
 		moneypanel.setBackground(new Color(255, 255, 244));
 		moneypanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-		moneylabel = new JLabel("1,000,000");
+		moneyformat = new DecimalFormat("###,###");
+		moneycomma = moneyformat.format(money);
+		moneylabel = new JLabel(moneycomma);
 		moneylabel.setFont(moneyfont);
 
 		moneyimg = new JLabel();
@@ -70,7 +78,7 @@ public class MyInformationPanel extends JPanel {
 		add(moneypanel);
 
 		// 캐릭터(panel공간 290 * 284) and 캐릭터 선택칸
-		MyInformationCharacter character = new MyInformationCharacter();
+		character = new MyInformationCharacter();
 		add(character);
 
 		// 캐릭터 이름칸, 캐릭터 설명
@@ -102,6 +110,19 @@ public class MyInformationPanel extends JPanel {
 
 		setVisible(true);
 
+		character.characterpurchase.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				timer.start();
+			}
+		});
+
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		moneylabel.setText(moneyformat.format(money));
+		repaint();
+		timer.stop();
 	}
 
 	public void gamescoresgenerate(RoundedPanel panel, JLabel name, JLabel score, String gamename, String gamescore,
