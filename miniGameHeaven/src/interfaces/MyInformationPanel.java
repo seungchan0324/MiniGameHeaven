@@ -20,7 +20,7 @@ public class MyInformationPanel extends JPanel {
 	private RoundedPanel gamescores[];
 	private JLabel gamename[];
 	private JLabel gamescore[];
-	private String gamenames[] = { "날아! 날아!", "이슬비", "패널티 24", "바다스토리", "드래곤 알까기", "우주로" };
+	private String gamenames[] = { "날아! 날아!", "이슬비", "패널티 24", "바다스토리", "클릭! 클릭!", "우주로" };
 	private Font characteruptextfont = new Font(Font.SANS_SERIF, Font.BOLD, 16);
 	private Font moneyfont = new Font(Font.SANS_SERIF, Font.BOLD, 30);
 	private Font gamenamefont = new Font("맑은 고딕", Font.BOLD, 20);
