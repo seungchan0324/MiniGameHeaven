@@ -15,7 +15,7 @@ public class StartFrame extends JFrame {
 	
 	private StartFrame(JPanel e) {
 		
-		setTitle("무한의 계단");
+		setTitle("우주로");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(600, 800);
 		setLayout(new BorderLayout());

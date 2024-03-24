@@ -63,7 +63,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 		score.setForeground(new Color(0, 0, 0));
 		add(score);
 
-		ImageIcon[] imgicon = { new ImageIcon("Brick.png"), new ImageIcon("Cloud1.png"), new ImageIcon("운석.png") };
+		ImageIcon[] imgicon = { new ImageIcon("Brick.png"), new ImageIcon("Cloud.png"), new ImageIcon("운석.png") };
 		for (int i = 0; i < imgicon.length; i++) {
 			Image image = imgicon[i].getImage();
 			brickimg[i] = image.getScaledInstance(82, 42, Image.SCALE_SMOOTH);

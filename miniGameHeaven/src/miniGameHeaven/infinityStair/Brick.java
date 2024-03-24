@@ -14,8 +14,6 @@ public class Brick {
 	private boolean right = true;
 	static int brickcnt = 0;
 	public String beforedirection = "Left";
-	Image changeImg;
-	Image image;
 
 	public Brick() {
 	}
