@@ -22,7 +22,7 @@ public class GameOver extends JLabel{
 		setBounds(0, 20, StartPanel.screenWidth, (StartPanel.screenWidth * 3 / 4));
 		setBackground(new Color(0X0F000000,true) );
 		
-		ImageIcon img = new ImageIcon("GameOver2.png");
+		ImageIcon img = new ImageIcon("GameOver.png");
 		gameOver = img.getImage().getScaledInstance(StartPanel.screenWidth - 15, (StartPanel.screenWidth * 1 / 2), Image.SCALE_SMOOTH); // 이미지 크기 조정
 		img = new ImageIcon(gameOver);
 		setIcon(img);
