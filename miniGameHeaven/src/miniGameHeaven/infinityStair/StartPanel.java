@@ -24,12 +24,12 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 	final static int screenWidth = 600;
 	final static int screenHeight = 1000;
 	private Timer timer1 = new Timer(80, this);
-	private Timer timer2;
-	Character character = new Character();
-	ImageIcon imgfront = new ImageIcon("토양이.png");
-	ImageIcon imgleft = new ImageIcon("토양이왼쪽.png");
-	ImageIcon imgright = new ImageIcon("토양이오른쪽.png");
-	Image brickimg[] = new Image[3];
+	private Font font = new Font("Impact", Font.BOLD, 40);
+	private Character character = new Character();
+	private ImageIcon imgfront = new ImageIcon("토양이.png");
+	private ImageIcon imgleft = new ImageIcon("토양이왼쪽.png");
+	private ImageIcon imgright = new ImageIcon("토양이오른쪽.png");
+	private Image brickimg[] = new Image[3];
 	private Image backgroundImage[] = new Image[2];
 	private int middlepointToYangFront = (StartPanel.screenWidth / 2) - (imgfront.getIconWidth() / 2);
 	private int middlepointToYang = (StartPanel.screenWidth / 2) - (imgright.getIconWidth() / 2);
@@ -39,13 +39,11 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 	private int cloudY = 50;
 	// 방향이 true면 왼쪽 아니면 오른쪽
 	private boolean direction = true;
-	// 상단 점수
-	JLabel score;
-
-	TimeLimit timelimit;
+	private JLabel score;
+	private TimeLimit timelimit;
 	// 1은 동작중인 상태
 	private int statement;
-	
+
 	private int backgroundImgYminus = 40;
 
 	// 캐릭터의 x를 고정 y를 변화시켜 배경의 y또한 점점 내려간다.
@@ -61,7 +59,6 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 		score.setHorizontalAlignment(SwingConstants.CENTER);
 		score.setVerticalAlignment(SwingConstants.CENTER);
 		score.setBounds(0, 20, screenWidth, 100);
-		Font font = new Font("Impact", Font.BOLD, 40);
 		score.setFont(font);
 		score.setForeground(new Color(0, 0, 0));
 		add(score);
@@ -113,20 +110,20 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 		// 배경이미지 삽입
 		if (Brick.brickcnt >= 1000 && Brick.brickcnt < 1130) {
 			g.drawImage(backgroundImage[1], 0, backgroundImgY, this);
-		} else if(Brick.brickcnt < 20){
+		} else if (Brick.brickcnt < 20) {
 			g.drawImage(backgroundImage[0], 0, backgroundImgY, this);
 		}
 		// 벽돌들 삽입
 		for (Brick brick : bricks) {
 			if (Brick.brickcnt >= 1000) {
 				brick.draw(g, this, brickimg[2]);
-			}  else if (Brick.brickcnt >= 88 && brick.getBrickY() < cloudY){
+			} else if (Brick.brickcnt >= 88 && brick.getBrickY() < cloudY) {
 				brick.draw(g, this, brickimg[1]);
 			} else {
 				brick.draw(g, this, brickimg[0]);
 			}
 		}
-		
+
 		character.draw(g, this);
 
 		if (timelimit.gauge <= 0 && statement == 1) {
