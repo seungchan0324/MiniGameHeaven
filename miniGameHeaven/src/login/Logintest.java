@@ -66,6 +66,7 @@ public class Logintest extends JFrame {
         label.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
         add(label);
         
+       
         
         
         
