@@ -29,7 +29,7 @@ public class Logintest extends JFrame {
         
         ImageIcon icon2 = new ImageIcon("ganfan2.png");
         JLabel lab2=new JLabel(icon2);
-        lab2.setBounds(100,100,500,500);
+        lab2.setBounds(150,0,430,250);
         add(lab2);
         
         JLabel userIdLabel = new JLabel("¾ÆÀÌµð");
