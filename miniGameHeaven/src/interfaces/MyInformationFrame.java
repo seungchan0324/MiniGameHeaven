@@ -5,15 +5,12 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import infinityStair.StartFrame;
-
-public class MyInformationFrame extends JFrame{
-
+public class MyInformationFrame extends JFrame {
 
 	public static MyInformationFrame instance;
-	
+
 	private MyInformationFrame(JPanel e) {
-		
+
 		setTitle("³» Á¤º¸");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(768, 600);
@@ -35,5 +32,5 @@ public class MyInformationFrame extends JFrame{
 		e.setFocusable(true);
 		e.requestFocus();
 	}
-	
+
 }

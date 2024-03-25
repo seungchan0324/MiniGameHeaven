@@ -16,8 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
-import interfaces.MyInformationCharacter;
-
 public class StartPanel extends JPanel implements ActionListener, KeyListener {
 	private LinkedList<Brick> bricks;
 	private Brick.BrickManager brickmanager;
@@ -51,6 +49,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 	// 캐릭터의 x를 고정 y를 변화시켜 배경의 y또한 점점 내려간다.
 	public StartPanel() {
 		// 재시작때에 초기화
+		timelimit = new TimeLimit();
 		Brick.brickcnt = 0;
 		timelimit.gauge = 145;
 		timelimit.timer.stop();

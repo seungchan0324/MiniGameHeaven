@@ -5,7 +5,7 @@ import javax.swing.*;
 import DongGame.ClickClickGame;
 import HeyonGame.FlyingFlying;
 import SongGame.Keyword;
-import SunGmae.penalty24;
+import SunGame.penalty24;
 import YeonGame.Umi;
 
 import java.awt.*;

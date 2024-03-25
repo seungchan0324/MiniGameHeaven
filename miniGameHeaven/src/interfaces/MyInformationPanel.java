@@ -131,11 +131,9 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		});
 
 	}
-	
+
 	public void gameStart(RoundedButton[] button, JFrame frame, JPanel panel) {
-		
-		
-		
+
 	}
 
 	public void actionPerformed(ActionEvent e) {
