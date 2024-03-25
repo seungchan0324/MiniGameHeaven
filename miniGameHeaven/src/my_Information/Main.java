@@ -1,4 +1,4 @@
-package interfaces;
+package my_Information;
 
 public class Main {
 

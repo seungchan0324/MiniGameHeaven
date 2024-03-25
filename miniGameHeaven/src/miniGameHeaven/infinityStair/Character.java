@@ -6,7 +6,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import interfaces.MyInformationCharacter;
+import my_Information.MyInformationCharacter;
 
 public class Character {
 	private int charX;

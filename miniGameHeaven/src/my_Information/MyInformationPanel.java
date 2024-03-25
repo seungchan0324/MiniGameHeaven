@@ -1,4 +1,4 @@
-package interfaces;
+package my_Information;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
