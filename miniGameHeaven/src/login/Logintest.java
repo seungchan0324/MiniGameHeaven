@@ -27,6 +27,11 @@ public class Logintest extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         
+        ImageIcon icon2 = new ImageIcon("ganfan2.png");
+        JLabel lab2=new JLabel(icon2);
+        lab2.setBounds(100,100,500,500);
+        add(lab2);
+        
         JLabel userIdLabel = new JLabel("¾ÆÀÌµð");
         userIdLabel.setBounds(191, 250, 90, 30);
         userIdLabel.setOpaque(true);
@@ -67,8 +72,7 @@ public class Logintest extends JFrame {
         add(label);
         
        
-        
-        
+       
         
     }
 
