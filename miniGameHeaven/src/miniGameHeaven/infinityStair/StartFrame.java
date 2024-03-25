@@ -3,18 +3,17 @@ package infinityStair;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class StartFrame extends JFrame {
 
 	public static StartFrame instance;
-	
+
 	public StartFrame() {
 	}
-	
+
 	private StartFrame(JPanel e) {
-		
+
 		setTitle("øÏ¡÷∑Œ");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(600, 800);
@@ -36,5 +35,5 @@ public class StartFrame extends JFrame {
 		e.setFocusable(true);
 		e.requestFocus();
 	}
-	
+
 }

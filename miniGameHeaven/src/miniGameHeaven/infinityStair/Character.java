@@ -14,33 +14,32 @@ public class Character {
 	public static int middlepointcharacter;
 	ImageIcon img;
 	Image image;
-	
-	
+
 	public Character() {
 		characterSelect();
 	}
-	
-	public void characterSelect(){
-		if(MyInformationCharacter.characterselect.equals("Gumi")) {
+
+	public void characterSelect() {
+		if (MyInformationCharacter.characterselect.equals("Gumi")) {
 			img = new ImageIcon("구미.png");
 			charY = (StartPanel.screenHeight - img.getIconHeight()) / 2 - 25;
-		}else if(MyInformationCharacter.characterselect.equals("Dalri")) {
+		} else if (MyInformationCharacter.characterselect.equals("Dalri")) {
 			img = new ImageIcon("달리.png");
 			charY = (StartPanel.screenHeight - img.getIconHeight()) / 2 - 20;
-		}else {
+		} else {
 			img = new ImageIcon("토양이.png");
 			charY = (StartPanel.screenHeight - img.getIconHeight()) / 2 - 30;
 		}
 		image = img.getImage();
-		charX = (StartPanel.screenWidth  - img.getIconWidth()) / 2 ;
+		charX = (StartPanel.screenWidth - img.getIconWidth()) / 2;
 	}
-	
+
 	// x, y는 좌표
 	public Character(int x, int y) {
 		this.charX = x;
 		this.charY = y;
 	}
-	
+
 	public Character(int x, int y, ImageIcon img) {
 		this.charX = x;
 		this.charY = y;
@@ -58,6 +57,5 @@ public class Character {
 	public void setY(int charY) {
 		this.charY = charY;
 	}
-	
-}
 
+}
