@@ -8,9 +8,13 @@ import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import infinityStair.StartFrame;
+import infinityStair.StartPanel;
 
 public class MyInformationPanel extends JPanel implements ActionListener {
 	private RoundedButton characterupbutton[];
@@ -18,7 +22,7 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 	private JPanel moneypanel, selectpanel;
 	private JLabel moneylabel, moneyimg;
 	private String characterupdetail[] = { "홈", "그외버튼" };
-	private RoundedPanel gamescores[];
+	private RoundedButton gamescores[];
 	private JLabel gamename[];
 	private JLabel gamescore[];
 	private String gamenames[] = { "날아! 날아!", "이슬비", "패널티 24", "바다스토리", "드래곤 알까기", "우주로" };
@@ -32,7 +36,7 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 	private String moneycomma;
 	private MyInformationCharacter character;
 	private Timer timer = new Timer(2, this);
-	static long money = 1000000;
+	static long money = 100000;
 
 	public MyInformationPanel() {
 
@@ -86,12 +90,12 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		add(character.getCharacterdescribe());
 
 		// 각게임당 최고점수
-		gamescores = new RoundedPanel[6];
+		gamescores = new RoundedButton[6];
 		gamename = new JLabel[6];
 		gamescore = new JLabel[6];
 
 		for (int i = 0; i < gamescores.length; i++) {
-			gamescores[i] = new RoundedPanel(20);
+			gamescores[i] = new RoundedButton(20);
 			gamename[i] = new JLabel();
 			gamescore[i] = new JLabel();
 		}
@@ -99,6 +103,8 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		// db반영전 테스트 점수
 		String scores[] = { "5000점", "10개", "5골", "6000점", "500점", "10000점" };
 
+		// gamescores는 판넬, gamename은 이름 담는 라벨, gamescore은 점수담는 라벨
+		// gamesnames는 게임 이름 스트링값, scores는 게임점수 스트링값, 그리고 그 뒤 색은 판넬 배경색
 		gamescoresgenerate(gamescores[0], gamename[0], gamescore[0], gamenames[0], scores[0], new Color(211, 84, 0));
 		gamescoresgenerate(gamescores[1], gamename[1], gamescore[1], gamenames[1], scores[1], new Color(39, 174, 96));
 		gamescoresgenerate(gamescores[2], gamename[2], gamescore[2], gamenames[2], scores[2], new Color(52, 152, 219));
@@ -110,6 +116,13 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 
 		setVisible(true);
 
+		gamescores[0].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				StartFrame.getInstance(new StartPanel());
+			}
+		});
+
 		character.characterpurchase.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -118,6 +131,12 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		});
 
 	}
+	
+	public void gameStart(RoundedButton[] button, JFrame frame, JPanel panel) {
+		
+		
+		
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		moneylabel.setText(moneyformat.format(money));
@@ -125,12 +144,12 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		timer.stop();
 	}
 
-	public void gamescoresgenerate(RoundedPanel panel, JLabel name, JLabel score, String gamename, String gamescore,
+	public void gamescoresgenerate(RoundedButton button, JLabel name, JLabel score, String gamename, String gamescore,
 			Color color) {
 
-		panel.setLayout(null);
-		panel.setBounds(384, 130 + cnt * 60, 300, 50);
-		panel.setBackground(color);
+		button.setLayout(null);
+		button.setBounds(384, 130 + cnt * 60, 300, 50);
+		button.setBackground(color);
 
 		name.setText(gamename);
 		name.setFont(gamenamefont);
@@ -142,9 +161,9 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		score.setBounds(150, 0, 150, 50);
 		score.setForeground(color.white);
 
-		panel.add(name);
-		panel.add(score);
-		add(panel);
+		button.add(name);
+		button.add(score);
+		add(button);
 
 		cnt++;
 	}

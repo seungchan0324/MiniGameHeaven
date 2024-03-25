@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
+import interfaces.MyInformationCharacter;
+
 public class StartPanel extends JPanel implements ActionListener, KeyListener {
 	private LinkedList<Brick> bricks;
 	private Brick.BrickManager brickmanager;
@@ -25,14 +27,14 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 	final static int screenHeight = 1000;
 	private Timer timer1 = new Timer(80, this);
 	private Font font = new Font("Impact", Font.BOLD, 40);
-	private Character character = new Character();
+	private Character character;
 	private ImageIcon imgfront = new ImageIcon("토양이.png");
 	private ImageIcon imgleft = new ImageIcon("토양이왼쪽.png");
 	private ImageIcon imgright = new ImageIcon("토양이오른쪽.png");
 	private Image brickimg[] = new Image[3];
 	private Image backgroundImage[] = new Image[2];
-	private int middlepointToYangFront = (StartPanel.screenWidth / 2) - (imgfront.getIconWidth() / 2);
-	private int middlepointToYang = (StartPanel.screenWidth / 2) - (imgright.getIconWidth() / 2);
+	private int middlepointcharacter = (StartPanel.screenWidth - imgfront.getIconWidth()) / 2;
+	private int middlepointcharacterright = (StartPanel.screenWidth - imgright.getIconWidth()) / 2;
 	// 블럭갯수 새기 위한 용도
 	private int cnt = 1;
 	// cloudY 구름이 적용될 위치를 측정하기 위한 장치
@@ -51,7 +53,10 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 		// 재시작때에 초기화
 		Brick.brickcnt = 0;
 		timelimit.gauge = 145;
+		timelimit.timer.stop();
 		statement = 1;
+
+		character = new Character();
 
 		// 상단 점수 표기
 		setLayout(null);
@@ -98,7 +103,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		character.setX(middlepointToYangFront);
+		character.setX(middlepointcharacter);
 		character.image = imgfront.getImage();
 		repaint();
 		timer1.stop();
@@ -134,21 +139,21 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 
-		if (Brick.brickcnt == 0)
-			timelimit.timer.start();
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_LEFT) {
+			if (Brick.brickcnt == 0)
+				timelimit.timer.start();
 			int x = brickmanager.bricks.get(cnt).getBrickX();
 			backgroundImgY += backgroundImgYminus;
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_RIGHT:
 				brickmanager.moveBricksRight();
-				character.setX(middlepointToYang - 10);
+				character.setX(middlepointcharacterright - 10);
 				character.image = imgright.getImage();
 				direction = false;
 				break;
 			case KeyEvent.VK_LEFT:
 				brickmanager.moveBricksLeft();
-				character.setX(middlepointToYang + 15);
+				character.setX(middlepointcharacterright + 15);
 				character.image = imgleft.getImage();
 				direction = true;
 				break;

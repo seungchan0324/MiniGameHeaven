@@ -36,7 +36,10 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 	private String characternames[] = { "토양이", "달리", "구미" };
 	private int characterhorizontal = 0;
 	private int cnt = 0;
+	// 캐릭터 구매여부 0이면 미구매 1이면 구매상태
 	private int dalripurchase = 0, gumipurchase = 0;
+	// 마지막으로 선택된 캐릭터
+	public static String characterselect;
 
 	public MyInformationCharacter() {
 		setBounds(47, 175, 290, 329);
@@ -198,10 +201,17 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 
 		if (characterhorizontal == 0) {
 			charactername.setText(characternames[0]);
+			characterselect = "Toyangi";
 		} else if (characterhorizontal == -290) {
 			charactername.setText(characternames[1]);
+			if (dalripurchase == 1) {
+				characterselect = "Dalri";
+			}
 		} else if (characterhorizontal == -580) {
 			charactername.setText(characternames[2]);
+			if (gumipurchase == 1) {
+				characterselect = "Gumi";
+			}
 		}
 
 		if (characterhorizontal <= 0 && characterhorizontal > -290) {

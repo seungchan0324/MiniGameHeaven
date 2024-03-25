@@ -6,13 +6,33 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import interfaces.MyInformationCharacter;
+
 public class Character {
-	ImageIcon img = new ImageIcon("토양이.png");
-	Image image = img.getImage();
-	private int charX = (StartPanel.screenWidth / 2) - (img.getIconWidth() / 2 );
-	private int charY = (StartPanel.screenHeight / 2)- (img.getIconHeight() / 2) - 30;
+	private int charX;
+	private int charY;
+	public static int middlepointcharacter;
+	ImageIcon img;
+	Image image;
+	
 	
 	public Character() {
+		characterSelect();
+	}
+	
+	public void characterSelect(){
+		if(MyInformationCharacter.characterselect.equals("Gumi")) {
+			img = new ImageIcon("구미.png");
+			charY = (StartPanel.screenHeight - img.getIconHeight()) / 2 - 25;
+		}else if(MyInformationCharacter.characterselect.equals("Dalri")) {
+			img = new ImageIcon("달리.png");
+			charY = (StartPanel.screenHeight - img.getIconHeight()) / 2 - 20;
+		}else {
+			img = new ImageIcon("토양이.png");
+			charY = (StartPanel.screenHeight - img.getIconHeight()) / 2 - 30;
+		}
+		image = img.getImage();
+		charX = (StartPanel.screenWidth  - img.getIconWidth()) / 2 ;
 	}
 	
 	// x, y는 좌표

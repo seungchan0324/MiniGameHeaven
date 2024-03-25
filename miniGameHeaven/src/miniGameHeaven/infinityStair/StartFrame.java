@@ -16,7 +16,7 @@ public class StartFrame extends JFrame {
 	private StartFrame(JPanel e) {
 		
 		setTitle("øÏ¡÷∑Œ");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(600, 800);
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
