@@ -39,7 +39,7 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 	// 캐릭터 구매여부 0이면 미구매 1이면 구매상태
 	private int dalripurchase = 0, gumipurchase = 0;
 	// 마지막으로 선택된 캐릭터
-	public static String characterselect;
+	public static String characterselect = "Toyangi";
 
 	public MyInformationCharacter() {
 		setBounds(47, 175, 290, 329);
