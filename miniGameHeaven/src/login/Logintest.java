@@ -9,23 +9,24 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class Logintest extends JFrame {
+import defaultFrame.DefaultFrame;
+import gameDescription.GameDescription;
+import register.RegisterView;
+
+public class Logintest extends JPanel {
 
     private JTextField userIdField;
     private JPasswordField passwordField;
     private JButton loginButton;
-    private JButton gaib;
+    private JButton register;
 
     public Logintest() {
-        setTitle("로그인");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(768, 600);
         setLayout(null);
-        setResizable(false);
-        setLocationRelativeTo(null);
         
         ImageIcon icon2 = new ImageIcon("ganfan2.png");
         JLabel lab2=new JLabel(icon2);
@@ -60,16 +61,32 @@ public class Logintest extends JFrame {
         loginButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         add(loginButton);
         
-        gaib = new JButton("회원가입");
-        gaib.setBounds(240, 410, 240, 35);
-        gaib.setBackground(Color.GREEN);
-        gaib.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        add(gaib);
+        register = new JButton("회원가입");
+        register.setBounds(240, 410, 240, 35);
+        register.setBackground(Color.GREEN);
+        register.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        add(register);
         
         ImageIcon icon = new ImageIcon("lo.png");
         JLabel label = new JLabel(icon);
         label.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
         add(label);
+        
+        register.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new RegisterView();
+			}
+		});
+        
+        loginButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new GameDescription();
+			}
+		});
    
     }
 

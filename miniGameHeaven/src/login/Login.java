@@ -1,19 +1,11 @@
 package login;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.SwingUtilities;
+import defaultFrame.DefaultFrame;
 
 public class Login {
 	
 	public static void main(String[] args) {
-		
-		Logintest lo=new Logintest();
-		
-		lo.setVisible(true);
-		
-		
+		DefaultFrame.getInstance(new Logintest(), "·Î±×ÀÎ");
 	}
-	
 	
 }

@@ -26,6 +26,7 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 	private JLabel gamename[];
 	private JLabel gamescore[];
 	private String gamenames[] = { "날아! 날아!", "이슬비", "패널티 24", "바다스토리", "드래곤 알까기", "우주로" };
+	private Color bannercolor[] = {new Color(211, 84, 0), new Color(39, 174, 96), new Color(52, 152, 219), new Color(241, 196, 15), new Color(155, 89, 182), new Color(64, 64, 64)};
 	private Font characteruptextfont = new Font(Font.SANS_SERIF, Font.BOLD, 16);
 	private Font moneyfont = new Font(Font.SANS_SERIF, Font.BOLD, 30);
 	private Font gamenamefont = new Font("맑은 고딕", Font.BOLD, 20);
@@ -105,18 +106,15 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 
 		// gamescores는 판넬, gamename은 이름 담는 라벨, gamescore은 점수담는 라벨
 		// gamesnames는 게임 이름 스트링값, scores는 게임점수 스트링값, 그리고 그 뒤 색은 판넬 배경색
-		gamescoresgenerate(gamescores[0], gamename[0], gamescore[0], gamenames[0], scores[0], new Color(211, 84, 0));
-		gamescoresgenerate(gamescores[1], gamename[1], gamescore[1], gamenames[1], scores[1], new Color(39, 174, 96));
-		gamescoresgenerate(gamescores[2], gamename[2], gamescore[2], gamenames[2], scores[2], new Color(52, 152, 219));
-		gamescoresgenerate(gamescores[3], gamename[3], gamescore[3], gamenames[3], scores[3], new Color(241, 196, 15));
-		gamescoresgenerate(gamescores[4], gamename[4], gamescore[4], gamenames[4], scores[4], new Color(155, 89, 182));
-		gamescoresgenerate(gamescores[5], gamename[5], gamescore[5], gamenames[5], scores[5], new Color(64, 64, 64));
+		for(int i = 0; i < gamescores.length; i++) {
+			gamescoresgenerate(gamescores[i], gamename[i], gamescore[i], gamenames[i], scores[i], bannercolor[i]);
+		}
 
 		// 배경음(?)
 
 		setVisible(true);
 
-		gamescores[0].addActionListener(new ActionListener() {
+		gamescores[5].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				StartFrame.getInstance(new StartPanel());

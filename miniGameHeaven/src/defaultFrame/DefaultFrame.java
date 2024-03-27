@@ -1,17 +1,17 @@
-package my_Information;
+package defaultFrame;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class MyInformationFrame extends JFrame {
+public class DefaultFrame extends JFrame {
 
-	public static MyInformationFrame instance;
+	public static DefaultFrame instance;
 
-	private MyInformationFrame(JPanel e) {
+	private DefaultFrame(JPanel e, String title) {
 
-		setTitle("내 정보");
+		setTitle(title);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(768, 600);
 		setLayout(new BorderLayout());
@@ -21,9 +21,9 @@ public class MyInformationFrame extends JFrame {
 	}
 
 	// 싱글톤 기법을 사용하려고 한다
-	public static void getInstance(JPanel e) {
+	public static void getInstance(JPanel e, String title) {
 		// static으로 선언했으므로 해당 메서드가 생성자보다도 먼저 호출된다
-		instance = new MyInformationFrame(e);// 생성자를 통해 기본 프레임 정의
+		instance = new DefaultFrame(e, title);// 생성자를 통해 기본 프레임 정의
 		instance.getContentPane().removeAll();
 		instance.getContentPane().add(e);
 
