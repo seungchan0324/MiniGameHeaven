@@ -7,13 +7,12 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
-import defaultFrame.DefaultFrame;
 import gameDescription.GameDescription;
 import register.RegisterView;
 
@@ -76,6 +75,7 @@ public class Logintest extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.getWindowAncestor(register).setVisible(false);
 				new RegisterView();
 			}
 		});
@@ -84,6 +84,7 @@ public class Logintest extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.getWindowAncestor(register).setVisible(false);
 				new GameDescription();
 			}
 		});

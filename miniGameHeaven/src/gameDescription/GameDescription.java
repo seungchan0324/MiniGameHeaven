@@ -1,16 +1,23 @@
 package gameDescription;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
 import DongGame.ClickClickGame;
 import HeyonGame.FlyingFlying;
 import SongGame.Keyword;
 import SunGame.penalty24;
 import YeonGame.Umi;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GameDescription extends JFrame {
 	private JPanel mainPanel;
@@ -50,7 +57,7 @@ public class GameDescription extends JFrame {
 
 		setVisible(true);
 	}
-	
+
 	public GameDescription(int currentGameIndex) {
 		setTitle("게임 설명 페이지");
 		setSize(768, 600);
@@ -222,18 +229,16 @@ public class GameDescription extends JFrame {
 		gameDescriptionText.setText(gameDescriptions[gameIndex]);
 		ImageIcon icon = new ImageIcon(gameImages[gameIndex]);
 
-        // GIF 이미지를 로드하여 ImageIcon 객체 생성
-        JLabel label = new JLabel(icon);
+		// GIF 이미지를 로드하여 ImageIcon 객체 생성
+		JLabel label = new JLabel(icon);
 		gameImagePanel.add(label);
 		mainPanel.add(gameImagePanel);
-
 
 		// gameImagePanel을 다시 그리도록 함
 		mainPanel.revalidate();
 		mainPanel.repaint();
 
 	}
-
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
