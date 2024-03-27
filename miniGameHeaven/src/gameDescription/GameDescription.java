@@ -50,6 +50,28 @@ public class GameDescription extends JFrame {
 
 		setVisible(true);
 	}
+	
+	public GameDescription(int currentGameIndex) {
+		setTitle("게임 설명 페이지");
+		setSize(768, 600);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setLayout(null);
+		setResizable(false);
+		setFocusable(true);
+		requestFocusInWindow();
+
+		mainPanel = new JPanel();
+		mainPanel.setLayout(null);
+		mainPanel.setBounds(0, 0, 768, 600);
+		mainPanel.setBackground(new Color(255, 255, 244));
+		add(mainPanel);
+
+		setupUI();
+		updateGameInfo(currentGameIndex);
+
+		setVisible(true);
+	}
 
 	private void setupUI() {
 		// 상단에 메인 화면으로 가는 버튼

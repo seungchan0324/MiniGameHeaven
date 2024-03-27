@@ -1,15 +1,14 @@
 package Main_Interface;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -17,73 +16,75 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.SwingContainer;
+
+import gameDescription.GameDescription;
 
 public class Main_Interface extends JFrame {
+	int i;
+	RoundedButton[] button;
 	
 	ImageIcon profileImg = new ImageIcon("profile.png");
-	
 	public Main_Interface() {
 
 		setSize(768, 600);
 		setLocationRelativeTo(null);
 		setLayout(null);
 		
-		// �룿�듃(湲�瑗�, 援듦린, �겕湲�)
+		// 폰트(글꼴, 굵기, 크기)
 		Font fontB = new Font("Pretendard", Font.BOLD, 18);
 		Font font = new Font("Pretendard", Font.PLAIN, 14);
 
-		 // Profile Panel �깮�꽦
+		 // Profile Panel 생성
         JPanel profilePanel = new JPanel();
-        profilePanel.setBackground(Color.gray); // �겕湲� �븣怨� �떢�쓣 �븣 諛곌꼍�깋 �꽕�젙
-        profilePanel.setBounds(0, 15, getWidth()/2, 40); // �쐞移� 諛� �겕湲� �꽕�젙
-        //profilePanel.setLayout(new BorderLayout()); // �젅�씠�븘�썐 留ㅻ땲�� �꽕�젙
+        //profilePanel.setBackground(Color.gray); // 크기 알고 싶을 때 배경색 설정
+        profilePanel.setBounds(0, 15, getWidth()/2, 40); // 위치 및 크기 설정
+        //profilePanel.setLayout(new BorderLayout()); // 레이아웃 매니저 설정
         profilePanel.setFont(fontB);
 
         
+        Image img = profileImg.getImage();
+        Image changeimg = img.getScaledInstance(30,  30,  Image.SCALE_SMOOTH);
+        profileImg = new ImageIcon(changeimg);
         JButton imgButton = new JButton(profileImg);
         imgButton.setPreferredSize(new Dimension(30, 30));
-        
-        profileImg = imageSetSize(profileImg, 30, 30); // imageSetSize 硫붿냼�뱶 �깮�꽦
-        imgButton.setIcon(profileImg);
-        imgButton.setBorderPainted(false);//踰꾪듉 �뀒�몢由� �꽕�젙�빐�젣
+        imgButton.setContentAreaFilled(false);//백 투명
+        imgButton.setBorderPainted(false);//버튼 테두리 설정해제
         
         
-		// nameLabel �깮�꽦
-		JLabel nameLabel = new JLabel("�닔�떖���닔�떖");
+		// nameLabel 생성
+		JLabel nameLabel = new JLabel("수달은수달");
 		nameLabel.setFont(fontB);
 		Font labelFont = nameLabel.getFont();
 		FontMetrics labelFontMetrics = nameLabel.getFontMetrics(labelFont);
 		int nameLabelWidth = labelFontMetrics.stringWidth(nameLabel.getText());
 
-		// profileLabel �깮�꽦
-		JLabel profileLabel = new JLabel("�떂 �솚�쁺�빀�땲�떎");
+		// profileLabel 생성
+		JLabel profileLabel = new JLabel("님 환영합니다");
 		profileLabel.setFont(font);
 		profileLabel.setBounds(nameLabelWidth + 10, 0, getWidth() - (nameLabelWidth + 10), 50);
 	
         nameLabel.setBounds(0, 0, nameLabelWidth, 30);
 
-        profileLabel.setForeground(Color.DARK_GRAY); // �뀓�뒪�듃 �깋�긽 �꽕�젙
+        profileLabel.setForeground(Color.DARK_GRAY); // 텍스트 색상 설정
         
         profilePanel.add(imgButton); 
         profilePanel.add(nameLabel); 
         profilePanel.add(profileLabel); 
 
-        add(profilePanel); // �봽�젅�엫�뿉 Profile Panel 異붽�
+        add(profilePanel); // 프레임에 Profile Panel 추가
         
-        // button Panel �깮�꽦
+        // button Panel 생성
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.black); // �겕湲� �븣怨� �떢�쓣 �븣 諛곌꼍�깋 �꽕�젙
-        buttonPanel.setBounds(380, 15, getWidth()/2, 40); // �쐞移� 諛� �겕湲� �꽕�젙
+        //buttonPanel.setBackground(Color.black); // 크기 알고 싶을 때 배경색 설정
+        buttonPanel.setBounds(380, 15, getWidth()/2, 40); // 위치 및 크기 설정
         buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         
         
-        JButton aButton = new JButton("洹� �쇅");
+        JButton aButton = new JButton("그 외");
         aButton.setPreferredSize(new Dimension(30, 30));
         aButton.setIcon(null);
         
-        JButton bButton = new JButton("洹� �쇅");
+        JButton bButton = new JButton("그 외");
         bButton.setPreferredSize(new Dimension(30, 30));
         bButton.setIcon(null);
         
@@ -91,19 +92,20 @@ public class Main_Interface extends JFrame {
         buttonPanel.add(bButton);
         //buttonPanel.add(bButton,BorderLayout.EAST);
         
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 90));//buttonPanel �븞履� �뿬諛�
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 90));//buttonPanel 안쪽 여백
         add(buttonPanel);
         
         
 		
-		//媛��슫�뜲 �솕硫�
-		RoundedButton[] button = new RoundedButton[6];
-		Color[] colors = { new Color(26, 188, 156), new Color(52, 152, 219), new Color(243, 156, 18),
-				new Color(241, 196, 15), new Color(155, 89, 182), new Color(64, 64, 64) };
+		//가운데 화면
+		button = new RoundedButton[6];
+//		Color[] colors = { new Color(26, 188, 156), new Color(52, 152, 219), new Color(243, 156, 18),
+//				new Color(241, 196, 15), new Color(155, 89, 182), new Color(64, 64, 64) };
+		ImageIcon[] imgMain = {new ImageIcon("날아날아.png"), new ImageIcon("우주로.png"), new ImageIcon("바다스토리.png"), new ImageIcon("이슬비.png"), new ImageIcon("패널티24.png"),new ImageIcon("클릭!클릭!.png")};
 
 		for (int i = 0; i < button.length; i++) {
-			button[i] = new RoundedButton(30);
-			button[i].setBackground(colors[i]);
+			button[i] = new RoundedButton(20);
+			button[i].setIcon(imgMain[i]);
 			add(button[i]);
 			if (i < 3) {
 				button[i].setBounds(65 + (i * 210), 60, 200, 230);
@@ -111,11 +113,17 @@ public class Main_Interface extends JFrame {
 				button[i].setBounds(65 + ((i - 3) * 210), 310, 200, 230);
 			}
 			button[i].setBorderPainted(false);
-		}
+		}//for
 
+		// ------------------Button이벤트--------------------
+		for(i=0;i<button.length;i++) {
+			buttonAction(i);
+		}//for
+		
+		
+		
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		
 	}
 
@@ -129,12 +137,17 @@ public class Main_Interface extends JFrame {
 
 		public RoundedButton(int radius) {
 			this.radius = radius;
-			setContentAreaFilled(false); // 構
-			setFocusPainted(false); // 커 , 튼 流罐 琉 茄
+			setContentAreaFilled(false); // ϰ
+			setFocusPainted(false); // Ŀ , ư ׵θ ׸ ʵ
+		}
+
+		public void setBackground(ImageIcon imageIcon) {
+			// TODO Auto-generated method stub
+			
 		}
 
 		ImageIcon imageSetSize(ImageIcon icon, int i, int j) { // image Size Setting
-			Image ximg = icon.getImage();  //ImageIcon�쓣 Image濡� 蹂��솚.
+			Image ximg = icon.getImage();  //ImageIcon을 Image로 변환.
 			Image yimg = ximg.getScaledInstance(i, j, java.awt.Image.SCALE_SMOOTH);
 			ImageIcon xyimg = new ImageIcon(yimg); 
 			return xyimg;
@@ -156,12 +169,22 @@ public class Main_Interface extends JFrame {
 			g.setColor(getForeground());
 			g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, radius, radius);
 		}
+		
+	}
+	
+	public void buttonAction(int x) {
+		button[x].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new GameDescription(x);
+			}
+		});
 	}
 
 	public static void main(String[] args) {
 
 		new Main_Interface();
-
+		
 	}
 
 }
