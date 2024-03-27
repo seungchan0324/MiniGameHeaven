@@ -2,6 +2,7 @@ package gameDescription;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,6 +19,8 @@ import HeyonGame.FlyingFlying;
 import SongGame.Keyword;
 import SunGame.penalty24;
 import YeonGame.Umi;
+import infinityStair.StartFrame;
+import infinityStair.StartPanel;
 
 public class GameDescription extends JFrame {
 	private JPanel mainPanel;
@@ -26,15 +29,15 @@ public class GameDescription extends JFrame {
 	private JTextArea gameDescriptionText;
 	private JButton prevButton, nextButton;
 	private int currentGameIndex = 0;
-	private RoundedPanel[] roundedPanels = new RoundedPanel[3];
+	private RoundedPanel[] roundedPanels = new RoundedPanel[6];
 
 	// 게임 정보를 담을 배열
-	private String[] gameNames = { "날아라 토양이", "이슬비", "ClickClick", "penalty24", "바다이야기", "게임6" };
+	private String[] gameNames = { "날아! 날아!", "우주로", "바다이야기", "이슬비", "penalty24", "클릭클릭" };
 	private String[] gameDescriptions = { "날아라 토양이는 토양이를 스페이스바로 사용해 배관에 부딛치지 않고 최고점수를 따내는 게임이다.", "게임2 설명", "게임3 설명",
 			"게임4 설명", "게임5 설명", "게임6 설명" };
 	// 게임 이미지 경로나 아이콘을 사용할 수 있습니다. \
-	private String[] gameImages = { "flyingflying.gif", "sul1_1.jpg", "sul1_2.jpg", "/path/to/game4/image",
-			"/path/to/game5/image", "/path/to/game6/image" };
+	private String[] gameImages = { "flyingflying.gif", "into space.gif", "the story of the sea.gif", "sprinkle.gif",
+			"penalty24.gif", "ClickClick.gif" };
 
 	public GameDescription() {
 		setTitle("게임 설명 페이지");
@@ -82,9 +85,14 @@ public class GameDescription extends JFrame {
 
 	private void setupUI() {
 		// 상단에 메인 화면으로 가는 버튼
-		RoundedButton button = new RoundedButton(40, "메인화면");
-		button.setBackground(new Color(255, 255, 255));
-		button.setBounds(20, 20, 100, 40);
+		RoundedButton button = new RoundedButton(40);
+		JLabel EndLabel = new JLabel("게임 종료");
+		EndLabel.setFont(new Font("던파 비트비트체 v2", Font.BOLD, 15));
+		EndLabel.setBounds(78, 50, 100, 40);
+		EndLabel.setForeground(Color.white);
+		button.setBackground(new Color(94, 94, 94));
+		button.setBounds(60, 50, 100, 40);
+		mainPanel.add(EndLabel);
 		mainPanel.add(button);
 
 		button.addActionListener(new ActionListener() {
@@ -108,8 +116,9 @@ public class GameDescription extends JFrame {
 		descriptionPanel.setLayout(null);
 		descriptionPanel.setBackground(new Color(255, 255, 255));
 		gameNameLabel = new JLabel();
-		gameNameLabel.setFont(new Font("Serif", Font.BOLD, 30));
+		gameNameLabel.setFont(new Font("던파 비트비트체 v2", Font.BOLD, 35));
 		gameNameLabel.setBounds(500, 30, 200, 200);
+		gameNameLabel.setBackground(new Color(255, 255, 255));
 		mainPanel.add(gameNameLabel);
 		gameDescriptionText = new JTextArea();
 		gameDescriptionText.setWrapStyleWord(true);
@@ -121,9 +130,14 @@ public class GameDescription extends JFrame {
 		descriptionPanel.setOpaque(false);// 패널 투명하게
 		mainPanel.add(descriptionPanel);
 
-		RoundedButton startGameButton = new RoundedButton(40, "게임 시작");
-		startGameButton.setBackground(new Color(255, 255, 255));
-		startGameButton.setBounds(500, 340, 200, 50);
+		RoundedButton startGameButton = new RoundedButton(40);
+		JLabel StartLabel = new JLabel("게임 시작");
+		StartLabel.setFont(new Font("던파 비트비트체 v2", Font.BOLD, 20));
+		StartLabel.setBounds(555, 300, 200, 50);
+		StartLabel.setForeground(Color.white);
+		startGameButton.setBackground(new Color(94, 94, 94));
+		startGameButton.setBounds(500, 300, 200, 50);
+		mainPanel.add(StartLabel);
 		mainPanel.add(startGameButton);
 
 		startGameButton.addActionListener(new ActionListener() {
@@ -135,39 +149,65 @@ public class GameDescription extends JFrame {
 					new FlyingFlying();
 					break;
 				case 1:
-					new Keyword();
+					StartFrame.getInstance(new StartPanel());
 					break;
 				case 2:
-					new ClickClickGame();
-					break;
-				case 3:
-					new penalty24();
-					break;
-				case 4:
 					new Umi();
 					break;
-				case 5:
+				case 3:
 					new Keyword();
+					break;
+				case 4:
+					new penalty24();
+					break;
+				case 5:
+					new ClickClickGame();
 					break;
 				}
 
 			}
 		});
+		ImageIcon previmg = new ImageIcon("왼쪽.png");
+		Image prevchangeimg = previmg.getImage();
+		Image prevscaleimg = prevchangeimg.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		previmg.setImage(prevscaleimg);
+		JLabel prevlabel = new JLabel(previmg);
+
+		ImageIcon nextimg = new ImageIcon("오른쪽.png");
+		Image nextchangeimg = nextimg.getImage();
+		Image nextscaleimg = nextchangeimg.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		nextimg.setImage(nextscaleimg);
+		JLabel nextlabel = new JLabel(nextimg);
 
 		// 하단에 게임 변경 버튼
-		prevButton = new JButton("<");
-		nextButton = new JButton(">");
+		prevButton = new JButton();
+		nextButton = new JButton();
+		prevButton.setOpaque(false);
+		prevButton.setContentAreaFilled(false); // 버튼 내용 영역 배경 그리지 않음
+		prevButton.setBorderPainted(false); // 버튼 테두리 그리지 않음
+
+		nextButton.setOpaque(false);
+		nextButton.setContentAreaFilled(false); // 버튼 내용 영역 배경 그리지 않음
+		nextButton.setBorderPainted(false); // 버튼 테두리 그리지 않음
+		prevButton.add(prevlabel);
+		nextButton.add(nextlabel);
 		JPanel navigationPanel = new JPanel();
-		navigationPanel.setBounds(300, 500, 168, 50); // 예시 위치 및 크기, 실제로는 조정 필요
+		navigationPanel.setBounds(230, 430, 300, 100); // 예시 위치 및 크기, 실제로는 조정 필요
 
 		roundedPanels[0] = new RoundedPanel(30, Color.BLUE); // 새 객체 할당
 		roundedPanels[1] = new RoundedPanel(30, Color.GRAY); // 새 객체 할당
 		roundedPanels[2] = new RoundedPanel(30, Color.GRAY); // 새 객체 할당
+		roundedPanels[3] = new RoundedPanel(30, Color.GRAY); // 새 객체 할당
+		roundedPanels[4] = new RoundedPanel(30, Color.GRAY); // 새 객체 할당
+		roundedPanels[5] = new RoundedPanel(30, Color.GRAY); // 새 객체 할당
 
 		navigationPanel.add(prevButton);
 		navigationPanel.add(roundedPanels[0]);
 		navigationPanel.add(roundedPanels[1]);
 		navigationPanel.add(roundedPanels[2]);
+		navigationPanel.add(roundedPanels[3]);
+		navigationPanel.add(roundedPanels[4]);
+		navigationPanel.add(roundedPanels[5]);
 		navigationPanel.add(nextButton);
 		navigationPanel.setOpaque(false);// 패널 투명하게
 		mainPanel.add(navigationPanel);
@@ -202,7 +242,7 @@ public class GameDescription extends JFrame {
 
 	private void RotateAndUpdateColors(RoundedPanel[] panels) {
 		// 색상 변경
-		if (currentGameIndex <= 2 && currentGameIndex >= 0) {
+		if (currentGameIndex <= 6 && currentGameIndex >= 0) {
 			for (int i = 0; i < panels.length; i++) {
 				if (i == currentGameIndex) { // 가운데 원을 파란색으로 변경
 					panels[i].setColor(Color.BLUE); // 색상 변경 메서드 호출
@@ -212,15 +252,7 @@ public class GameDescription extends JFrame {
 			}
 			// 변경된 색상으로 UI를 업데이트
 
-		} else if (currentGameIndex <= 5 && currentGameIndex >= 3) {
-			for (int i = 0; i < panels.length; i++) {
-				if (i == (currentGameIndex - 3)) { // 가운데 원을 파란색으로 변경
-					panels[i].setColor(Color.BLUE); // 색상 변경 메서드 호출
-				} else { // 나머지 원들은 회색으로 변경
-					panels[i].setColor(Color.GRAY); // 색상 변경 메서드 호출
-				}
-			}
-		}
+		} 
 	}
 
 	private void updateGameInfo(int gameIndex) {
@@ -230,7 +262,9 @@ public class GameDescription extends JFrame {
 		ImageIcon icon = new ImageIcon(gameImages[gameIndex]);
 
 		// GIF 이미지를 로드하여 ImageIcon 객체 생성
-		JLabel label = new JLabel(icon);
+		ImageIcon img = icon;
+		// JLabel에 ImageIcon을 설정
+		JLabel label = new JLabel(img);
 		gameImagePanel.add(label);
 		mainPanel.add(gameImagePanel);
 
