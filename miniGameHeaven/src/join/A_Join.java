@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 
+import Main_Interface.Main_Interface;
+
 public class A_Join {
 
 	public static HashMap<String, Join> hm = new HashMap<>();
