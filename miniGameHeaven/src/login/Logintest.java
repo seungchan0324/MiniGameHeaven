@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import gameDescription.GameDescription;
+import join.B_FindingView;
 import register.RegisterView;
 
 public class Logintest extends JPanel {
@@ -22,6 +23,7 @@ public class Logintest extends JPanel {
     private JPasswordField passwordField;
     private JButton loginButton;
     private JButton register;
+    private JButton fi;
 
     public Logintest() {
         setSize(768, 600);
@@ -66,6 +68,10 @@ public class Logintest extends JPanel {
         register.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         add(register);
         
+        fi = new JButton("아이디/비밀번호 찾기");
+        fi.setBounds(280, 470, 170, 35);
+        add(fi);
+        
         ImageIcon icon = new ImageIcon("lo.png");
         JLabel label = new JLabel(icon);
         label.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
@@ -86,6 +92,14 @@ public class Logintest extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.getWindowAncestor(register).setVisible(false);
 				new GameDescription();
+			}
+		});
+        fi.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new B_FindingView();
+				
 			}
 		});
    
