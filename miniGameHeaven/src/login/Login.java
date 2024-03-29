@@ -5,7 +5,7 @@ import defaultFrame.DefaultFrame;
 public class Login {
 	
 	public static void main(String[] args) {
-		DefaultFrame.getInstance(new Logintest(), "로그인짱");   
+		DefaultFrame.getInstance(new Logintest(), "로그인");   
 		
 	}
 	
