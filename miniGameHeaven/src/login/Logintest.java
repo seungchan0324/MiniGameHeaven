@@ -13,6 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import Main_Interface.Main_Interface;
 import gameDescription.GameDescription;
 import join.A_JoinView;
 import join.B_FindingView;
@@ -92,7 +93,7 @@ public class Logintest extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.getWindowAncestor(register).setVisible(false);
-				new GameDescription();
+				new Main_Interface();
 			}
 		});
         fi.addActionListener(new ActionListener() {
