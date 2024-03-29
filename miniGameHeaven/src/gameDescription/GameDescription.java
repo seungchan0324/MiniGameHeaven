@@ -16,6 +16,7 @@ import javax.swing.SwingUtilities;
 
 import DongGame.ClickClickGame;
 import HeyonGame.FlyingFlying;
+import Main_Interface.Main_Interface;
 import SongGame.Keyword;
 import SunGame.penalty24;
 import YeonGame.Umi;
@@ -86,7 +87,7 @@ public class GameDescription extends JFrame {
 	private void setupUI() {
 		// 상단에 메인 화면으로 가는 버튼
 		RoundedButton button = new RoundedButton(40);
-		JLabel EndLabel = new JLabel("게임 종료");
+		JLabel EndLabel = new JLabel("메인 화면");
 		EndLabel.setFont(new Font("던파 비트비트체 v2", Font.BOLD, 15));
 		EndLabel.setBounds(78, 50, 100, 40);
 		EndLabel.setForeground(Color.white);
@@ -98,10 +99,8 @@ public class GameDescription extends JFrame {
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (currentGameIndex > 0) {
-					currentGameIndex--;
-					updateGameInfo(currentGameIndex);
-				}
+				dispose();
+				new Main_Interface();
 			}
 		});
 
