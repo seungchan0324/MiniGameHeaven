@@ -1,6 +1,9 @@
 package SunGame;
 
 import javax.swing.*;
+
+import gameDescription.GameDescription;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -60,7 +63,8 @@ public class Game extends JFrame {
         button3.addActionListener(e -> shoot(3));
 
         restartButton.addActionListener(e -> resetGame());
-
+        overButton.addActionListener(e -> exitGame());
+        
         setVisible(true);
     }
 
@@ -145,6 +149,11 @@ public class Game extends JFrame {
         scoreLabel.setText("시도: 0, 골: 0     현재 포인트: "+points);
         messageLabel.setText("");
         lb1.setIcon(initialIcon);
+    }
+    
+    private void exitGame() {
+        dispose();
+        new GameDescription();
     }
 
     public static void main(String[] args) {
