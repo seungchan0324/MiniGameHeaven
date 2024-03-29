@@ -17,7 +17,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import SunGame.penalty24;
 import gameDescription.GameDescription;
+import infinityStair.Main;
+import infinityStair.StartFrame;
+import infinityStair.StartPanel;
+import my_Information.MyInformationCharacter;
+import my_Information.MyInformationPanel;
 
 public class Main_Interface extends JFrame {
 	int i;
@@ -50,6 +56,16 @@ public class Main_Interface extends JFrame {
         imgButton.setContentAreaFilled(false);//백 투명
         imgButton.setBorderPainted(false);//버튼 테두리 설정해제
         
+       
+        
+        imgButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				StartFrame.getInstance(new MyInformationPanel());
+				
+			}
+		});
         
 		// nameLabel 생성
 		JLabel nameLabel = new JLabel("수달은수달");
