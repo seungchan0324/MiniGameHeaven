@@ -162,7 +162,17 @@ public class FlyingFlying extends JFrame {
 
 		setVisible(true);
 
-		if (timer == null || !timer.isRunning()) { // 타이머가 실행 중이지 않을 때만 시작
+		if (timer == null || !timer.isRunning()) {// 타이머가 실행 중이지 않을 때만 시작
+			addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyPressed(KeyEvent e) {
+					int key = e.getKeyCode();
+					if (key == KeyEvent.VK_SPACE) {
+						birdY -= 45;
+						acc = 1; // 점프 후 중력 가속도 재설정
+					}
+				}
+			});
 			timer = new Timer(10, new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					birdY += acc; // 중력 효과
@@ -210,27 +220,7 @@ public class FlyingFlying extends JFrame {
 
 			});
 
-			addKeyListener(new KeyAdapter() {
-				@Override
-				public void keyPressed(KeyEvent e) {
-					int key = e.getKeyCode();
-					if (key == KeyEvent.VK_SPACE) {
-						birdY -= 45;
-						acc = 1; // 점프 후 중력 가속도 재설정
-						obstacleX -= 10;
-						BGX1 -= 10;
-						BGX2 -= 10;
-						BGSIZE1.setBounds(BGX1, BGY, WI_BGSIZE, LE_BGSIZE); // 배경1
-						BGSIZE2.setBounds(BGX2, BGY, WI_BGSIZE, LE_BGSIZE); // 배경2
-						
-						
-						safezone.setBounds(obstacleX, safezoneY, WI_SIZE, LE_SAFE); // 세이프존
-						obstacle1.setBounds(obstacleX, (safezoneY + LE_SAFE), WI_SIZE, 600); // 장애물아래
-						obstacle2.setBounds(obstacleX, safezoneY-725, WI_SIZE, 725); // 장애물위
 
-					}
-				}
-			});
 			timer.start(); // 타이머 시작
 		}
 
