@@ -31,8 +31,8 @@ public class Main_Interface extends JFrame {
 		setLayout(null);
 		
 		// 폰트(글꼴, 굵기, 크기)
-		Font fontB = new Font("Pretendard", Font.BOLD, 18);
-		Font font = new Font("Pretendard", Font.PLAIN, 14);
+		Font fontB = new Font("맑은 고딕", Font.BOLD, 18);
+		Font font = new Font("맑은 고딕", Font.PLAIN, 14);
 
 		 // Profile Panel 생성
         JPanel profilePanel = new JPanel();
@@ -180,6 +180,7 @@ public class Main_Interface extends JFrame {
 			}
 		});
 	}
+	
 
 	public static void main(String[] args) {
 
