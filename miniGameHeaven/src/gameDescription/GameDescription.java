@@ -76,7 +76,7 @@ public class GameDescription extends JFrame {
 		mainPanel.setBounds(0, 0, 768, 600);
 		mainPanel.setBackground(new Color(255, 255, 244));
 		add(mainPanel);
-
+		this.currentGameIndex=currentGameIndex;
 		setupUI();
 		updateGameInfo(currentGameIndex);
 
@@ -194,7 +194,7 @@ public class GameDescription extends JFrame {
 		JPanel navigationPanel = new JPanel();
 		navigationPanel.setBounds(230, 430, 300, 100); // 예시 위치 및 크기, 실제로는 조정 필요
 
-		roundedPanels[0] = new RoundedPanel(30, Color.BLUE); // 새 객체 할당
+		roundedPanels[0] = new RoundedPanel(30, Color.GRAY); // 새 객체 할당
 		roundedPanels[1] = new RoundedPanel(30, Color.GRAY); // 새 객체 할당
 		roundedPanels[2] = new RoundedPanel(30, Color.GRAY); // 새 객체 할당
 		roundedPanels[3] = new RoundedPanel(30, Color.GRAY); // 새 객체 할당
@@ -242,7 +242,7 @@ public class GameDescription extends JFrame {
 
 	private void RotateAndUpdateColors(RoundedPanel[] panels) {
 		// 색상 변경
-		if (currentGameIndex <= 6 && currentGameIndex >= 0) {
+		if (currentGameIndex <= 5 && currentGameIndex >= 0) {
 			for (int i = 0; i < panels.length; i++) {
 				if (i == currentGameIndex) { // 가운데 원을 파란색으로 변경
 					panels[i].setColor(Color.BLUE); // 색상 변경 메서드 호출
@@ -260,7 +260,7 @@ public class GameDescription extends JFrame {
 		gameNameLabel.setText(gameNames[gameIndex]);
 		gameDescriptionText.setText(gameDescriptions[gameIndex]);
 		ImageIcon icon = new ImageIcon(gameImages[gameIndex]);
-
+		RotateAndUpdateColors(roundedPanels);
 		// GIF 이미지를 로드하여 ImageIcon 객체 생성
 		ImageIcon img = icon;
 		// JLabel에 ImageIcon을 설정
