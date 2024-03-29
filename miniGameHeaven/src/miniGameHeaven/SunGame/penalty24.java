@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class penalty24 extends JFrame {
 
-	public void penalty24() {
+	public penalty24() {
 
 		JFrame frame = new JFrame("Æä³ÎÆ¼ Å±");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
