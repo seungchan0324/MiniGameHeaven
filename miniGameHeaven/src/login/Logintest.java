@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import gameDescription.GameDescription;
+import join.A_JoinView;
 import join.B_FindingView;
 import register.RegisterView;
 
@@ -82,7 +83,7 @@ public class Logintest extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.getWindowAncestor(register).setVisible(false);
-				new RegisterView();
+				new A_JoinView();
 			}
 		});
         
