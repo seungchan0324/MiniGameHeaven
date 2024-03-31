@@ -89,7 +89,13 @@ public class ClickClickGame extends JFrame {
                   scoreLabel.setText("Score: "+score);
                } 
                if (click < clickNeeded) {
-                    click++;
+            	   if(level>5) {
+            		   click=click+2;
+            	   } else if(level>10){
+            		   click=click+3;
+            	   } else {
+            		   click++;
+            	   }
                     clickLabel.setIcon(getEggIcon());
                     remainingClicksLabel.setText("남은 클릭 횟수: " + (clickNeeded - click));
                     if (click >= clickNeeded) {

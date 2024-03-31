@@ -70,14 +70,14 @@ public class Babo extends JFrame {
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				textLabel.setText("¹»ºÁ");
+				textLabel.setText("¾È³ç");
 				textLabel.setFont(new Font("Serif", Font.BOLD, 15));
 				Border border = BorderFactory.createLineBorder(Color.black);
 				textLabel.setBorder(border);
 				textLabel.setOpaque(true);
 				textLabel.setBackground(Color.white);
 
-				Timer timer = new Timer(2500, new ActionListener() {
+				Timer timer = new Timer(2000, new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						textLabel.setText("");
