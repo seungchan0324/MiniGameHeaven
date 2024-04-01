@@ -1,17 +1,13 @@
 package HeyonGame;
 
 import java.awt.BorderLayout;
-
-
 import java.awt.Font;
-
-
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -31,7 +27,6 @@ public class FlyingFlying extends JFrame {
 	private JPanel obstacle1;
 	private JPanel obstacle2;
 	private int obstacleX = 450; // 장애물의 초기 X 좌표
-	private int obstacleY = 0; // 장애물의 초기 Y 좌표
 	private JPanel safezone;
 	private int safezoneY = 250; // 장애물의 초기 Y 좌표
 	private int LE_SAFE = 100; // 세로 장애물의 크기
@@ -45,6 +40,14 @@ public class FlyingFlying extends JFrame {
 	private final int WI_SIZE = 100; // 가로 장애물의 크기
 	private Timer timer;
 	private int cnt=0;
+	private int score=0;
+	// 키 리스너 객체를 변수에 할당
+	KeyListener myKeyListener = new KeyAdapter() {
+	    @Override
+	    public void keyPressed(KeyEvent e) {
+	        goToNextScreen();
+	    }
+	};
 	
 	public FlyingFlying() {
 		setTitle("게임 시작 화면");
@@ -62,14 +65,14 @@ public class FlyingFlying extends JFrame {
 
 		setVisible(true);
 
-		
+
+
 		// 키 리스너 추가
-		addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				goToNextScreen();
-			}
-		});
+		addKeyListener(myKeyListener);
+
+
+
+	
 
 		// JFrame이 키 이벤트를 받을 수 있게 설정
 		setFocusable(true);
@@ -77,6 +80,9 @@ public class FlyingFlying extends JFrame {
 	}
 	
 	private void goToNextScreen() {
+		// 나중에 키 리스너 제거
+		removeKeyListener(myKeyListener);
+
 		getContentPane().removeAll();
 		setTitle("Flappy Bird");
 		setSize(800, 500);
@@ -231,6 +237,8 @@ public class FlyingFlying extends JFrame {
 		int choice = JOptionPane.showOptionDialog(null, "게임 오버! 다시 하시겠습니까?", "게임 오버", JOptionPane.YES_NO_OPTION,
 				JOptionPane.QUESTION_MESSAGE, null, options, options[0]); // 초기 선택값
 
+		score=+(cnt/100)*30;
+		System.out.println("포인트 : "+  score);
 		if (choice == JOptionPane.YES_OPTION) {
 			timer = null;
 			dispose();
