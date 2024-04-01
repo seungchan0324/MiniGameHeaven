@@ -18,6 +18,9 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
+import infinityStair.StartPanel;
+import my_Information.MyInformationCharacter;
+
 public class FlyingFlying extends JFrame {
 
 	private JPanel birdPanel;
@@ -48,13 +51,30 @@ public class FlyingFlying extends JFrame {
 	        goToNextScreen();
 	    }
 	};
-	
+	ImageIcon img;
+	Image image;
+
+	public void characterSelect() {
+		if (MyInformationCharacter.characterselect.equals("Gumi")) {
+			img = new ImageIcon("구미_고구마비행.png");
+			
+		} else if (MyInformationCharacter.characterselect.equals("Dalri")) {
+			img = new ImageIcon("달리_슈퍼맨.png");
+			
+		} else {
+			img = new ImageIcon("토양이오른쪽.png");
+			
+		}
+		image = img.getImage();
+	}
 	public FlyingFlying() {
+		characterSelect();
 		setTitle("게임 시작 화면");
 		setSize(768, 600);
 		setLocationRelativeTo(null); // 화면 중앙에 위치시킴
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
 
@@ -65,14 +85,9 @@ public class FlyingFlying extends JFrame {
 
 		setVisible(true);
 
-
-
 		// 키 리스너 추가
 		addKeyListener(myKeyListener);
 
-
-
-	
 
 		// JFrame이 키 이벤트를 받을 수 있게 설정
 		setFocusable(true);
@@ -93,7 +108,7 @@ public class FlyingFlying extends JFrame {
 		requestFocusInWindow();
 		birdPanel = new JPanel();
 		birdPanel.setOpaque(false);// 패널 투명하게
-		birdPanel.setBounds(BIRD_X, birdY, 20, 20); // 새의 크기 및 초기 위치
+		birdPanel.setBounds(BIRD_X, birdY, 40, 40); // 새의 크기 및 초기 위치
 		// 장애물1
 		obstacle1 = new JPanel();
 		obstacle1.setBounds(obstacleX, 350, WI_SIZE, 300); // 장애물 그리기
@@ -132,11 +147,9 @@ public class FlyingFlying extends JFrame {
 		JLabel BGimg1 = new JLabel(img1);
 		JLabel BGimg2 = new JLabel(img1);
 		// 캐릭터
-		ImageIcon img2 = new ImageIcon("ch.png");
-		Image changeimg2 = img2.getImage();
-		Image scaleimg2 = changeimg2.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
-		img2.setImage(scaleimg2);
-		JLabel ch = new JLabel(img2);
+		Image scaleimg2 = image.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+		img.setImage(scaleimg2);
+		JLabel ch = new JLabel(img);
 		// 장애물
 		ImageIcon img3 = new ImageIcon("sin1.png");
 		Image changeimg3 = img3.getImage();
@@ -181,13 +194,13 @@ public class FlyingFlying extends JFrame {
 			});
 			timer = new Timer(10, new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					ScoreaLabel.setText("점수: "+cnt);
 					birdY += acc; // 중력 효과
 					acc += 0.18;
 					birdPanel.setBounds(BIRD_X, birdY, 40, 40);
 					obstacleX -= 10;
 					BGX1 -= 10;
 					BGX2 -= 10;
-
 					if (((obstacleX) <= BIRD_X) && ((obstacleX + 100) >= BIRD_X)) {
 						if (!(((safezoneY) <= birdY) && ((safezoneY + 75) >= birdY))) {
 							showGameOverPanel(); // 게임 오버 화면 표시 메서드 호출
