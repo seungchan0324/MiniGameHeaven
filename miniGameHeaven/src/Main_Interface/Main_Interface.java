@@ -33,6 +33,7 @@ public class Main_Interface extends JFrame {
 	public Main_Interface() {
 
 		setSize(768, 600);
+		setBackground(new Color(255, 255, 244));
 		setLocationRelativeTo(null);
 		setLayout(null);
 		
