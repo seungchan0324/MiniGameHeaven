@@ -25,6 +25,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
+import Main_Interface.Main_Interface;
+
 public class Keyword extends JPanel implements KeyListener, ActionListener{
     private LinkedList<String> fruitWords;
     private LinkedList<String> animalWords;
@@ -52,7 +54,7 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
     private String pausedWord; // 일시정지된 시점의 단어를 저장할 변수
     private boolean wordEntered; // 단어가 입력되었는지 여부를 나타내는 변수
     private int point;
-    //private JButton backButton; // 뒤로 가기 버튼
+    private JButton backButton; // 뒤로 가기 버튼
     
     //이미지 아이콘
     ImageIcon imgAnimal = new ImageIcon("animal.png");
@@ -303,21 +305,21 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
         pauseButton.setBackground(Color.DARK_GRAY);
         pauseButton.setForeground(Color.white);
         
-//		// 뒤로 가기 버튼 생성
-//		backButton = new JButton("뒤로 가기");
-//		backButton.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				goBack();
-//			}
-//		});
-//		
-//		backButton.setBackground(Color.DARK_GRAY);
-//		backButton.setForeground(Color.white);
+		// 뒤로 가기 버튼 생성
+		backButton = new JButton("게임 종료");
+		backButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		backButton.setBackground(Color.DARK_GRAY);
+		backButton.setForeground(Color.white);
         
         
         //inputPanel.add(inputLabel);
-        //inputPanel.add(backButton); // 뒤로 가기 버튼을 입력 패널에 추가
+        inputPanel.add(backButton); // 뒤로 가기 버튼을 입력 패널에 추가
         inputPanel.add(inputTextField);
         inputPanel.add(enterButton);
         inputPanel.add(pauseButton); // 일시정지 버튼을 입력 패널에 추가
@@ -393,11 +395,7 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
         wordY = 20;
     }
 
-    private void endGame() {
-        gameRunning = false;
-        timer.stop();
-        JOptionPane.showMessageDialog(this, "Game Over!\n 당신의 점수는 : " + score);
-    }
+    
 
     private void checkInput() {
         String userInput = inputTextField.getText().trim().toLowerCase();
@@ -407,8 +405,22 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
             generateWord();
             inputTextField.setText("");
             repaint();
-            
-        }
+
+			// 5개씩 단어를 맞히면 100점씩 추가로 적립
+			if (score % 5 == 0) {
+				int earnedPoints = (score / 5) * 100;
+				point += earnedPoints;
+			}
+
+		}
+	}
+    
+    private void endGame() {
+        gameRunning = false;
+        timer.stop();
+        // 5개의 단어를 맞힌 횟수에 따라 총 포인트에 추가적립되어 endGame에 표시됨
+        int totalScore = score + point;
+        JOptionPane.showMessageDialog(this, "게임 종료!\n맞춘 갯수 : " + score + "\n총 " + point + "포인트가 적립되었습니다.");
     }
     
 	// 게임 일시정지 기능
@@ -457,12 +469,12 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
 		}
 	}
 	
-	//포인트 적립
-	public void pointSave() {
-	    int earnedPoints = (score / 5) * 100;
-	    point += earnedPoints;
-	    JOptionPane.showMessageDialog(this, "Game Over!\n당신의 점수는: " + score + "\n적립된 포인트: " + point);
-	}
+//	//포인트 적립
+//	public void pointSave() {
+//	    int earnedPoints = (score / 5) * 100;
+//	    point += earnedPoints;
+//	    JOptionPane.showMessageDialog(this, "Game Over!\n당신의 점수는: " + score + "\n적립된 포인트: " + point);
+//	}
 	
 	//가운데 화면에 뜨는 키워드
     @Override
@@ -512,7 +524,5 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
 			// endGame();
 			generateWord();
 		}
-		
-		
 	}
 }
