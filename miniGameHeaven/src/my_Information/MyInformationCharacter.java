@@ -158,8 +158,8 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 		selectbutton[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				selectdirection = "<";
 				if (characterhorizontal == -290) {
+					selectdirection = "<";
 					timer.start();
 				} else if (characterhorizontal == -580) {
 					selectdirection = "<<";

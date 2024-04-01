@@ -24,7 +24,7 @@ public class B_FindingID extends JFrame {
 		setTitle("아이디 찾기");
 		setSize(350, 350);
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		// =========================기본 프레임 설정=================================
 
