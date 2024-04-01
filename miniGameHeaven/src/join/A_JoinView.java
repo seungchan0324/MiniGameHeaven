@@ -49,7 +49,7 @@ public class A_JoinView extends JFrame {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		gbc.gridwidth=2;
+		gbc.gridwidth = 2;
 		gbc.anchor = GridBagConstraints.WEST;
 		gbc.insets = new Insets(8, 10, 8, 10);
 		Font font = new Font("나눔고딕", Font.PLAIN, 14);
@@ -112,7 +112,7 @@ public class A_JoinView extends JFrame {
 		passField.setPreferredSize(new Dimension(300, 40));
 
 		passField.setEchoChar((char) 0);
-		passField.addFocusListener(new FocusListener() { 
+		passField.addFocusListener(new FocusListener() {
 			@Override
 			public void focusGained(FocusEvent e) {
 				if (String.valueOf(passField.getPassword()).equals("비밀번호")) {
@@ -242,7 +242,7 @@ public class A_JoinView extends JFrame {
 		la5.setForeground(Color.blue);
 		gbc.gridy++;
 		gbc.gridwidth = 1;
-		gbc.anchor=GridBagConstraints.WEST;
+		gbc.anchor = GridBagConstraints.WEST;
 		panel.add(la5, gbc);
 
 		la5.addMouseListener(new MouseAdapter() {
@@ -257,8 +257,6 @@ public class A_JoinView extends JFrame {
 		gbc.anchor = GridBagConstraints.EAST;
 		panel.add(yes, gbc);
 
-		
-		
 		agree = new JTextArea();
 		agree.setFont(font);
 		agree.setPreferredSize(new Dimension(300, 155));
@@ -270,7 +268,7 @@ public class A_JoinView extends JFrame {
 		agree.setVisible(false);
 		gbc.gridx = 0;
 		gbc.gridwidth = 2;
-		gbc.anchor=GridBagConstraints.WEST;
+		gbc.anchor = GridBagConstraints.WEST;
 		gbc.gridy++;
 		panel.add(agree, gbc);
 
@@ -308,7 +306,25 @@ public class A_JoinView extends JFrame {
 					JOptionPane.showMessageDialog(null, "중복된 이메일입니다.");
 					return;
 				}
+				/////////////////////////////////////////////////////
+				if (idField.getText().equals("아이디")) {
+					JOptionPane.showMessageDialog(null, "아이디를 입력하세요.");
+					return;
+				}
+				if (passField.getText().equals("비밀번호")) {
+					JOptionPane.showMessageDialog(null, "비밀번호를 입력하세요.");
+					return;
+				}
+				if (emailField.getText().equals("이메일")) {
+					JOptionPane.showMessageDialog(null, "이메일을 입력하세요.");
+					return;
+				}
+				if (birthdayField.getText().equals("생년월일(YYMMDD 모양의 여섯 자리 숫자)")) {
+					JOptionPane.showMessageDialog(null, "생년월일을 입력하세요.");
+					return;
+				}
 
+				////////////////////////////////////////////////////
 				A_Join.Join join = new A_Join.Join(id, email, pass, birthday);
 				A_Join.hm.put(id, join);
 
