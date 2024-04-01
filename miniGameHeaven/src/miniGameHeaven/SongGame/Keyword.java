@@ -406,9 +406,9 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
             inputTextField.setText("");
             repaint();
 
-			// 5개씩 단어를 맞히면 100점씩 추가로 적립
-			if (score % 5 == 0) {
-				int earnedPoints = (score / 5) * 100;
+			// 2개씩 단어를 맞히면 100점씩 추가로 적립
+			if (score % 1 == 0 && score > 0) {
+				int earnedPoints = 50;
 				point += earnedPoints;
 			}
 
@@ -420,7 +420,7 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
         timer.stop();
         // 5개의 단어를 맞힌 횟수에 따라 총 포인트에 추가적립되어 endGame에 표시됨
         int totalScore = score + point;
-        JOptionPane.showMessageDialog(this, "게임 종료!\n맞춘 갯수 : " + score + "\n총 " + point + "포인트가 적립되었습니다.");
+        JOptionPane.showMessageDialog(this, "게임 종료!\n맞힌 개수 : " + score + "\n총 " + point + "포인트가 적립되었습니다.");
     }
     
 	// 게임 일시정지 기능
