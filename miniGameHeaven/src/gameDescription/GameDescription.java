@@ -41,7 +41,7 @@ public class GameDescription extends JFrame {
 			+ "부딪치지 않고 끝까지 날아가 최고 점수를 따내자!",
 			
 			"게임2설명",
-			
+		
 			"바다에 가서 잠수를 해 보자!\n"
 			+ "어쩌면 바닷속에 숨겨진 보물을 찾을 수 있을지도…?!",
 			
