@@ -12,9 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.xml.crypto.dsig.spec.HMACParameterSpec;
 
 import Main_Interface.Main_Interface;
 import gameDescription.GameDescription;
+import join.A_Join;
 import join.A_JoinView;
 import join.B_FindingView;
 import register.RegisterView;
@@ -64,6 +66,7 @@ public class Logintest extends JPanel {
         loginButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         add(loginButton);
         
+        
         register = new JButton("회원가입");
         register.setBounds(240, 410, 240, 35);
         register.setBackground(Color.GREEN);
@@ -94,8 +97,10 @@ public class Logintest extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.getWindowAncestor(register).setVisible(false);
 				new Main_Interface();
+				
 			}
 		});
+        
         fi.addActionListener(new ActionListener() {
 			
 			@Override

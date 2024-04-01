@@ -28,6 +28,9 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import infinityStair.StartFrame;
+import login.Logintest;
+
 public class A_JoinView extends JFrame {
 
 	private JTextArea agree;
@@ -310,6 +313,7 @@ public class A_JoinView extends JFrame {
 
 				JOptionPane.showMessageDialog(null, id + "님의 회원 가입이 완료되었습니다.\n로그인 페이지에서 로그인해 주세요.");
 				dispose();
+				StartFrame.getInstance(new Logintest());
 			}
 		});
 
