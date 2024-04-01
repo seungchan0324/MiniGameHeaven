@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import HeyonGame.FlyingFlying;
 import infinityStair.StartFrame;
 import infinityStair.StartPanel;
 
@@ -37,7 +38,7 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 	private String moneycomma;
 	private MyInformationCharacter character;
 	private Timer timer = new Timer(2, this);
-	static long money = 100000;
+	public static long money = 0;
 
 	public MyInformationPanel() {
 
@@ -120,6 +121,14 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 				StartFrame.getInstance(new StartPanel());
 			}
 		});
+		
+		gamescores[0].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FlyingFlying();
+			}
+		});
+
 
 		character.characterpurchase.addActionListener(new ActionListener() {
 			@Override

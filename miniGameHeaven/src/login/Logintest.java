@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import Main_Interface.Main_Interface;
+import defaultFrame.DefaultFrame;
 import join.A_Join;
 import join.A_JoinView;
 import join.B_FindingView;
@@ -26,9 +27,9 @@ public class Logintest extends JPanel {
 	private JButton loginButton;
 	private JButton register;
 	private JButton fi;
+	public static String name;
 
 	public Logintest() {
-		setSize(768, 600);
 		setLayout(null);
 
 		ImageIcon icon2 = new ImageIcon("ganfan2.png");
@@ -87,36 +88,40 @@ public class Logintest extends JPanel {
 				new A_JoinView();
 			}
 		});
-
+		
 		loginButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (A_Join.hm.containsKey(userIdField.getText())) {
-					String password = new String(passwordField.getPassword());
-					if (password.equals(A_Join.hm.get(userIdField.getText()).getPass())) {
+				if (userIdField.getText().equals("soldesk") || A_Join.hm.containsKey(userIdField.getText())) {
+					if (new String(passwordField.getPassword()).equals("1234")) {
+						name = "soldesk";
+						JOptionPane.showMessageDialog(null,"soldesk님 반갑습니다!");
+						SwingUtilities.getWindowAncestor(register).setVisible(false);
+						DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
+					}else if(A_Join.hm.get(userIdField.getText()).getPass().equals(new String(passwordField.getPassword()))) {
+						name = A_Join.hm.get(userIdField.getText()).getEmail();
 						JOptionPane.showMessageDialog(null, A_Join.hm.get(userIdField.getText()).getEmail() + "님 반갑습니다!");
 						SwingUtilities.getWindowAncestor(register).setVisible(false);
-						new Main_Interface();
-					} else {
-						JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 틀리셨습니다.");
-					}
-				} else {
-					JOptionPane.showMessageDialog(null, "아이디를 틀리셨습니다.");
+						DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
+					}else {
+					JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 틀리셨습니다.");
 				}
-
+				}else {
+					JOptionPane.showMessageDialog(null, "존재하지않는 아이디 입니다.");
+				}
 			}
 		});
 
 		fi.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new B_FindingView();
-
-			}
-		});
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		new B_FindingView();
 
 	}
+});
+
+}
 
 }

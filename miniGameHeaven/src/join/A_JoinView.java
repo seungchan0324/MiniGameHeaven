@@ -27,7 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import infinityStair.StartFrame;
+import defaultFrame.DefaultFrame;
 import login.Logintest;
 
 public class A_JoinView extends JFrame {
@@ -302,6 +302,7 @@ public class A_JoinView extends JFrame {
 					JOptionPane.showMessageDialog(null, "중복된 아이디입니다.");
 					return;
 				}
+
 				if (A_Join.emailcheck(email)) {
 					JOptionPane.showMessageDialog(null, "중복된 이메일입니다.");
 					return;
@@ -330,7 +331,7 @@ public class A_JoinView extends JFrame {
 
 				JOptionPane.showMessageDialog(null, id + "님의 회원 가입이 완료되었습니다.\n로그인 페이지에서 로그인해 주세요.");
 				dispose();
-				StartFrame.getInstance(new Logintest());
+				DefaultFrame.getInstance(new Logintest(), "로그인");
 			}
 		});
 
