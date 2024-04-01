@@ -11,8 +11,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
+import Main_Interface.Main_Interface;
+import defaultFrame.DefaultFrame;
 import infinityStair.StartFrame;
 import infinityStair.StartPanel;
 
@@ -125,6 +128,14 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				timer.start();
+			}
+		});
+		
+		characterupbutton[0].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.getWindowAncestor(characterupbutton[0]).setVisible(false);
+				DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
 			}
 		});
 
