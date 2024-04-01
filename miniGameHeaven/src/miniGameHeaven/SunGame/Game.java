@@ -2,10 +2,14 @@ package SunGame;
 
 import javax.swing.*;
 
+import defaultFrame.DefaultFrame;
 import gameDescription.GameDescription;
+import my_Information.MyInformationPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,7 +32,6 @@ public class Game extends JFrame {
         add(lb1);
         setResizable(false);
         setTitle("페널티 킥");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(600, 170);
         setSize(700, 700);
         setLayout(null);
@@ -66,6 +69,15 @@ public class Game extends JFrame {
         overButton.addActionListener(e -> exitGame());
         
         setVisible(true);
+
+        addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				dispose();
+				DefaultFrame.getInstance(new GameDescription(2), "게임 설명 화면");
+			}
+		});
+        
     }
 
     
@@ -131,6 +143,7 @@ public class Game extends JFrame {
         scoreLabel.setText(String.format("시도: %d, 골: %d", attempts, goals));
 
         if (attempts == 5) {
+        	MyInformationPanel.money += points;
             JOptionPane.showMessageDialog(this, goals >= 3 ? "승리했습니다! 포인트10점 획득" : "패배했습니다.");
         }
 
@@ -153,7 +166,7 @@ public class Game extends JFrame {
     
     private void exitGame() {
         dispose();
-        new GameDescription();
+        DefaultFrame.getInstance(new GameDescription(4), "게임 설명 화면");
     }
 
     public static void main(String[] args) {

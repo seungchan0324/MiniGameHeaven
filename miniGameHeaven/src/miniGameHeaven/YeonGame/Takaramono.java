@@ -4,6 +4,8 @@ import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,6 +15,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
+
+import defaultFrame.DefaultFrame;
+import gameDescription.GameDescription;
+import my_Information.MyInformationPanel;
 
 public class Takaramono extends JFrame implements ActionListener {
 
@@ -99,7 +105,16 @@ public class Takaramono extends JFrame implements ActionListener {
 		shimai.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				dispose();
+				DefaultFrame.getInstance(new GameDescription(2), "게임 설명 화면");
+			}
+		});
+
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				dispose();
+				DefaultFrame.getInstance(new GameDescription(2), "게임 설명 화면");
 			}
 		});
 
@@ -151,6 +166,7 @@ public class Takaramono extends JFrame implements ActionListener {
 									textArea.append("총 " + saigo + "개의 보물을 찾았습니다.\n\n");
 									point = saigo * 100;
 									textArea.append("\n" + point + "포인트 획득");
+									MyInformationPanel.money += point;
 								}
 							}
 						}

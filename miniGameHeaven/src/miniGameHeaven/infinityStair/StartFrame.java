@@ -1,16 +1,18 @@
 package infinityStair;
 
 import java.awt.BorderLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import defaultFrame.DefaultFrame;
+import gameDescription.GameDescription;
+
 public class StartFrame extends JFrame {
 
 	public static StartFrame instance;
-
-	public StartFrame() {
-	}
 
 	private StartFrame(JPanel e) {
 
@@ -21,6 +23,14 @@ public class StartFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				instance.dispose();
+				DefaultFrame.getInstance(new GameDescription(1), "게임 설명 화면");
+			}
+		});
+		
 	}
 
 	// 싱글톤 기법을 사용하려고 한다

@@ -14,7 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
+import DongGame.ClickClickGame;
 import Main_Interface.Main_Interface;
+import SongGame.Keyword;
+import SunGame.penalty24;
+import YeonGame.Umi;
 import defaultFrame.DefaultFrame;
 import HeyonGame.FlyingFlying;
 import infinityStair.StartFrame;
@@ -29,7 +33,7 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 	private RoundedButton gamescores[];
 	private JLabel gamename[];
 	private JLabel gamescore[];
-	private String gamenames[] = { "날아! 날아!", "이슬비", "패널티 24", "바다스토리", "드래곤 알까기", "우주로" };
+	private String gamenames[] = { "날아! 날아!", "우주로", "바다스토리", "이슬비", "패널티 24", "드래곤 알까기", };
 	private Color bannercolor[] = {new Color(211, 84, 0), new Color(39, 174, 96), new Color(52, 152, 219), new Color(241, 196, 15), new Color(155, 89, 182), new Color(64, 64, 64)};
 	private Font characteruptextfont = new Font(Font.SANS_SERIF, Font.BOLD, 16);
 	private Font moneyfont = new Font(Font.SANS_SERIF, Font.BOLD, 30);
@@ -117,20 +121,54 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		// 배경음(?)
 
 		setVisible(true);
-
-		gamescores[5].addActionListener(new ActionListener() {
+		gamescores[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.getWindowAncestor(gamescores[0]).setVisible(false);
+				new FlyingFlying();
+			}
+		});
+		
+		gamescores[1].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.getWindowAncestor(gamescores[1]).setVisible(false);
 				StartFrame.getInstance(new StartPanel());
 			}
 		});
 		
-		gamescores[0].addActionListener(new ActionListener() {
+		gamescores[2].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new FlyingFlying();
+				SwingUtilities.getWindowAncestor(gamescores[2]).setVisible(false);
+				new Umi();
 			}
 		});
+		
+		gamescores[3].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.getWindowAncestor(gamescores[3]).setVisible(false);
+				new Keyword();
+			}
+		});
+		
+		gamescores[4].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.getWindowAncestor(gamescores[4]).setVisible(false);
+				new penalty24();
+			}
+		});
+
+		gamescores[5].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.getWindowAncestor(gamescores[5]).setVisible(false);
+				new ClickClickGame();
+			}
+		});
+		
 
 
 		character.characterpurchase.addActionListener(new ActionListener() {

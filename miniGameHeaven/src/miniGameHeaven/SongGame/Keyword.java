@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -23,10 +25,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import Main_Interface.Main_Interface;
 import defaultFrame.DefaultFrame;
+import gameDescription.GameDescription;
 import my_Information.MyInformationPanel;
 
 public class Keyword extends JPanel implements KeyListener, ActionListener{
@@ -312,7 +316,9 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
 		backButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DefaultFrame.getInstance(new Main_Interface(), "¸ÞÀÎ È­¸é");
+				timer.stop();
+				SwingUtilities.getWindowAncestor(backButton).setVisible(false);
+				DefaultFrame.getInstance(new GameDescription(3), "°ÔÀÓ ¼³¸í È­¸é");
 			}
 		});
 		
@@ -331,7 +337,6 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
         scoreLabel.setPreferredSize(new Dimension(85,0));//»çÀÌÁî
         
         JFrame frame = new JFrame("­S­SÀÌ½½ºñ");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(new BorderLayout());
         frame.getContentPane().add(this, BorderLayout.CENTER);
         frame.getContentPane().add(categoryPanel, BorderLayout.NORTH);
@@ -341,6 +346,14 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
         frame.pack();
         //frame.setFont(font);
         //frame.setLocationRelativeTo(null);
+        
+        frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				frame.dispose();
+				DefaultFrame.getInstance(new GameDescription(3), "°ÔÀÓ ¼³¸í È­¸é");
+			}
+		});
 
 		// 1.ToolkitÀ» ÅëÇØ ¸ð´ÏÅÍÀÇ ÇØ»óµµ¸¦ ¾ò¾î¿À±â
 		Toolkit tk = Toolkit.getDefaultToolkit();
@@ -407,21 +420,17 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
             generateWord();
             inputTextField.setText("");
             repaint();
-
-			// 2°³¾¿ ´Ü¾î¸¦ ¸ÂÈ÷¸é 100Á¡¾¿ Ãß°¡·Î Àû¸³
-			if (score % 1 == 0 && score > 0) {
-				int earnedPoints = 50;
-				point += earnedPoints;
-			}
+			point += 50;
 
 		}
 	}
-    
+
     private void endGame() {
         gameRunning = false;
         timer.stop();
         // 5°³ÀÇ ´Ü¾î¸¦ ¸ÂÈù È½¼ö¿¡ µû¶ó ÃÑ Æ÷ÀÎÆ®¿¡ Ãß°¡Àû¸³µÇ¾î endGame¿¡ Ç¥½ÃµÊ
         int totalScore = score + point;
+        MyInformationPanel.money += point;
         JOptionPane.showMessageDialog(this, "°ÔÀÓ Á¾·á!\n¸ÂÈù °³¼ö : " + score + "\nÃÑ " + point + "Æ÷ÀÎÆ®°¡ Àû¸³µÇ¾ú½À´Ï´Ù.");
 
     }
@@ -518,8 +527,6 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("asd");
-		System.out.println(wordY);
 		// wordY += °ªÀÌ Ä¿Áö¸é ³»·Á°¡´Â °ªÀÌ Ä¿Áø´Ù.
 		wordY += 5;
 		// wordY °ªÀÌ 200À¸·Î ³»·Á°¡¸é ÀÛµ¿

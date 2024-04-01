@@ -10,6 +10,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import defaultFrame.DefaultFrame;
+import gameDescription.GameDescription;
+
 public class GameOver extends JLabel {
 	private Image gameOver; // 배경 이미지를 저장할 변수
 	public static JButton retrybutton, endbutton;
@@ -64,6 +67,7 @@ public class GameOver extends JLabel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				StartFrame.instance.dispose();
+				DefaultFrame.getInstance(new GameDescription(1), "게임 설명 화면");
 			}
 		});
 

@@ -21,10 +21,10 @@ public class Character {
 
 	public void characterSelect() {
 		if (MyInformationCharacter.characterselect.equals("Gumi")) {
-			img = new ImageIcon("구미.png");
+			img = new ImageIcon("구미_고구마비행.png");
 			charY = (StartPanel.screenHeight - img.getIconHeight()) / 2 - 25;
 		} else if (MyInformationCharacter.characterselect.equals("Dalri")) {
-			img = new ImageIcon("달리.png");
+			img = new ImageIcon("달리_슈퍼맨.png");
 			charY = (StartPanel.screenHeight - img.getIconHeight()) / 2 - 20;
 		} else {
 			img = new ImageIcon("토양이.png");
@@ -43,7 +43,7 @@ public class Character {
 	public Character(int x, int y, ImageIcon img) {
 		this.charX = x;
 		this.charY = y;
-		Image image = img.getImage();
+		image = img.getImage();
 	}
 
 	public void draw(Graphics g, JPanel panel) {
