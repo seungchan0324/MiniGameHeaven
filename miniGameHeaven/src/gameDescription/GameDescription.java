@@ -20,6 +20,7 @@ import Main_Interface.Main_Interface;
 import SongGame.Keyword;
 import SunGame.penalty24;
 import YeonGame.Umi;
+import defaultFrame.DefaultFrame;
 import infinityStair.StartFrame;
 import infinityStair.StartPanel;
 
@@ -100,7 +101,7 @@ public class GameDescription extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new Main_Interface();
+				DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
 			}
 		});
 
@@ -142,7 +143,6 @@ public class GameDescription extends JFrame {
 		startGameButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				switch (currentGameIndex) {
 				case 0:
 					new FlyingFlying();

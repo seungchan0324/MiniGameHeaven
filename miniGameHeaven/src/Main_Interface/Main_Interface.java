@@ -13,19 +13,16 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
-import SunGame.penalty24;
+import defaultFrame.DefaultFrame;
 import gameDescription.GameDescription;
-import infinityStair.Main;
-import infinityStair.StartFrame;
-import infinityStair.StartPanel;
-import my_Information.MyInformationCharacter;
+import login.Logintest;
 import my_Information.MyInformationPanel;
 
-public class Main_Interface extends JFrame {
+public class Main_Interface extends JPanel {
 	int i;
 	RoundedButton[] button;
 	
@@ -34,7 +31,6 @@ public class Main_Interface extends JFrame {
 
 		setSize(768, 600);
 		setBackground(new Color(255, 255, 244));
-		setLocationRelativeTo(null);
 		setLayout(null);
 		
 		// 폰트(글꼴, 굵기, 크기)
@@ -43,9 +39,9 @@ public class Main_Interface extends JFrame {
 
 		 // Profile Panel 생성
         JPanel profilePanel = new JPanel();
-        //profilePanel.setBackground(Color.gray); // 크기 알고 싶을 때 배경색 설정
-        profilePanel.setBounds(0, 15, getWidth()/2, 40); // 위치 및 크기 설정
-        //profilePanel.setLayout(new BorderLayout()); // 레이아웃 매니저 설정
+        profilePanel.setBackground(new Color(255,255,244)); // 크기 알고 싶을 때 배경색 설정
+        profilePanel.setBounds(65, 15, getWidth()/2, 40); // 위치 및 크기 설정
+        profilePanel.setLayout(new FlowLayout(FlowLayout.LEFT)); // 레이아웃 매니저 설정
         profilePanel.setFont(fontB);
 
         
@@ -63,13 +59,14 @@ public class Main_Interface extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				StartFrame.getInstance(new MyInformationPanel());
+				SwingUtilities.getWindowAncestor(imgButton).setVisible(false);
+				DefaultFrame.getInstance(new MyInformationPanel(), "내 정보");
 				
 			}
 		});
         
 		// nameLabel 생성
-		JLabel nameLabel = new JLabel("수달은수달");
+		JLabel nameLabel = new JLabel(Logintest.name);
 		nameLabel.setFont(fontB);
 		Font labelFont = nameLabel.getFont();
 		FontMetrics labelFontMetrics = nameLabel.getFontMetrics(labelFont);
@@ -110,6 +107,7 @@ public class Main_Interface extends JFrame {
         //buttonPanel.add(bButton,BorderLayout.EAST);
         
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 90));//buttonPanel 안쪽 여백
+        buttonPanel.setBackground(new Color(255, 255, 244));
         add(buttonPanel);
         
         
@@ -136,11 +134,6 @@ public class Main_Interface extends JFrame {
 		for(i=0;i<button.length;i++) {
 			buttonAction(i);
 		}//for
-		
-		
-		
-		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
 
@@ -193,6 +186,7 @@ public class Main_Interface extends JFrame {
 		button[x].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.getWindowAncestor(button[x]).setVisible(false);
 				new GameDescription(x);
 			}
 		});
