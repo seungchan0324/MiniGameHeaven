@@ -27,7 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import infinityStair.StartFrame;
+import defaultFrame.DefaultFrame;
 import login.Logintest;
 
 public class A_JoinView extends JFrame {
@@ -49,7 +49,7 @@ public class A_JoinView extends JFrame {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		gbc.gridwidth=2;
+		gbc.gridwidth = 2;
 		gbc.anchor = GridBagConstraints.WEST;
 		gbc.insets = new Insets(8, 10, 8, 10);
 		Font font = new Font("나눔고딕", Font.PLAIN, 14);
@@ -112,7 +112,7 @@ public class A_JoinView extends JFrame {
 		passField.setPreferredSize(new Dimension(300, 40));
 
 		passField.setEchoChar((char) 0);
-		passField.addFocusListener(new FocusListener() { 
+		passField.addFocusListener(new FocusListener() {
 			@Override
 			public void focusGained(FocusEvent e) {
 				if (String.valueOf(passField.getPassword()).equals("비밀번호")) {
@@ -242,7 +242,7 @@ public class A_JoinView extends JFrame {
 		la5.setForeground(Color.blue);
 		gbc.gridy++;
 		gbc.gridwidth = 1;
-		gbc.anchor=GridBagConstraints.WEST;
+		gbc.anchor = GridBagConstraints.WEST;
 		panel.add(la5, gbc);
 
 		la5.addMouseListener(new MouseAdapter() {
@@ -257,8 +257,6 @@ public class A_JoinView extends JFrame {
 		gbc.anchor = GridBagConstraints.EAST;
 		panel.add(yes, gbc);
 
-		
-		
 		agree = new JTextArea();
 		agree.setFont(font);
 		agree.setPreferredSize(new Dimension(300, 155));
@@ -270,7 +268,7 @@ public class A_JoinView extends JFrame {
 		agree.setVisible(false);
 		gbc.gridx = 0;
 		gbc.gridwidth = 2;
-		gbc.anchor=GridBagConstraints.WEST;
+		gbc.anchor = GridBagConstraints.WEST;
 		gbc.gridy++;
 		panel.add(agree, gbc);
 
@@ -304,6 +302,7 @@ public class A_JoinView extends JFrame {
 					JOptionPane.showMessageDialog(null, "중복된 아이디입니다.");
 					return;
 				}
+
 				if (A_Join.emailcheck(email)) {
 					JOptionPane.showMessageDialog(null, "중복된 이메일입니다.");
 					return;
@@ -314,7 +313,7 @@ public class A_JoinView extends JFrame {
 
 				JOptionPane.showMessageDialog(null, id + "님의 회원 가입이 완료되었습니다.\n로그인 페이지에서 로그인해 주세요.");
 				dispose();
-				StartFrame.getInstance(new Logintest());
+				DefaultFrame.getInstance(new Logintest(), "로그인");
 			}
 		});
 

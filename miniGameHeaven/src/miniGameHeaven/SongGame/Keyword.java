@@ -26,6 +26,8 @@ import javax.swing.JTextField;
 import javax.swing.Timer;
 
 import Main_Interface.Main_Interface;
+import defaultFrame.DefaultFrame;
+import my_Information.MyInformationPanel;
 
 public class Keyword extends JPanel implements KeyListener, ActionListener{
     private LinkedList<String> fruitWords;
@@ -310,7 +312,7 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
 		backButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				DefaultFrame.getInstance(new Main_Interface(), "¸ÞÀÎ È­¸é");
 			}
 		});
 		
@@ -329,7 +331,7 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
         scoreLabel.setPreferredSize(new Dimension(85,0));//»çÀÌÁî
         
         JFrame frame = new JFrame("­S­SÀÌ½½ºñ");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(new BorderLayout());
         frame.getContentPane().add(this, BorderLayout.CENTER);
         frame.getContentPane().add(categoryPanel, BorderLayout.NORTH);
@@ -421,6 +423,7 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
         // 5°³ÀÇ ´Ü¾î¸¦ ¸ÂÈù È½¼ö¿¡ µû¶ó ÃÑ Æ÷ÀÎÆ®¿¡ Ãß°¡Àû¸³µÇ¾î endGame¿¡ Ç¥½ÃµÊ
         int totalScore = score + point;
         JOptionPane.showMessageDialog(this, "°ÔÀÓ Á¾·á!\n¸ÂÈù °³¼ö : " + score + "\nÃÑ " + point + "Æ÷ÀÎÆ®°¡ Àû¸³µÇ¾ú½À´Ï´Ù.");
+
     }
     
 	// °ÔÀÓ ÀÏ½ÃÁ¤Áö ±â´É
