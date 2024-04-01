@@ -38,7 +38,7 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 	private String moneycomma;
 	private MyInformationCharacter character;
 	private Timer timer = new Timer(2, this);
-	static long money = 100000;
+	public static long money = 0;
 
 	public MyInformationPanel() {
 
