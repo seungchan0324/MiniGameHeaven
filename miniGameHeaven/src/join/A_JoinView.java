@@ -22,7 +22,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -50,6 +49,7 @@ public class A_JoinView extends JFrame {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
+		gbc.gridwidth=2;
 		gbc.anchor = GridBagConstraints.WEST;
 		gbc.insets = new Insets(10, 10, 10, 10);
 		Font font = new Font("³ª´®°íµñ", Font.PLAIN, 14);
@@ -241,6 +241,7 @@ public class A_JoinView extends JFrame {
 		la5.setFont(font);
 		la5.setForeground(Color.blue);
 		gbc.gridy++;
+		gbc.anchor=GridBagConstraints.WEST;
 		panel.add(la5, gbc);
 
 		la5.addMouseListener(new MouseAdapter() {
@@ -253,7 +254,7 @@ public class A_JoinView extends JFrame {
 		yes = new Checkbox("", true);
 		gbc.gridx++;
 		gbc.insets = new Insets(5, 5, 5, 5);
-		gbc.anchor = GridBagConstraints.LINE_START;
+		gbc.anchor = GridBagConstraints.EAST;
 		panel.add(yes, gbc);
 
 		
@@ -269,7 +270,7 @@ public class A_JoinView extends JFrame {
 		agree.setVisible(false);
 		gbc.gridx = 0;
 		gbc.gridwidth = 0;
-		gbc.insets = new Insets(5, 5, 5, 5);
+		gbc.insets = new Insets(0, 0, 0, 0);
 		gbc.gridy++;
 		panel.add(agree, gbc);
 
