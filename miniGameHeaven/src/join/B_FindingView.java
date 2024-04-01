@@ -19,7 +19,7 @@ public class B_FindingView extends JFrame {
 		setTitle("아이디/비밀번호 찾기");
 		setSize(350, 200);
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		// =========================================================
 

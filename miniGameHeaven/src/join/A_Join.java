@@ -11,7 +11,7 @@ public class A_Join {
 
 	public static HashMap<String, Join> hm = new HashMap<>();
 
-	static class Join {
+	public static class Join {
 		String id;
 		String email;
 		String pass;
@@ -28,6 +28,18 @@ public class A_Join {
 		@Override
 		public String toString() {
 			return "아이디: " + id + "\n이메일: " + email + "\n비밀번호: " + pass + "\n생년월일" + birthday;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public String getPass() {
+			return pass;
+		}
+
+		public String getBirthday() {
+			return birthday;
 		}
 
 	}
@@ -56,8 +68,8 @@ public class A_Join {
 				continue;
 			}
 
-			Join join = new Join(id, email, pass, birthday);
-			hm.put(id, join);
+			// Join join = new Join(id, email, pass, birthday);
+			// hm.put(id, join);
 
 			System.out.println(id + "님의 회원 가입이 완료되었습니다.");
 			System.out.println("로그인 페이지에서 로그인해 주세요.");
@@ -67,7 +79,7 @@ public class A_Join {
 
 	}
 
-	 static boolean emailcheck(String email) {
+	static boolean emailcheck(String email) {
 		for (Join join : hm.values()) {
 			if (join.email.equals(email)) {
 				return true;

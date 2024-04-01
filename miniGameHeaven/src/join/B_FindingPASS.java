@@ -22,7 +22,7 @@ public class B_FindingPASS extends JFrame {
 		setTitle("비밀번호 찾기");
 		setSize(350, 400);
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		// =========================기본 프레임 설정=================================
 
