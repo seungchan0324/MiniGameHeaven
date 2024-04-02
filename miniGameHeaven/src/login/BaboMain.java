@@ -2,13 +2,13 @@ package login;
 
 import java.awt.Color;
 
+import defaultFrame.DefaultFrame;
+
 public class BaboMain {
 
 	public static void main(String[] args) {
 
-		Babo b = new Babo();
-		b.getContentPane().setBackground(new Color(255, 255, 244));
-		b.setVisible(true);
+		DefaultFrame.getInstance(new Babo(), "ณ๎ภฬลอ");
 
 	}
 

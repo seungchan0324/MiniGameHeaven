@@ -258,7 +258,7 @@ public class RegisterView extends JPanel {
 		agree.setPreferredSize(new Dimension(300, 155));
 		Border border = BorderFactory.createLineBorder(new Color(150, 150, 150));
 		agree.setBorder(border);
-		
+
 		agree.append(
 				"귀하께서 회원 가입 시 입력하신 개인 정보를 '미니게임천국' 서비스 종료 시점까지 당사에서 보관하는 것에 동의합니다. 보관 중인 개인 정보는 기본 회원 식별 절차 및 '미니게임천국' 서비스 제공 외 당사와 제휴된 소셜커머스 마케팅 업체에 제공될 수 있으며 각종 빅데이터 기반 서비스 개발에 활용될 수 있습니다. 개인 정보 제공에 미동의할 경우 당사가 제공하는 일체의 서비스 이용이 불가능합니다.");
 		agree.setEditable(false);

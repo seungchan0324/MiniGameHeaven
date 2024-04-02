@@ -19,7 +19,7 @@ import javax.swing.SwingUtilities;
 
 import defaultFrame.DefaultFrame;
 import gameDescription.GameDescription;
-import login.BaboMain;
+import login.Babo;
 import login.Logintest;
 import my_Information.MyInformationPanel;
 
@@ -106,7 +106,7 @@ public class Main_Interface extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.getWindowAncestor(aButton).setVisible(false);
-				// DefaultFrame.getInstance(new BaboMain(), "놀이터");
+				DefaultFrame.getInstance(new Babo(), "놀이터");
 
 			}
 		});
