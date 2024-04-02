@@ -25,16 +25,11 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 	private int backgroundImgY = -435;
 	final static int screenWidth = 600;
 	final static int screenHeight = 1000;
-	private Timer timer1 = new Timer(80, this);
+	private Timer timer1 = new Timer(300, this);
 	private Font font = new Font("Impact", Font.BOLD, 40);
 	private Character character;
-	private ImageIcon imgfront = new ImageIcon("토양이.png");
-	private ImageIcon imgleft = new ImageIcon("토양이왼쪽.png");
-	private ImageIcon imgright = new ImageIcon("토양이오른쪽.png");
 	private Image brickimg[] = new Image[3];
 	private Image backgroundImage[] = new Image[2];
-	private int middlepointcharacter = (StartPanel.screenWidth - imgfront.getIconWidth()) / 2;
-	private int middlepointcharacterright = (StartPanel.screenWidth - imgright.getIconWidth()) / 2;
 	// 블럭갯수 새기 위한 용도
 	private int cnt = 1;
 	// cloudY 구름이 적용될 위치를 측정하기 위한 장치
@@ -88,7 +83,6 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 		brickmanager = new Brick().new BrickManager();
 		bricks = brickmanager.firstStart();
 		addKeyListener(this);
-		setBounds(0, 0, 600, 1000);
 
 		JLabel label = new JLabel();
 		label.setBounds(0, 0, 600, 50);
@@ -104,8 +98,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		character.setX(middlepointcharacter);
-		character.image = imgfront.getImage();
+		character.setX(character.middlepointX);
+		character.image = character.frontimg.getImage();
 		repaint();
 		timer1.stop();
 	}
@@ -148,14 +142,14 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 			switch (e.getKeyCode()) {
 			case KeyEvent.VK_RIGHT:
 				brickmanager.moveBricksRight();
-				character.setX(middlepointcharacterright - 10);
-				character.image = imgright.getImage();
+				character.setX(character.rightmiddlepointX);
+				character.image = character.rightimg.getImage();
 				direction = false;
 				break;
 			case KeyEvent.VK_LEFT:
 				brickmanager.moveBricksLeft();
-				character.setX(middlepointcharacterright + 15);
-				character.image = imgleft.getImage();
+				character.setX(character.leftmiddlepointX);
+				character.image = character.leftimg.getImage();
 				direction = true;
 				break;
 			}

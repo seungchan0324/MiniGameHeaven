@@ -193,7 +193,7 @@ public class Logintest extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.getWindowAncestor(register).setVisible(false);
-				new A_JoinView();
+				DefaultFrame.getInstance(new A_JoinView(), "회원가입");
 			}
 		});
 
