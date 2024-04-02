@@ -33,7 +33,7 @@ public class Takaramono extends JFrame implements ActionListener {
 	Timer timer;
 
 	JLabel l1, l2, l3;
-	ImageIcon image[] = { new ImageIcon("001.jpg"), new ImageIcon("002.jpg"), new ImageIcon("003.jpg") };
+	ImageIcon image[] = { new ImageIcon("001.png"), new ImageIcon("002.png"), new ImageIcon("003.png") };
 
 	public Takaramono(int takarabako) {
 		this.takarabako = takarabako;
@@ -74,9 +74,9 @@ public class Takaramono extends JFrame implements ActionListener {
 
 		// 좌표값
 		ura.setBounds(0, 0, 800, 600);
-		l1.setBounds(200, 80, 100, 100);
-		l2.setBounds(350, 80, 100, 100);
-		l3.setBounds(500, 80, 100, 100);
+		l1.setBounds(233, 90, 100, 100);
+		l2.setBounds(350, 90, 100, 100);
+		l3.setBounds(465, 90, 100, 100);
 
 		add(panel);
 		panel.add(l1);
@@ -88,7 +88,7 @@ public class Takaramono extends JFrame implements ActionListener {
 		setVisible(true);
 
 		JButton startButton = new JButton("슬롯을 돌려 자물쇠 풀기!");
-		startButton.setBounds(300, 200, 200, 50); // 버튼 위치 및 사이즈 설정
+		startButton.setBounds(300, 212, 200, 50); // 버튼 위치 및 사이즈 설정
 		startButton.setFont(font);
 		ura.add(startButton);
 
