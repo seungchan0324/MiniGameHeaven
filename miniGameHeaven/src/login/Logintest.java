@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,10 +24,10 @@ import javax.swing.event.DocumentListener;
 
 import Main_Interface.Main_Interface;
 import defaultFrame.DefaultFrame;
-import join.FindingID;
-import join.FindingPASS;
-import join.Register;
-import join.RegisterView;
+import register.FindingID;
+import register.FindingPASS;
+import register.Register;
+import register.RegisterView;
 
 public class Logintest extends JPanel {
 	Font font = new Font("맑은 고딕", Font.BOLD, 16);
@@ -129,6 +131,27 @@ public class Logintest extends JPanel {
 				passwordField.setForeground(Color.BLACK);
 			}
 		});
+		passwordField.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if ((int) e.getKeyChar() == 10) {
+					loginButton.doClick();
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 
 		loginButton = new JButton("로그인");
 		loginButton.setFont(font);
@@ -150,7 +173,7 @@ public class Logintest extends JPanel {
 		fi.setForeground(Color.white);
 		fi.setFont(font);
 		add(fi);
-		
+
 		fp = new JButton("PW 찾기");
 		fp.setFont(font);
 		fp.setBounds(365, 460, 115, 35);
@@ -168,7 +191,7 @@ public class Logintest extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.getWindowAncestor(register).setVisible(false);
-				new RegisterView();
+				DefaultFrame.getInstance(new RegisterView(), "회원가입");
 			}
 		});
 
@@ -206,7 +229,7 @@ public class Logintest extends JPanel {
 
 			}
 		});
-		
+
 		fp.addActionListener(new ActionListener() {
 
 			@Override

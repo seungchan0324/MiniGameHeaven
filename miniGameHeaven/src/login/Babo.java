@@ -2,7 +2,6 @@ package login;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -11,20 +10,20 @@ import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.border.Border;
 
-public class Babo extends JFrame {
+public class Babo extends JPanel {
 
 	int cnt = 0;
 
 	public Babo() {
-		setTitle("Ä³¸¯ÅÍ");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(768, 600);
+		setLayout(null);
+		setBackground(new Color(255, 255, 244));
 
 		ImageIcon ic2 = new ImageIcon("jan.png");
 		JLabel la = new JLabel(ic2);
@@ -92,11 +91,6 @@ public class Babo extends JFrame {
 
 		add(button);
 		add(la);
-
-		setLayout(null);
-		setResizable(false);
-		setLocationRelativeTo(null);
-		setVisible(true);
 	}
 
 }

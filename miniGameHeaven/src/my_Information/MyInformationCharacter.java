@@ -37,11 +37,25 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 	private int characterhorizontal = 0;
 	private int cnt = 0;
 	// 캐릭터 구매여부 0이면 미구매 1이면 구매상태
-	private int dalripurchase = 0, gumipurchase = 0;
+	private static int dalripurchase = 0, gumipurchase = 0;
 	// 마지막으로 선택된 캐릭터
 	public static String characterselect = "Toyangi";
 
 	public MyInformationCharacter() {
+		if(characterselect.equals("Dalri")) {
+			characterhorizontal = -290;
+		}else if(characterselect.equals("Gumi")) {
+			characterhorizontal = -580;
+		}else {
+			characterhorizontal = 0;
+		}
+		
+		if(dalripurchase == 1) {
+			characterimage[1] = new ImageIcon("내정보달리.png").getImage();
+		}else if(gumipurchase == 1) {
+			characterimage[2] = new ImageIcon("내정보구미.png").getImage();
+		}
+		
 		setBounds(47, 175, 290, 329);
 		setBackground(new Color(255, 255, 244));
 		setLayout(null);

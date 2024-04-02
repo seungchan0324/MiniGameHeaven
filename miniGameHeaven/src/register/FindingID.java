@@ -1,4 +1,4 @@
-package join;
+package register;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,12 +15,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class FindingPASS extends JFrame {
+public class FindingID extends JFrame {
 
-	public FindingPASS() {
+	public FindingID() {
 
-		setTitle("비밀번호 찾기");
-		setSize(350, 400);
+		setTitle("아이디 찾기");
+		setSize(350, 350);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -36,19 +36,8 @@ public class FindingPASS extends JFrame {
 		panel.setBackground(new Color(255, 255, 244));
 		panel.setFont(font);
 
-		JLabel la3 = new JLabel("아이디");
-		la3.setFont(font);
-		panel.add(la3, gbc);
-
-		JTextField idfind = new JTextField();
-		idfind.setFont(font);
-		idfind.setPreferredSize(new Dimension(300, 40));
-		gbc.gridy++;
-		panel.add(idfind, gbc);
-
 		JLabel la1 = new JLabel("가입 시 입력한 이메일 주소");
 		la1.setFont(font);
-		gbc.gridy++;
 		panel.add(la1, gbc);
 
 		JTextField emailfind = new JTextField();
@@ -76,7 +65,7 @@ public class FindingPASS extends JFrame {
 
 		//////////////////////////////////////////
 
-		JButton bt = new JButton("비밀번호 찾기");
+		JButton bt = new JButton("아이디 찾기");
 		bt.setFont(font);
 		bt.setForeground(Color.white);
 		bt.setBackground(Color.DARK_GRAY);
@@ -87,16 +76,14 @@ public class FindingPASS extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				String id = idfind.getText();
 				String email = emailfind.getText();
 				String birthday = birthdayfind.getText();
 				boolean found = false;
 
 				for (Register.Join join : Register.hm.values()) {
-					if (join != null && join.id.equals(id) && join.email.equals(email)
-							&& join.birthday.equals(birthday)) {
+					if (join.email.equals(email) && join.birthday.equals(birthday)) {
 
-						result.setText("회원님의 비밀번호는 " + join.pass + "입니다.");
+						result.setText("회원님의 아이디는 " + join.id + "입니다.");
 						found = true;
 						break;
 
@@ -126,7 +113,8 @@ public class FindingPASS extends JFrame {
 
 	public static void main(String[] args) {
 
-		new FindingPASS();
+		new FindingID();
+
 	}
 
 }
