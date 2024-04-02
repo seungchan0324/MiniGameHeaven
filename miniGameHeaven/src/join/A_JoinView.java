@@ -326,7 +326,8 @@ public class A_JoinView extends JFrame {
 				}
 
 				////////////////////////////////////////////////////
-				A_Join.Join join = new A_Join.Join(id, email, pass, birthday);
+				int point=0;
+				A_Join.Join join = new A_Join.Join(id, email, pass, birthday, point);
 				A_Join.hm.put(id, join);
 
 				JOptionPane.showMessageDialog(null, id + "님의 회원 가입이 완료되었습니다.\n로그인 페이지에서 로그인해 주세요.");
