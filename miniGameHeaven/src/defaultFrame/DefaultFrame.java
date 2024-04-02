@@ -16,6 +16,7 @@ public class DefaultFrame extends JFrame {
 		setSize(768, 600);
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
+		setResizable(false);
 		setVisible(true);
 
 	}

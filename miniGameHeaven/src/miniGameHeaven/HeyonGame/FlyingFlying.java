@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -18,8 +20,10 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
-import infinityStair.StartPanel;
+import defaultFrame.DefaultFrame;
+import gameDescription.GameDescription;
 import my_Information.MyInformationCharacter;
+import my_Information.MyInformationPanel;
 
 public class FlyingFlying extends JFrame {
 
@@ -44,6 +48,7 @@ public class FlyingFlying extends JFrame {
 	private Timer timer;
 	private int cnt=0;
 	private int score=0;
+	public static int FlyingFlyingMaxScore;
 	// 키 리스너 객체를 변수에 할당
 	KeyListener myKeyListener = new KeyAdapter() {
 	    @Override
@@ -72,7 +77,6 @@ public class FlyingFlying extends JFrame {
 		setTitle("게임 시작 화면");
 		setSize(768, 600);
 		setLocationRelativeTo(null); // 화면 중앙에 위치시킴
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		
 		JPanel mainPanel = new JPanel();
@@ -92,6 +96,15 @@ public class FlyingFlying extends JFrame {
 		// JFrame이 키 이벤트를 받을 수 있게 설정
 		setFocusable(true);
 		requestFocusInWindow();
+		
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				dispose();
+				DefaultFrame.getInstance(new GameDescription(0), "게임 설명 화면");
+			}
+		});
+		
 	}
 	
 	private void goToNextScreen() {
@@ -134,10 +147,6 @@ public class FlyingFlying extends JFrame {
 		ScoreaLabel.setFont(new Font("Serif", Font.BOLD, 20));
 		ScoreaLabel.setBounds(650, 10, 100, 30);//점수
 		setLocationRelativeTo(null); // 창을 화면 중앙에 위치
-
-		
-
-		
 
 		// 배경
 		ImageIcon img1 = new ImageIcon("BG.jpg");
@@ -252,12 +261,16 @@ public class FlyingFlying extends JFrame {
 
 		score=+(cnt/100)*30;
 		System.out.println("포인트 : "+  score);
+		FlyingFlyingMaxScore = FlyingFlyingMaxScore < cnt ? cnt : FlyingFlyingMaxScore;
+		MyInformationPanel.money += score;
 		if (choice == JOptionPane.YES_OPTION) {
 			timer = null;
 			dispose();
 			new FlyingFlying();
 		} else {
-			System.exit(0);
+			timer = null;
+			dispose();
+			DefaultFrame.getInstance(new GameDescription(0), "게임 설명 화면");
 		}
 	}
 

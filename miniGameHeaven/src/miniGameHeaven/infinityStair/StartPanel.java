@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
+import my_Information.MyInformationPanel;
+
 public class StartPanel extends JPanel implements ActionListener, KeyListener {
 	private LinkedList<Brick> bricks;
 	private Brick.BrickManager brickmanager;
@@ -43,8 +45,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 	private TimeLimit timelimit;
 	// 1은 동작중인 상태
 	private int statement;
-
 	private int backgroundImgYminus = 40;
+	public static int ToTheSpaceMaxScore;
 
 	// 캐릭터의 x를 고정 y를 변화시켜 배경의 y또한 점점 내려간다.
 	public StartPanel() {
@@ -199,6 +201,8 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 
 	public void GameOver() {
 		statement = 0;
+		MyInformationPanel.money += Brick.brickcnt;
+		ToTheSpaceMaxScore = ToTheSpaceMaxScore < Brick.brickcnt ? Brick.brickcnt : ToTheSpaceMaxScore;
 		GameOver gameover = new GameOver();
 		this.add(gameover);
 		this.add(gameover.retrybutton);

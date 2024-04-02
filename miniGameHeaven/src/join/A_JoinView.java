@@ -17,35 +17,29 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import defaultFrame.DefaultFrame;
 import login.Logintest;
 
-public class A_JoinView extends JFrame {
+public class A_JoinView extends JPanel {
 
 	private JTextArea agree;
 	private Checkbox yes;
 
 	public A_JoinView() {
 
-		setTitle("회원 가입");
-		setSize(768, 600);
-		setResizable(false);
-
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		// =========================기본 프레임 설정=================================
-
-		JPanel panel = new JPanel(new GridBagLayout());
+		setBounds(0,  0,  768,  600);
+		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -54,15 +48,14 @@ public class A_JoinView extends JFrame {
 		gbc.insets = new Insets(8, 10, 8, 10);
 		Font font = new Font("나눔고딕", Font.PLAIN, 14);
 		Font font2 = new Font("나눔고딕", Font.BOLD, 42);
-		panel.setBackground(new Color(255, 255, 244));
-		panel.setFont(font);
+		setBackground(new Color(255, 255, 244));
 
 		//////////////////////////////////////////////
 
 		JLabel la0 = new JLabel("     회원 가입");
 		la0.setFont(font2);
 		gbc.gridy++;
-		panel.add(la0, gbc);
+		add(la0, gbc);
 
 		JTextField idField = new JTextField("아이디");
 		idField.setFont(font);
@@ -104,7 +97,7 @@ public class A_JoinView extends JFrame {
 		});
 
 		gbc.gridy++;
-		panel.add(idField, gbc);
+		add(idField, gbc);
 
 		JPasswordField passField = new JPasswordField("비밀번호");
 		passField.setFont(font);
@@ -149,7 +142,7 @@ public class A_JoinView extends JFrame {
 		});
 
 		gbc.gridy++;
-		panel.add(passField, gbc);
+		add(passField, gbc);
 
 		JTextField emailField = new JTextField("이메일");
 		emailField.setFont(font);
@@ -191,7 +184,7 @@ public class A_JoinView extends JFrame {
 		});
 
 		gbc.gridy++;
-		panel.add(emailField, gbc);
+		add(emailField, gbc);
 
 		JTextField birthdayField = new JTextField("생년월일(YYMMDD 모양의 여섯 자리 숫자)");
 		birthdayField.setFont(font);
@@ -233,7 +226,7 @@ public class A_JoinView extends JFrame {
 		});
 
 		gbc.gridy++;
-		panel.add(birthdayField, gbc);
+		add(birthdayField, gbc);
 
 		// ============================정보입력 필드=================================
 
@@ -243,7 +236,7 @@ public class A_JoinView extends JFrame {
 		gbc.gridy++;
 		gbc.gridwidth = 1;
 		gbc.anchor = GridBagConstraints.WEST;
-		panel.add(la5, gbc);
+		add(la5, gbc);
 
 		la5.addMouseListener(new MouseAdapter() {
 			@Override
@@ -255,7 +248,7 @@ public class A_JoinView extends JFrame {
 		yes = new Checkbox("", true);
 		gbc.gridx++;
 		gbc.anchor = GridBagConstraints.EAST;
-		panel.add(yes, gbc);
+		add(yes, gbc);
 
 		agree = new JTextArea();
 		agree.setFont(font);
@@ -269,8 +262,9 @@ public class A_JoinView extends JFrame {
 		gbc.gridx = 0;
 		gbc.gridwidth = 2;
 		gbc.anchor = GridBagConstraints.WEST;
+		gbc.insets = new Insets(8, 10, 8, 10);
 		gbc.gridy++;
-		panel.add(agree, gbc);
+		add(agree, gbc);
 
 		// ============================텍스트 필드==================================
 
@@ -331,7 +325,7 @@ public class A_JoinView extends JFrame {
 				A_Join.hm.put(id, join);
 
 				JOptionPane.showMessageDialog(null, id + "님의 회원 가입이 완료되었습니다.\n로그인 페이지에서 로그인해 주세요.");
-				dispose();
+				SwingUtilities.getWindowAncestor(bt).setVisible(false);
 				DefaultFrame.getInstance(new Logintest(), "로그인");
 			}
 		});
@@ -340,12 +334,7 @@ public class A_JoinView extends JFrame {
 		gbc.gridx = 0;
 		bt.setPreferredSize(new Dimension(300, 40));
 
-		panel.add(bt, gbc);
-		add(panel);
-		setLocationRelativeTo(null);
-
-		setVisible(true);
-
+		add(bt, gbc);
 	}// 여기안에
 
 	@Override

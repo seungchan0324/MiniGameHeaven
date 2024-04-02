@@ -1,23 +1,35 @@
 package SunGame;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import defaultFrame.DefaultFrame;
+import gameDescription.GameDescription;
 
 public class penalty24 extends JFrame {
 
 	public penalty24() {
 
 		JFrame frame = new JFrame("페널티 킥");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(700, 700);
 		frame.setLayout(null);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
+		
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				dispose();
+				DefaultFrame.getInstance(new GameDescription(4), "게임 설명 화면");
+			}
+		});
 
 		JButton button = new JButton("게임 시작");
 		button.setBounds(280, 500, 100, 50);

@@ -1,10 +1,11 @@
 package join;
 
+import defaultFrame.DefaultFrame;
+
 public class A_JoinMain {
 
 	public static void main(String[] args) {
-
-		new A_JoinView();
+		DefaultFrame.getInstance(new A_JoinView(), "회원가입");
 	}
 
 }

@@ -4,6 +4,8 @@ import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
@@ -14,6 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
+import defaultFrame.DefaultFrame;
+import gameDescription.GameDescription;
 
 public class Umi extends JFrame {
 
@@ -34,7 +39,6 @@ public class Umi extends JFrame {
 		ImageIcon img = new ImageIcon("main_tobira.jpg");
 		JLabel jl = new JLabel(img);
 		jl.setBounds(0, 0, 800, 600); // 원본사이즈에 맞춰야 함
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// 게임 시작
 		JButton startButton = new JButton("잠수 시작");
@@ -63,6 +67,14 @@ public class Umi extends JFrame {
 		textArea.append("환영합니다!\n");
 		textArea.append("<잠수 시작> 버튼을 클릭해 해저를 탐험해 봅시다.\n");
 
+		f.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				dispose();
+				DefaultFrame.getInstance(new GameDescription(2), "게임 설명 화면");
+			}
+		});
+		
 		// 버튼액션
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

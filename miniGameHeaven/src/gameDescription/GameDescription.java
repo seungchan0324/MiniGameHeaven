@@ -24,7 +24,7 @@ import defaultFrame.DefaultFrame;
 import infinityStair.StartFrame;
 import infinityStair.StartPanel;
 
-public class GameDescription extends JFrame {
+public class GameDescription extends JPanel {
 	private JPanel mainPanel;
 	private JPanel gameImagePanel;
 	private JLabel gameNameLabel;
@@ -61,12 +61,8 @@ public class GameDescription extends JFrame {
 			"penalty24.gif", "ClickClick.gif" };
 
 	public GameDescription() {
-		setTitle("게임 설명 페이지");
 		setSize(768, 600);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
 		setLayout(null);
-		setResizable(false);
 		setFocusable(true);
 		requestFocusInWindow();
 
@@ -83,12 +79,8 @@ public class GameDescription extends JFrame {
 	}
 
 	public GameDescription(int currentGameIndex) {
-		setTitle("게임 설명 페이지");
 		setSize(768, 600);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
 		setLayout(null);
-		setResizable(false);
 		setFocusable(true);
 		requestFocusInWindow();
 
@@ -119,7 +111,7 @@ public class GameDescription extends JFrame {
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				SwingUtilities.getWindowAncestor(button).setVisible(false);
 				DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
 			}
 		});
@@ -162,6 +154,7 @@ public class GameDescription extends JFrame {
 		startGameButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.getWindowAncestor(startGameButton).setVisible(false);
 				switch (currentGameIndex) {
 				case 0:
 					new FlyingFlying();

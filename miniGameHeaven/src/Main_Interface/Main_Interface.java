@@ -187,7 +187,7 @@ public class Main_Interface extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.getWindowAncestor(button[x]).setVisible(false);
-				new GameDescription(x);
+				DefaultFrame.getInstance(new GameDescription(x), "게임 설명 페이지");
 			}
 		});
 	}
