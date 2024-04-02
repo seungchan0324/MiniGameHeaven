@@ -129,6 +129,8 @@ public class Takaramono extends JFrame implements ActionListener {
 		startButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				//스피닝이 트루고 클릭카운트가 타카라바코보다 적을 때(타카라바코는 우미에서 넘어옴) 스피닝이 돌아감
 				if (!spinning && clickCount < takarabako) {
 					spinning = true;
 					timer = new Timer(100, new ActionListener() {

@@ -3,9 +3,9 @@ package join;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import join.A_Join.Join;
+import join.Register.Join;
 
-public class B_Finding {
+public class Finding {
 
 	public static void main(String[] args) {
 
@@ -23,7 +23,7 @@ public class B_Finding {
 			System.out.println("생년월일(숫자 YYMMDD)을 입력하세요.");
 			String birthday = sc.nextLine();
 
-			for (A_Join.Join join : A_Join.hm.values()) {
+			for (Register.Join join : Register.hm.values()) {
 				if (join.email.equals(email) && join.birthday.equals(birthday)) {
 					System.out.println("회원님의 아이디는 " + join.id + "입니다.");
 					return;
@@ -41,7 +41,7 @@ public class B_Finding {
 			System.out.println("생년월일(숫자 YYMMDD)을 입력하세요.");
 			String birthdayPw = sc.nextLine();
 
-			A_Join.Join join = A_Join.hm.get(id);
+			Register.Join join = Register.hm.get(id);
 			if (join.email.equals(emailPw) && join.birthday.equals(birthdayPw)) {
 				System.out.println("회원님의 비밀번호는 " + join.pass + "입니다.");
 				return;

@@ -3,7 +3,7 @@ package join;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class A_Join {
+public class Register {
 
 	public static HashMap<String, Join> hm = new HashMap<>();
 
@@ -14,20 +14,18 @@ public class A_Join {
 		String birthday;
 		int point;
 
-		public Join(String id, String email, String pass, String birthday,int point) {
+		public Join(String id, String email, String pass, String birthday, int point) {
 			this.id = id;
 			this.email = email;
 			this.pass = pass;
 			this.birthday = birthday;
-			this.point=point;
+			this.point = point;
 
-		
 		}
 
 		@Override
 		public String toString() {
-			return "아이디: " + id + "\n이메일: " + email + "\n비밀번호: " + pass + 
-					"\n생년월일" + birthday+ "\n포인트" + point;
+			return "아이디: " + id + "\n이메일: " + email + "\n비밀번호: " + pass + "\n생년월일" + birthday + "\n포인트" + point;
 		}
 
 		public String getEmail() {
@@ -41,6 +39,7 @@ public class A_Join {
 		public String getBirthday() {
 			return birthday;
 		}
+
 		public Object getPoint() {
 			return point;
 		}
@@ -52,7 +51,7 @@ public class A_Join {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("회원 가입을 시작합니다.");
-		
+
 		while (true) {
 			System.out.print("아이디 입력: ");
 			String id = sc.nextLine();
