@@ -141,7 +141,7 @@ public class Game extends JFrame {
 		scoreLabel.setText(String.format("시도: %d, 골: %d", attempts, goals));
 
 		if (attempts == 5) {
-			MyInformationPanel.money += points;
+			MyInformationPanel.money += (points * 2);
 			Penalty24MaxScore = Penalty24MaxScore < goals ? goals : Penalty24MaxScore;
 			JOptionPane.showMessageDialog(this, goals >= 3 ? "승리했습니다! 포인트10점 획득" : "패배했습니다.");
 		}

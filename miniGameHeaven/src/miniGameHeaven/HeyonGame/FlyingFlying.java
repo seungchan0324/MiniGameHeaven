@@ -317,7 +317,7 @@ public class FlyingFlying extends JFrame {
 		int choice = JOptionPane.showOptionDialog(null, "게임 오버! 다시 하시겠습니까?", "게임 오버", JOptionPane.YES_NO_OPTION,
 				JOptionPane.QUESTION_MESSAGE, null, options, options[0]); // 초기 선택값
 
-		score = +(cnt / 100) * 30;
+		score = +cnt / 10;
 		System.out.println("포인트 : " + score);
 		FlyingFlyingMaxScore = FlyingFlyingMaxScore < cnt ? cnt : FlyingFlyingMaxScore;
 		MyInformationPanel.money += score;

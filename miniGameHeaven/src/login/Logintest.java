@@ -22,10 +22,10 @@ import javax.swing.event.DocumentListener;
 
 import Main_Interface.Main_Interface;
 import defaultFrame.DefaultFrame;
-import join.FindingID;
-import join.FindingPASS;
-import join.Register;
-import join.RegisterView;
+import register.FindingID;
+import register.FindingPASS;
+import register.Register;
+import register.RegisterView;
 
 public class Logintest extends JPanel {
 	Font font = new Font("¸¼Àº °íµñ", Font.BOLD, 16);
@@ -168,7 +168,7 @@ public class Logintest extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.getWindowAncestor(register).setVisible(false);
-				new RegisterView();
+				DefaultFrame.getInstance(new RegisterView(), "È¸¿ø°¡ÀÔ");
 			}
 		});
 

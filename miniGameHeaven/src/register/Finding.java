@@ -1,9 +1,9 @@
-package join;
+package register;
 
 import java.util.HashMap;
 import java.util.Scanner;
 
-import join.Register.Join;
+import register.Register.Join;
 
 public class Finding {
 

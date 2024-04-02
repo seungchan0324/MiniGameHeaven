@@ -1,4 +1,4 @@
-package join;
+package register;
 
 import java.awt.Graphics;
 import java.awt.Shape;

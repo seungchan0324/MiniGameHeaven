@@ -1,4 +1,4 @@
-package join;
+package register;
 
 import java.awt.Checkbox;
 import java.awt.Color;
