@@ -1,6 +1,6 @@
 package YeonGame;
 
-import java.awt.HeadlessException;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,8 +59,11 @@ public class Takaramono extends JFrame implements ActionListener {
 		l2 = new JLabel(image[1]);
 		l3 = new JLabel(image[2]);
 
+		Font font = new Font("맑은고딕", Font.PLAIN, 12);
+		
 		///// 로직 출력되는 곳
 		JTextArea textArea = new JTextArea(5, 20);
+		textArea.setFont(font);
 		textArea.setEditable(false);
 		textArea.append("총 " + takarabako + "개의 보물 상자를 열어 보겠습니다.\n");
 		textArea.append("슬롯의 그림 세 개가 전부 일치할 시 자물쇠가 풀리는 듯합니다.\n\n");
@@ -86,10 +89,12 @@ public class Takaramono extends JFrame implements ActionListener {
 
 		JButton startButton = new JButton("슬롯을 돌려 자물쇠 풀기!");
 		startButton.setBounds(300, 200, 200, 50); // 버튼 위치 및 사이즈 설정
+		startButton.setFont(font);
 		ura.add(startButton);
 
 		JButton restart = new JButton("다시 시작");
 		restart.setBounds(550, 510, 100, 30); // 버튼 위치 및 사이즈 설정
+		restart.setFont(font);
 		ura.add(restart);
 		restart.addActionListener(new ActionListener() {
 
@@ -102,6 +107,7 @@ public class Takaramono extends JFrame implements ActionListener {
 
 		JButton shimai = new JButton("게임 종료");
 		shimai.setBounds(665, 510, 100, 30);
+		shimai.setFont(font);
 		ura.add(shimai);
 		shimai.addActionListener(new ActionListener() {
 			@Override
