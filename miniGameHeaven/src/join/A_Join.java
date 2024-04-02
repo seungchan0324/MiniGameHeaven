@@ -3,10 +3,6 @@ package join;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import javax.swing.JFrame;
-
-import Main_Interface.Main_Interface;
-
 public class A_Join {
 
 	public static HashMap<String, Join> hm = new HashMap<>();
@@ -16,12 +12,14 @@ public class A_Join {
 		String email;
 		String pass;
 		String birthday;
+		int point;
 
-		public Join(String id, String email, String pass, String birthday) {
+		public Join(String id, String email, String pass, String birthday,int point) {
 			this.id = id;
 			this.email = email;
 			this.pass = pass;
 			this.birthday = birthday;
+			this.point=point;
 
 		}
 
