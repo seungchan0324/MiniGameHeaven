@@ -5,6 +5,10 @@ import defaultFrame.DefaultFrame;
 public class Login {
 	
 	public static void main(String[] args) {
-		DefaultFrame.getInstance(new Logintest(), "로그인");   
+		DefaultFrame.getInstance(new Logintest(), "로그인"); 
+	
 	}
+	
+	
 }
+
