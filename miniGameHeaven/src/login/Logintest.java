@@ -187,7 +187,27 @@ public class Logintest extends JPanel {
 		JLabel label = new JLabel(icon);
 		label.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
 		add(label);
-
+		
+		userIdField.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+			}
+		});
+		
 		register.addActionListener(new ActionListener() {
 
 			@Override
@@ -206,14 +226,14 @@ public class Logintest extends JPanel {
 					if (new String(passwordField.getPassword()).equals("1234")) {
 						name = "soldesk";
 						JOptionPane.showMessageDialog(null, "soldesk님 반갑습니다!");
-						SwingUtilities.getWindowAncestor(register).setVisible(false);
+						SwingUtilities.getWindowAncestor(loginButton).setVisible(false);
 						DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
 					} else if (A_Join.hm.get(userIdField.getText()).getPass()
 							.equals(new String(passwordField.getPassword()))) {
 						name = A_Join.hm.get(userIdField.getText()).getEmail();
 						JOptionPane.showMessageDialog(null,
 								A_Join.hm.get(userIdField.getText()).getEmail() + "님 반갑습니다!");
-						SwingUtilities.getWindowAncestor(register).setVisible(false);
+						SwingUtilities.getWindowAncestor(loginButton).setVisible(false);
 						DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
 					} else {
 						JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 틀리셨습니다.");
