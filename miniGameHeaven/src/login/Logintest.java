@@ -24,6 +24,7 @@ import javax.swing.event.DocumentListener;
 
 import Main_Interface.Main_Interface;
 import defaultFrame.DefaultFrame;
+import defaultFrame.RoundedButton;
 import register.FindingID;
 import register.FindingPASS;
 import register.Register;
@@ -33,9 +34,7 @@ public class Logintest extends JPanel {
 	Font font = new Font("맑은 고딕", Font.BOLD, 16);
 	private JTextField userIdField;
 	private JPasswordField passwordField;
-	private JButton loginButton;
-	private JButton register;
-	private JButton fi, fp;
+	private RoundedButton loginButton, registerbutton, findidbutton, findpasswordbutton;
 	public static String name;
 
 	public Logintest() {
@@ -153,44 +152,49 @@ public class Logintest extends JPanel {
 			}
 		});
 
-		loginButton = new JButton("로그인");
+		loginButton = new RoundedButton(10);
+		loginButton.setText("로그인");
 		loginButton.setFont(font);
 		loginButton.setBounds(240, 360, 240, 35);
 		loginButton.setBackground(new Color(39, 174, 96));
 		loginButton.setForeground(Color.white);
 		add(loginButton);
 
-		register = new JButton("회원가입");
-		register.setFont(font);
-		register.setBounds(240, 410, 240, 35);
-		register.setBackground(new Color(94, 94, 94));
-		register.setForeground(Color.white);
-		add(register);
+		registerbutton = new RoundedButton(10);
+		registerbutton.setText("회원가입");
+		registerbutton.setFont(font);
+		registerbutton.setBounds(240, 410, 240, 35);
+		registerbutton.setBackground(new Color(94, 94, 94));
+		registerbutton.setForeground(Color.white);
+		add(registerbutton);
 
-		fi = new JButton("ID 찾기");
-		fi.setBounds(240, 460, 115, 35);
-		fi.setBackground(new Color(94, 94, 94));
-		fi.setForeground(Color.white);
-		fi.setFont(font);
-		add(fi);
+		findidbutton = new RoundedButton(10);
+		findidbutton.setText("ID 찾기");
+		findidbutton.setText("ID 찾기");
+		findidbutton.setBounds(240, 460, 115, 35);
+		findidbutton.setBackground(new Color(94, 94, 94));
+		findidbutton.setForeground(Color.white);
+		findidbutton.setFont(font);
+		add(findidbutton);
 
-		fp = new JButton("PW 찾기");
-		fp.setFont(font);
-		fp.setBounds(365, 460, 115, 35);
-		fp.setBackground(new Color(94, 94, 94));
-		fp.setForeground(Color.white);
-		add(fp);
+		findpasswordbutton = new RoundedButton(10);
+		findpasswordbutton.setText("PW 찾기");
+		findpasswordbutton.setFont(font);
+		findpasswordbutton.setBounds(365, 460, 115, 35);
+		findpasswordbutton.setBackground(new Color(94, 94, 94));
+		findpasswordbutton.setForeground(Color.white);
+		add(findpasswordbutton);
 
 		ImageIcon icon = new ImageIcon("lo.png");
 		JLabel label = new JLabel(icon);
 		label.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
 		add(label);
 
-		register.addActionListener(new ActionListener() {
+		registerbutton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.getWindowAncestor(register).setVisible(false);
+				SwingUtilities.getWindowAncestor(registerbutton).setVisible(false);
 				DefaultFrame.getInstance(new RegisterView(), "회원가입");
 			}
 		});
@@ -203,14 +207,14 @@ public class Logintest extends JPanel {
 					if (new String(passwordField.getPassword()).equals("1234")) {
 						name = "soldesk";
 						JOptionPane.showMessageDialog(null, "soldesk님 반갑습니다!");
-						SwingUtilities.getWindowAncestor(register).setVisible(false);
+						SwingUtilities.getWindowAncestor(loginButton).setVisible(false);
 						DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
 					} else if (Register.hm.get(userIdField.getText()).getPass()
 							.equals(new String(passwordField.getPassword()))) {
 						name = Register.hm.get(userIdField.getText()).getEmail();
 						JOptionPane.showMessageDialog(null,
 								Register.hm.get(userIdField.getText()).getEmail() + "님 반갑습니다!");
-						SwingUtilities.getWindowAncestor(register).setVisible(false);
+						SwingUtilities.getWindowAncestor(loginButton).setVisible(false);
 						DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
 					} else {
 						JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 틀리셨습니다.");
@@ -221,7 +225,7 @@ public class Logintest extends JPanel {
 			}
 		});
 
-		fi.addActionListener(new ActionListener() {
+		findidbutton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -230,7 +234,7 @@ public class Logintest extends JPanel {
 			}
 		});
 
-		fp.addActionListener(new ActionListener() {
+		findpasswordbutton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {

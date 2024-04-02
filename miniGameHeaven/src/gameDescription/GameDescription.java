@@ -21,6 +21,8 @@ import SongGame.Keyword;
 import SunGame.penalty24;
 import YeonGame.Umi;
 import defaultFrame.DefaultFrame;
+import defaultFrame.RoundedButton;
+import defaultFrame.RoundedPanel;
 import infinityStair.StartFrame;
 import infinityStair.StartPanel;
 import my_Information.MyInformationPanel;

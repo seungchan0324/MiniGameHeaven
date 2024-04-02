@@ -207,10 +207,4 @@ public class Main_Interface extends JPanel {
 		});
 	}
 
-	public static void main(String[] args) {
-
-		new Main_Interface();
-
-	}
-
 }

@@ -1,9 +1,14 @@
-package my_Information;
+package defaultFrame;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class RoundedButton extends JButton {
 	private int radius;
@@ -22,10 +27,19 @@ public class RoundedButton extends JButton {
 			g.setColor(getBackground());
 		}
 		g.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, radius, radius);
+
+		// 텍스트를 그리기 위해 글꼴 색상 설정
+		g.setColor(getForeground());
+		// 텍스트의 폰트와 스타일 설정
+		g.setFont(getFont());
+
 		super.paintComponent(g);
 	}
 
 	@Override
 	protected void paintBorder(Graphics g) {
+		g.setColor(getForeground());
+		g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, radius, radius);
 	}
+
 }

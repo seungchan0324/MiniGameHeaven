@@ -37,7 +37,7 @@ public class ClickClickGame extends JFrame {
 		setTitle("ClickClick");
 		setSize(500, 500);
 		setLocationRelativeTo(null);
-		
+
 		// Creating main panel with pink background
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(null);
@@ -82,12 +82,12 @@ public class ClickClickGame extends JFrame {
 		mainPanel.add(levelLabel, BorderLayout.NORTH);
 		// Adding main panel to frame
 		add(mainPanel);
-		
+
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				MyInformationPanel.money += score;
-				ClickClickMaxScore = ClickClickMaxScore < score ? score : ClickClickMaxScore ;
+				ClickClickMaxScore = ClickClickMaxScore < score ? score : ClickClickMaxScore;
 				dispose();
 				DefaultFrame.getInstance(new GameDescription(5), "게임 설명 화면");
 			}
