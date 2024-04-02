@@ -1,4 +1,4 @@
-package join;
+package register;
 
 import java.awt.Checkbox;
 import java.awt.Color;
@@ -16,6 +16,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,6 +25,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -45,8 +47,9 @@ public class RegisterView extends JPanel {
 		gbc.gridy = 0;
 		gbc.gridwidth = 2;
 		gbc.anchor = GridBagConstraints.WEST;
-		gbc.insets = new Insets(8, 10, 8, 10);
+		gbc.insets = new Insets(5, 10, 5, 10);
 		Font font = new Font("맑은고딕", Font.PLAIN, 14);
+		Font agreefont = new Font("맑은고딕", Font.PLAIN, 13);
 		Font font2 = new Font("맑은고딕", Font.BOLD, 42);
 		setBackground(new Color(255, 255, 244));
 
@@ -251,18 +254,19 @@ public class RegisterView extends JPanel {
 		add(yes, gbc);
 
 		agree = new JTextArea();
-		agree.setFont(font);
+		agree.setFont(agreefont);
 		agree.setPreferredSize(new Dimension(300, 155));
-
+		Border border = BorderFactory.createLineBorder(new Color(150, 150, 150));
+		agree.setBorder(border);
+		
 		agree.append(
-				"귀하께서 회원 가입 시 입력하신 개인 정보를 '미니게임천국' 서비스 종료 시점까지 당사에서 보관하는 것에 동의합니다. 보관 중인 개인 정보는 기본 회원 식별 절차 및 '미니게임천국' 서비스 제공 외 당사와 제휴된 소셜커머스 마케팅 업체에 제공될 수 있으며 각종 빅데이터 기반 서비스 개발에 활용될 수 있습니다. 귀하께서는 개인 정보 제공에 미동의하실 수 있으나 그 경우 당사가 제공하는 일체의 서비스 이용이 불가능합니다.");
+				"귀하께서 회원 가입 시 입력하신 개인 정보를 '미니게임천국' 서비스 종료 시점까지 당사에서 보관하는 것에 동의합니다. 보관 중인 개인 정보는 기본 회원 식별 절차 및 '미니게임천국' 서비스 제공 외 당사와 제휴된 소셜커머스 마케팅 업체에 제공될 수 있으며 각종 빅데이터 기반 서비스 개발에 활용될 수 있습니다. 개인 정보 제공에 미동의할 경우 당사가 제공하는 일체의 서비스 이용이 불가능합니다.");
 		agree.setEditable(false);
 		agree.setLineWrap(true);
 		agree.setVisible(false);
 		gbc.gridx = 0;
 		gbc.gridwidth = 2;
 		gbc.anchor = GridBagConstraints.WEST;
-		gbc.insets = new Insets(8, 10, 8, 10);
 		gbc.gridy++;
 		add(agree, gbc);
 

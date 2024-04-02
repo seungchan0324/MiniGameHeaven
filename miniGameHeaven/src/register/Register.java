@@ -1,4 +1,4 @@
-package join;
+package register;
 
 import java.util.HashMap;
 import java.util.Scanner;

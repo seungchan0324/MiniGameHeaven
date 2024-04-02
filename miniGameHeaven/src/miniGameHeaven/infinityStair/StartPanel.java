@@ -195,7 +195,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 
 	public void GameOver() {
 		statement = 0;
-		MyInformationPanel.money += Brick.brickcnt;
+		MyInformationPanel.money += (Brick.brickcnt * 3);
 		ToTheSpaceMaxScore = ToTheSpaceMaxScore < Brick.brickcnt ? Brick.brickcnt : ToTheSpaceMaxScore;
 		GameOver gameover = new GameOver();
 		this.add(gameover);

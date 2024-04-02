@@ -9,8 +9,7 @@ public class BaboMain {
 		Babo b = new Babo();
 		b.getContentPane().setBackground(new Color(255, 255, 244));
 		b.setVisible(true);
-		
-		
+
 	}
 
 }
