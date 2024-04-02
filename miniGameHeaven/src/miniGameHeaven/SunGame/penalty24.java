@@ -22,7 +22,7 @@ public class penalty24 extends JFrame {
 		frame.setLayout(null);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
-		
+
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {

@@ -1,7 +1,6 @@
 package YeonGame;
 
-import java.awt.HeadlessException;
-import java.awt.Image;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -39,15 +38,18 @@ public class Umi extends JFrame {
 		ImageIcon img = new ImageIcon("main_tobira.jpg");
 		JLabel jl = new JLabel(img);
 		jl.setBounds(0, 0, 800, 600); // 원본사이즈에 맞춰야 함
+		Font font = new Font("맑은고딕", Font.PLAIN, 12);
 
 		// 게임 시작
 		JButton startButton = new JButton("잠수 시작");
 		startButton.setBounds(170, 450, 150, 50); // 버튼 위치 및 사이즈 설정
+		startButton.setFont(font);
 		f.add(startButton);
 
 		// 얻은 보물상자로 슬롯 돌리는 버튼
 		JButton endButton = new JButton("보물 상자 열기");
 		endButton.setBounds(420, 450, 150, 50);
+		endButton.setFont(font);
 		f.add(endButton);
 		endButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -60,6 +62,7 @@ public class Umi extends JFrame {
 
 		///// 로직 출력되는 곳
 		JTextArea textArea = new JTextArea(5, 20);
+		textArea.setFont(font);
 		textArea.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		scrollPane.setBounds(130, 200, 500, 230);

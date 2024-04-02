@@ -15,9 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class B_FindingPASS extends JFrame {
+public class FindingPASS extends JFrame {
 
-	public B_FindingPASS() {
+	public FindingPASS() {
 
 		setTitle("ºñ¹Ð¹øÈ£ Ã£±â");
 		setSize(350, 400);
@@ -32,7 +32,7 @@ public class B_FindingPASS extends JFrame {
 		gbc.gridy = 0;
 		gbc.anchor = GridBagConstraints.WEST;
 		gbc.insets = new Insets(5, 5, 5, 5);
-		Font font = new Font("Dotum", Font.PLAIN, 14);
+		Font font = new Font("¸¼Àº°íµñ", Font.PLAIN, 14);
 		panel.setBackground(new Color(255, 255, 244));
 		panel.setFont(font);
 
@@ -92,7 +92,7 @@ public class B_FindingPASS extends JFrame {
 				String birthday = birthdayfind.getText();
 				boolean found = false;
 
-				for (A_Join.Join join : A_Join.hm.values()) {
+				for (Register.Join join : Register.hm.values()) {
 					if (join != null && join.id.equals(id) && join.email.equals(email)
 							&& join.birthday.equals(birthday)) {
 
@@ -126,7 +126,7 @@ public class B_FindingPASS extends JFrame {
 
 	public static void main(String[] args) {
 
-		new B_FindingPASS();
+		new FindingPASS();
 	}
 
 }

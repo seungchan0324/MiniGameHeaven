@@ -30,15 +30,15 @@ import javax.swing.event.DocumentListener;
 import defaultFrame.DefaultFrame;
 import login.Logintest;
 
-public class A_JoinView extends JPanel {
+public class RegisterView extends JPanel {
 
 	private JTextArea agree;
 	private Checkbox yes;
 
-	public A_JoinView() {
+	public RegisterView() {
 
 		// =========================기본 프레임 설정=================================
-		setBounds(0,  0,  768,  600);
+		setBounds(0, 0, 768, 600);
 		setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
@@ -46,8 +46,8 @@ public class A_JoinView extends JPanel {
 		gbc.gridwidth = 2;
 		gbc.anchor = GridBagConstraints.WEST;
 		gbc.insets = new Insets(8, 10, 8, 10);
-		Font font = new Font("나눔고딕", Font.PLAIN, 14);
-		Font font2 = new Font("나눔고딕", Font.BOLD, 42);
+		Font font = new Font("맑은고딕", Font.PLAIN, 14);
+		Font font2 = new Font("맑은고딕", Font.BOLD, 42);
 		setBackground(new Color(255, 255, 244));
 
 		//////////////////////////////////////////////
@@ -292,18 +292,37 @@ public class A_JoinView extends JPanel {
 				String email = emailField.getText();
 				String birthday = birthdayField.getText();
 
-				if (A_Join.hm.containsKey(id)) {
+				if (Register.hm.containsKey(id)) {
 					JOptionPane.showMessageDialog(null, "중복된 아이디입니다.");
 					return;
 				}
 
-				if (A_Join.emailcheck(email)) {
+				if (Register.emailcheck(email)) {
 					JOptionPane.showMessageDialog(null, "중복된 이메일입니다.");
 					return;
 				}
+				/////////////////////////////////////////////////////
+				if (idField.getText().equals("아이디")) {
+					JOptionPane.showMessageDialog(null, "아이디를 입력하세요.");
+					return;
+				}
+				if (passField.getText().equals("비밀번호")) {
+					JOptionPane.showMessageDialog(null, "비밀번호를 입력하세요.");
+					return;
+				}
+				if (emailField.getText().equals("이메일")) {
+					JOptionPane.showMessageDialog(null, "이메일을 입력하세요.");
+					return;
+				}
+				if (birthdayField.getText().equals("생년월일(YYMMDD 모양의 여섯 자리 숫자)")) {
+					JOptionPane.showMessageDialog(null, "생년월일을 입력하세요.");
+					return;
+				}
 
-				A_Join.Join join = new A_Join.Join(id, email, pass, birthday);
-				A_Join.hm.put(id, join);
+				////////////////////////////////////////////////////
+				int point = 0;
+				Register.Join join = new Register.Join(id, email, pass, birthday, point);
+				Register.hm.put(id, join);
 
 				JOptionPane.showMessageDialog(null, id + "님의 회원 가입이 완료되었습니다.\n로그인 페이지에서 로그인해 주세요.");
 				SwingUtilities.getWindowAncestor(bt).setVisible(false);

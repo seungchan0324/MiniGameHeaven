@@ -10,6 +10,7 @@ import java.text.DecimalFormat;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import DongGame.ClickClickGame;
@@ -32,7 +33,8 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 	private JLabel gamename[];
 	private JLabel gamescore[];
 	private String gamenames[] = { "날아! 날아!", "우주로", "바다스토리", "이슬비", "패널티 24", "클릭! 클릭!", };
-	private Color bannercolor[] = {new Color(211, 84, 0), new Color(39, 174, 96), new Color(52, 152, 219), new Color(241, 196, 15), new Color(155, 89, 182), new Color(64, 64, 64)};
+	private Color bannercolor[] = { new Color(211, 84, 0), new Color(39, 174, 96), new Color(52, 152, 219),
+			new Color(241, 196, 15), new Color(155, 89, 182), new Color(64, 64, 64) };
 	private Font characteruptextfont = new Font(Font.SANS_SERIF, Font.BOLD, 16);
 	private Font moneyfont = new Font(Font.SANS_SERIF, Font.BOLD, 30);
 	private Font gamenamefont = new Font("맑은 고딕", Font.BOLD, 20);
@@ -43,7 +45,7 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 	private String moneycomma;
 	private MyInformationCharacter character;
 	private Timer timer = new Timer(2, this);
-	public static long money = 0;
+	public static long money = 10000;
 
 	public MyInformationPanel() {
 
@@ -108,33 +110,35 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		}
 
 		// db반영전 테스트 점수
-		String scores[] = { FlyingFlying.FlyingFlyingMaxScore + "점", StartPanel.ToTheSpaceMaxScore + "층", "총" + Takaramono.TakaramonoMaxScore + "개", Keyword.DrizzlingMaxScore + "개", Game.Penalty24MaxScore + "골", ClickClickGame.ClickClickMaxScore + "점" };
+		String scores[] = { FlyingFlying.FlyingFlyingMaxScore + "점", StartPanel.ToTheSpaceMaxScore + "층",
+				"총" + Takaramono.TakaramonoMaxScore + "개", Keyword.DrizzlingMaxScore + "개",
+				Game.Penalty24MaxScore + "골", ClickClickGame.ClickClickMaxScore + "점" };
 
 		// gamescores는 판넬, gamename은 이름 담는 라벨, gamescore은 점수담는 라벨
 		// gamesnames는 게임 이름 스트링값, scores는 게임점수 스트링값, 그리고 그 뒤 색은 판넬 배경색
-		for(int i = 0; i < gamescores.length; i++) {
+		for (int i = 0; i < gamescores.length; i++) {
 			gamescoresgenerate(gamescores[i], gamename[i], gamescore[i], gamenames[i], scores[i], bannercolor[i]);
 		}
 
 		// 배경음(?)
 
 		setVisible(true);
-		
-		for(int i = 0; i < gamename.length; i++) {
+
+		for (int i = 0; i < gamename.length; i++) {
 			go_GameDescription(i);
 		}
-		
+
 		character.characterpurchase.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				timer.start();
 			}
 		});
-		
+
 		characterupbutton[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DefaultFrame.instance.getContentPane().removeAll();
+				SwingUtilities.windowForComponent(characterupbutton[0]).setVisible(false);
 				DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
 			}
 		});
@@ -142,15 +146,15 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 	}
 
 	public void go_GameDescription(int x) {
-		
+
 		gamescores[x].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DefaultFrame.instance.getContentPane().removeAll();
+				SwingUtilities.windowForComponent(gamescores[x]).setVisible(false);
 				DefaultFrame.getInstance(new GameDescription(x), "게임 설명 화면");
 			}
 		});
-		
+
 	}
 
 	public void actionPerformed(ActionEvent e) {

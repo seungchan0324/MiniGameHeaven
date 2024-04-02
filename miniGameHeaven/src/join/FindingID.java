@@ -12,14 +12,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class B_FindingID extends JFrame {
+public class FindingID extends JFrame {
 
-	public B_FindingID() {
+	public FindingID() {
 
 		setTitle("아이디 찾기");
 		setSize(350, 350);
@@ -34,7 +32,7 @@ public class B_FindingID extends JFrame {
 		gbc.gridy = 0;
 		gbc.anchor = GridBagConstraints.WEST;
 		gbc.insets = new Insets(5, 5, 5, 5);
-		Font font = new Font("Dotum", Font.PLAIN, 14);
+		Font font = new Font("맑은고딕", Font.PLAIN, 14);
 		panel.setBackground(new Color(255, 255, 244));
 		panel.setFont(font);
 
@@ -59,7 +57,7 @@ public class B_FindingID extends JFrame {
 		gbc.gridy++;
 		panel.add(birthdayfind, gbc);
 
-		//버튼 누르면 결과 출력되는 텍스트라벨
+		// 버튼 누르면 결과 출력되는 텍스트라벨
 		JLabel result = new JLabel();
 		result.setFont(font);
 		gbc.gridy++;
@@ -82,7 +80,7 @@ public class B_FindingID extends JFrame {
 				String birthday = birthdayfind.getText();
 				boolean found = false;
 
-				for (A_Join.Join join : A_Join.hm.values()) {
+				for (Register.Join join : Register.hm.values()) {
 					if (join.email.equals(email) && join.birthday.equals(birthday)) {
 
 						result.setText("회원님의 아이디는 " + join.id + "입니다.");
@@ -115,7 +113,7 @@ public class B_FindingID extends JFrame {
 
 	public static void main(String[] args) {
 
-		new B_FindingID();
+		new FindingID();
 
 	}
 

@@ -22,10 +22,10 @@ import javax.swing.event.DocumentListener;
 
 import Main_Interface.Main_Interface;
 import defaultFrame.DefaultFrame;
-import join.A_Join;
-import join.A_JoinView;
-import join.B_FindingID;
-import join.B_FindingPASS;
+import join.FindingID;
+import join.FindingPASS;
+import join.Register;
+import join.RegisterView;
 
 public class Logintest extends JPanel {
 	Font font = new Font("맑은 고딕", Font.BOLD, 16);
@@ -168,7 +168,7 @@ public class Logintest extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.getWindowAncestor(register).setVisible(false);
-				new A_JoinView();
+				new RegisterView();
 			}
 		});
 
@@ -176,24 +176,24 @@ public class Logintest extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (userIdField.getText().equals("soldesk") || A_Join.hm.containsKey(userIdField.getText())) {
+				if (userIdField.getText().equals("soldesk") || Register.hm.containsKey(userIdField.getText())) {
 					if (new String(passwordField.getPassword()).equals("1234")) {
 						name = "soldesk";
 						JOptionPane.showMessageDialog(null, "soldesk님 반갑습니다!");
 						SwingUtilities.getWindowAncestor(register).setVisible(false);
 						DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
-					} else if (A_Join.hm.get(userIdField.getText()).getPass()
+					} else if (Register.hm.get(userIdField.getText()).getPass()
 							.equals(new String(passwordField.getPassword()))) {
-						name = A_Join.hm.get(userIdField.getText()).getEmail();
+						name = Register.hm.get(userIdField.getText()).getEmail();
 						JOptionPane.showMessageDialog(null,
-								A_Join.hm.get(userIdField.getText()).getEmail() + "님 반갑습니다!");
+								Register.hm.get(userIdField.getText()).getEmail() + "님 반갑습니다!");
 						SwingUtilities.getWindowAncestor(register).setVisible(false);
 						DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
 					} else {
 						JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 틀리셨습니다.");
 					}
 				} else {
-					JOptionPane.showMessageDialog(null, "존재하지않는 아이디 입니다.");
+					JOptionPane.showMessageDialog(null, "존재하지 않는 아이디입니다.");
 				}
 			}
 		});
@@ -202,7 +202,7 @@ public class Logintest extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new B_FindingID();
+				new FindingID();
 
 			}
 		});
@@ -211,7 +211,7 @@ public class Logintest extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new B_FindingPASS();
+				new FindingPASS();
 
 			}
 		});
