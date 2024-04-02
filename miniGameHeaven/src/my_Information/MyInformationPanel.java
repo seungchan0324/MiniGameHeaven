@@ -10,6 +10,7 @@ import java.text.DecimalFormat;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import DongGame.ClickClickGame;
@@ -134,7 +135,7 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		characterupbutton[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DefaultFrame.instance.getContentPane().removeAll();
+				SwingUtilities.windowForComponent(characterupbutton[0]).setVisible(false);
 				DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
 			}
 		});
@@ -146,7 +147,7 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		gamescores[x].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DefaultFrame.instance.getContentPane().removeAll();
+				SwingUtilities.windowForComponent(gamescores[x]).setVisible(false);
 				DefaultFrame.getInstance(new GameDescription(x), "게임 설명 화면");
 			}
 		});
