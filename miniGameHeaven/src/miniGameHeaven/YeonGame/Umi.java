@@ -77,7 +77,7 @@ public class Umi extends JFrame {
 				DefaultFrame.getInstance(new GameDescription(2), "게임 설명 화면");
 			}
 		});
-		
+
 		// 버튼액션
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
