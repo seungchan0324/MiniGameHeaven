@@ -188,26 +188,6 @@ public class Logintest extends JPanel {
 		label.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
 		add(label);
 
-		userIdField.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-
-			}
-		});
-
 		register.addActionListener(new ActionListener() {
 
 			@Override
