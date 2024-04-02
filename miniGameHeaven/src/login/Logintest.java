@@ -134,22 +134,22 @@ public class Logintest extends JPanel {
 				passwordField.setForeground(Color.BLACK);
 			}
 		});
-		
+
 		passwordField.addKeyListener(new KeyListener() {
-			
+
 			@Override
 			public void keyTyped(KeyEvent e) {
-				
+
 			}
-			
+
 			@Override
 			public void keyReleased(KeyEvent e) {
-				
+
 			}
-			
+
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					loginButton.doClick();
 				}
 			}
@@ -175,7 +175,7 @@ public class Logintest extends JPanel {
 		fi.setForeground(Color.white);
 		fi.setFont(font);
 		add(fi);
-		
+
 		fp = new JButton("PW Ã£±â");
 		fp.setFont(font);
 		fp.setBounds(365, 460, 115, 35);
@@ -187,27 +187,27 @@ public class Logintest extends JPanel {
 		JLabel label = new JLabel(icon);
 		label.setBounds(0, 0, icon.getIconWidth(), icon.getIconHeight());
 		add(label);
-		
+
 		userIdField.addKeyListener(new KeyListener() {
-			
+
 			@Override
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+
 			}
 		});
-		
+
 		register.addActionListener(new ActionListener() {
 
 			@Override
@@ -216,13 +216,14 @@ public class Logintest extends JPanel {
 				new A_JoinView();
 			}
 		});
-		
+
 		loginButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()== loginButton) {
-				}if (userIdField.getText().equals("soldesk") || A_Join.hm.containsKey(userIdField.getText())) {
+				if (e.getSource() == loginButton) {
+				}
+				if (userIdField.getText().equals("soldesk") || A_Join.hm.containsKey(userIdField.getText())) {
 					if (new String(passwordField.getPassword()).equals("1234")) {
 						name = "soldesk";
 						JOptionPane.showMessageDialog(null, "soldesk´Ô ¹Ý°©½À´Ï´Ù!");
@@ -252,7 +253,7 @@ public class Logintest extends JPanel {
 
 			}
 		});
-		
+
 		fp.addActionListener(new ActionListener() {
 
 			@Override
