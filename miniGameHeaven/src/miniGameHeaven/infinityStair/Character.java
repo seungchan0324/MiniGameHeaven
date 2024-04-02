@@ -11,9 +11,9 @@ import my_Information.MyInformationCharacter;
 public class Character {
 	private int charX;
 	private int charY;
-	public static int middlepointcharacter;
-	ImageIcon img;
-	Image image;
+	public int middlepointX, rightmiddlepointX, leftmiddlepointX;
+	public ImageIcon frontimg, rightimg, leftimg;
+	public Image image;
 
 	public Character() {
 		characterSelect();
@@ -21,17 +21,28 @@ public class Character {
 
 	public void characterSelect() {
 		if (MyInformationCharacter.characterselect.equals("Gumi")) {
-			img = new ImageIcon("구미_고구마비행.png");
-			charY = (StartPanel.screenHeight - img.getIconHeight()) / 2 - 25;
+			frontimg = new ImageIcon("구미_고구마비행.png");
+			charY = (StartPanel.screenHeight - frontimg.getIconHeight()) / 2 - 25;
+			middlepointX = (StartPanel.screenWidth - frontimg.getIconWidth()) / 2;
+			rightmiddlepointX = middlepointX;
+			leftmiddlepointX = middlepointX;
 		} else if (MyInformationCharacter.characterselect.equals("Dalri")) {
-			img = new ImageIcon("달리_슈퍼맨.png");
-			charY = (StartPanel.screenHeight - img.getIconHeight()) / 2 - 20;
+			frontimg = new ImageIcon("달리_슈퍼맨.png");
+			charY = (StartPanel.screenHeight - frontimg.getIconHeight()) / 2 - 20;
+			middlepointX = (StartPanel.screenWidth - frontimg.getIconWidth()) / 2;
+			rightmiddlepointX = middlepointX;
+			leftmiddlepointX = middlepointX;
 		} else {
-			img = new ImageIcon("토양이.png");
-			charY = (StartPanel.screenHeight - img.getIconHeight()) / 2 - 30;
+			frontimg = new ImageIcon("토양이.png");
+			rightimg = new ImageIcon("토양이오른쪽.png");
+			leftimg = new ImageIcon("토양이왼쪽.png");
+			charY = (StartPanel.screenHeight - frontimg.getIconHeight()) / 2 - 30;
+			middlepointX = (StartPanel.screenWidth - frontimg.getIconWidth()) / 2 + 2;
+			rightmiddlepointX = middlepointX - 40;
+			leftmiddlepointX = middlepointX - 5;
 		}
-		image = img.getImage();
-		charX = (StartPanel.screenWidth - img.getIconWidth()) / 2;
+		charX = middlepointX;
+		image = frontimg.getImage();
 	}
 
 	// x, y는 좌표
@@ -48,6 +59,10 @@ public class Character {
 
 	public void draw(Graphics g, JPanel panel) {
 		g.drawImage(image, charX, charY, panel);
+	}
+
+	public int getCharX() {
+		return charX;
 	}
 
 	public void setX(int charX) {

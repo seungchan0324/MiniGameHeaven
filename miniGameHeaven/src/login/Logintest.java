@@ -22,10 +22,10 @@ import javax.swing.event.DocumentListener;
 
 import Main_Interface.Main_Interface;
 import defaultFrame.DefaultFrame;
-import join.Register;
-import join.RegisterView;
 import join.FindingID;
 import join.FindingPASS;
+import join.Register;
+import join.RegisterView;
 
 public class Logintest extends JPanel {
 	Font font = new Font("¸¼Àº °íµñ", Font.BOLD, 16);
