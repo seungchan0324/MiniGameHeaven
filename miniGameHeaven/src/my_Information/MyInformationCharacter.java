@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import defaultFrame.RoundedButton;
+
 public class MyInformationCharacter extends JPanel implements ActionListener {
 	private Timer timer = new Timer(5, this); // 토양이 79 * 131, 달리 284 * 284, 구미 285 * 284
 	private ImageIcon characterimg[] = { new ImageIcon("토양이.png"), new ImageIcon("내정보달리흑백.png"),
@@ -42,20 +44,20 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 	public static String characterselect = "Toyangi";
 
 	public MyInformationCharacter() {
-		if(characterselect.equals("Dalri")) {
+		if (characterselect.equals("Dalri")) {
 			characterhorizontal = -290;
-		}else if(characterselect.equals("Gumi")) {
+		} else if (characterselect.equals("Gumi")) {
 			characterhorizontal = -580;
-		}else {
+		} else {
 			characterhorizontal = 0;
 		}
-		
-		if(dalripurchase == 1) {
+
+		if (dalripurchase == 1) {
 			characterimage[1] = new ImageIcon("내정보달리.png").getImage();
-		}else if(gumipurchase == 1) {
+		} else if (gumipurchase == 1) {
 			characterimage[2] = new ImageIcon("내정보구미.png").getImage();
 		}
-		
+
 		setBounds(47, 175, 290, 329);
 		setBackground(new Color(255, 255, 244));
 		setLayout(null);
@@ -168,7 +170,7 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 				}
 			}
 		});
-		
+
 		selectbutton[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

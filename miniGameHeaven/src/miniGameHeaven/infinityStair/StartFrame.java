@@ -30,7 +30,7 @@ public class StartFrame extends JFrame {
 				DefaultFrame.getInstance(new GameDescription(1), "게임 설명 화면");
 			}
 		});
-		
+
 	}
 
 	// 싱글톤 기법을 사용하려고 한다
