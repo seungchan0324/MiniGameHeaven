@@ -23,6 +23,7 @@ public class ClickClickGame extends JFrame {
 	private int clickNeeded = 30;
 	private int level = 1;
 	private int score = 0;
+	public static int ClickClickMaxScore;
 
 	private JLabel clickLabel;
 	private JLabel remainingClicksLabel;
@@ -86,6 +87,7 @@ public class ClickClickGame extends JFrame {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				MyInformationPanel.money += score;
+				ClickClickMaxScore = ClickClickMaxScore < score ? score : ClickClickMaxScore ;
 				dispose();
 				DefaultFrame.getInstance(new GameDescription(5), "게임 설명 화면");
 			}
