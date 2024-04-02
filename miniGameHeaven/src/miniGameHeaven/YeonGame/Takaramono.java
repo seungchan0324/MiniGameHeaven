@@ -26,6 +26,7 @@ public class Takaramono extends JFrame implements ActionListener {
 	private int saigo = 0;
 	private int point = 0;
 	private int takarabako;
+	public static int TakaramonoMaxScore;
 
 	private boolean spinning = false;
 
@@ -166,6 +167,7 @@ public class Takaramono extends JFrame implements ActionListener {
 									textArea.append("총 " + saigo + "개의 보물을 찾았습니다.\n\n");
 									point = saigo * 100;
 									textArea.append("\n" + point + "포인트 획득");
+									TakaramonoMaxScore += saigo;
 									MyInformationPanel.money += point;
 								}
 							}

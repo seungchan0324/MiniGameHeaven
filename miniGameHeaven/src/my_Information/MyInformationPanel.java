@@ -8,20 +8,18 @@ import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import DongGame.ClickClickGame;
+import HeyonGame.FlyingFlying;
 import Main_Interface.Main_Interface;
 import SongGame.Keyword;
-import SunGame.penalty24;
-import YeonGame.Umi;
+import SunGame.Game;
+import YeonGame.Takaramono;
 import defaultFrame.DefaultFrame;
-import HeyonGame.FlyingFlying;
-import infinityStair.StartFrame;
+import gameDescription.GameDescription;
 import infinityStair.StartPanel;
 
 public class MyInformationPanel extends JPanel implements ActionListener {
@@ -33,7 +31,7 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 	private RoundedButton gamescores[];
 	private JLabel gamename[];
 	private JLabel gamescore[];
-	private String gamenames[] = { "날아! 날아!", "우주로", "바다스토리", "이슬비", "패널티 24", "드래곤 알까기", };
+	private String gamenames[] = { "날아! 날아!", "우주로", "바다스토리", "이슬비", "패널티 24", "클릭! 클릭!", };
 	private Color bannercolor[] = {new Color(211, 84, 0), new Color(39, 174, 96), new Color(52, 152, 219), new Color(241, 196, 15), new Color(155, 89, 182), new Color(64, 64, 64)};
 	private Font characteruptextfont = new Font(Font.SANS_SERIF, Font.BOLD, 16);
 	private Font moneyfont = new Font(Font.SANS_SERIF, Font.BOLD, 30);
@@ -110,7 +108,7 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		}
 
 		// db반영전 테스트 점수
-		String scores[] = { "5000점", "10개", "5골", "6000점", "500점", "10000점" };
+		String scores[] = { FlyingFlying.FlyingFlyingMaxScore + "점", StartPanel.ToTheSpaceMaxScore + "층", "총" + Takaramono.TakaramonoMaxScore + "개", Keyword.DrizzlingMaxScore + "개", Game.Penalty24MaxScore + "골", ClickClickGame.ClickClickMaxScore + "점" };
 
 		// gamescores는 판넬, gamename은 이름 담는 라벨, gamescore은 점수담는 라벨
 		// gamesnames는 게임 이름 스트링값, scores는 게임점수 스트링값, 그리고 그 뒤 색은 판넬 배경색
@@ -121,56 +119,11 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		// 배경음(?)
 
 		setVisible(true);
-		gamescores[0].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.getWindowAncestor(gamescores[0]).setVisible(false);
-				new FlyingFlying();
-			}
-		});
 		
-		gamescores[1].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.getWindowAncestor(gamescores[1]).setVisible(false);
-				StartFrame.getInstance(new StartPanel());
-			}
-		});
+		for(int i = 0; i < gamename.length; i++) {
+			go_GameDescription(i);
+		}
 		
-		gamescores[2].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.getWindowAncestor(gamescores[2]).setVisible(false);
-				new Umi();
-			}
-		});
-		
-		gamescores[3].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.getWindowAncestor(gamescores[3]).setVisible(false);
-				new Keyword();
-			}
-		});
-		
-		gamescores[4].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.getWindowAncestor(gamescores[4]).setVisible(false);
-				new penalty24();
-			}
-		});
-
-		gamescores[5].addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.getWindowAncestor(gamescores[5]).setVisible(false);
-				new ClickClickGame();
-			}
-		});
-		
-
-
 		character.characterpurchase.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -181,15 +134,23 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		characterupbutton[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				SwingUtilities.getWindowAncestor(characterupbutton[0]).setVisible(false);
+				DefaultFrame.instance.getContentPane().removeAll();
 				DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
 			}
 		});
 
 	}
 
-	public void gameStart(RoundedButton[] button, JFrame frame, JPanel panel) {
-
+	public void go_GameDescription(int x) {
+		
+		gamescores[x].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				DefaultFrame.instance.getContentPane().removeAll();
+				DefaultFrame.getInstance(new GameDescription(x), "게임 설명 화면");
+			}
+		});
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {

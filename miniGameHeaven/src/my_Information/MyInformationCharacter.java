@@ -26,8 +26,8 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 	private JButton[] selectbutton;
 	private JLabel leftselecttext, rightselecttext;
 	private Font characternamefont = new Font("¸¼Àº °íµñ", Font.BOLD, 40);
-	private Font characterdescribefont = new Font(Font.SANS_SERIF, Font.BOLD, 18);
-	private Font selectfont = new Font(Font.SANS_SERIF, Font.PLAIN, 20);
+	private Font characterdescribefont = new Font("¸¼Àº °íµñ", Font.BOLD, 18);
+	private Font selectfont = new Font("¸¼Àº °íµñ", Font.PLAIN, 20);
 	private Font purchasefont = new Font("¸¼Àº °íµñ", Font.BOLD, 15);
 	private ImageIcon noneselect = new ImageIcon("noneselect.png");
 	private ImageIcon selected = new ImageIcon("selected.png");
@@ -154,7 +154,7 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 				}
 			}
 		});
-
+		
 		selectbutton[0].addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

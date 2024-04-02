@@ -46,6 +46,7 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
     private Timer timer;
     private int score;
     private int timeLeft;
+    public static int DrizzlingMaxScore;
     
      // time 0.1초마다 actionperformed실행
     Timer time = new Timer(100, this);
@@ -431,6 +432,7 @@ public class Keyword extends JPanel implements KeyListener, ActionListener{
         // 5개의 단어를 맞힌 횟수에 따라 총 포인트에 추가적립되어 endGame에 표시됨
         int totalScore = score + point;
         MyInformationPanel.money += point;
+        DrizzlingMaxScore = DrizzlingMaxScore < score ? score : DrizzlingMaxScore; 
         JOptionPane.showMessageDialog(this, "게임 종료!\n맞힌 개수 : " + score + "\n총 " + point + "포인트가 적립되었습니다.");
 
     }

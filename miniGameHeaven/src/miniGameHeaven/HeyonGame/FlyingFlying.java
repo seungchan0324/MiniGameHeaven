@@ -48,6 +48,7 @@ public class FlyingFlying extends JFrame {
 	private Timer timer;
 	private int cnt=0;
 	private int score=0;
+	public static int FlyingFlyingMaxScore;
 	// 키 리스너 객체를 변수에 할당
 	KeyListener myKeyListener = new KeyAdapter() {
 	    @Override
@@ -260,6 +261,7 @@ public class FlyingFlying extends JFrame {
 
 		score=+(cnt/100)*30;
 		System.out.println("포인트 : "+  score);
+		FlyingFlyingMaxScore = FlyingFlyingMaxScore < cnt ? cnt : FlyingFlyingMaxScore;
 		MyInformationPanel.money += score;
 		if (choice == JOptionPane.YES_OPTION) {
 			timer = null;

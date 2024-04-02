@@ -23,6 +23,7 @@ public class Game extends JFrame {
     private int goals = 0;
     private int points = 0;
     private JLabel messageLabel;
+    public static int Penalty24MaxScore;
 
     public Game() {
         initialIcon = new ImageIcon("golkeep.jpg");
@@ -144,6 +145,7 @@ public class Game extends JFrame {
 
         if (attempts == 5) {
         	MyInformationPanel.money += points;
+        	Penalty24MaxScore = Penalty24MaxScore < goals ? goals : Penalty24MaxScore;
             JOptionPane.showMessageDialog(this, goals >= 3 ? "승리했습니다! 포인트10점 획득" : "패배했습니다.");
         }
 
