@@ -301,8 +301,27 @@ public class A_JoinView extends JPanel {
 					JOptionPane.showMessageDialog(null, "중복된 이메일입니다.");
 					return;
 				}
+				/////////////////////////////////////////////////////
+				if (idField.getText().equals("아이디")) {
+					JOptionPane.showMessageDialog(null, "아이디를 입력하세요.");
+					return;
+				}
+				if (passField.getText().equals("비밀번호")) {
+					JOptionPane.showMessageDialog(null, "비밀번호를 입력하세요.");
+					return;
+				}
+				if (emailField.getText().equals("이메일")) {
+					JOptionPane.showMessageDialog(null, "이메일을 입력하세요.");
+					return;
+				}
+				if (birthdayField.getText().equals("생년월일(YYMMDD 모양의 여섯 자리 숫자)")) {
+					JOptionPane.showMessageDialog(null, "생년월일을 입력하세요.");
+					return;
+				}
 
-				A_Join.Join join = new A_Join.Join(id, email, pass, birthday);
+				////////////////////////////////////////////////////
+				int point=0;
+				A_Join.Join join = new A_Join.Join(id, email, pass, birthday, point);
 				A_Join.hm.put(id, join);
 
 				JOptionPane.showMessageDialog(null, id + "님의 회원 가입이 완료되었습니다.\n로그인 페이지에서 로그인해 주세요.");
