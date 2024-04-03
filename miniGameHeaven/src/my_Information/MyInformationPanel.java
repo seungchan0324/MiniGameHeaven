@@ -23,7 +23,7 @@ import defaultFrame.DefaultFrame;
 import defaultFrame.RoundedButton;
 import gameDescription.GameDescription;
 import infinityStair.StartPanel;
-import login.Babo;
+import playgraund.Babo;
 
 public class MyInformationPanel extends JPanel implements ActionListener {
 	private RoundedButton characterupbutton[];
