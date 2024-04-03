@@ -205,21 +205,25 @@ public class Logintest extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (userIdField.getText().equals("soldesk") || Register.hm.containsKey(userIdField.getText())) {
-					if (new String(passwordField.getPassword()).equals("1234")) {
-						name = "soldesk";
-						JOptionPane.showMessageDialog(null, "soldesk님 반갑습니다!");
-						SwingUtilities.getWindowAncestor(loginButton).setVisible(false);
-						DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
-						MyInformationPanel.money = 100000;
-					} else if (Register.hm.get(userIdField.getText()).getPass()
-							.equals(new String(passwordField.getPassword()))) {
-						name = Register.hm.get(userIdField.getText()).getID();
-						JOptionPane.showMessageDialog(null,
-								Register.hm.get(userIdField.getText()).getEmail() + "님 반갑습니다!");
-						SwingUtilities.getWindowAncestor(loginButton).setVisible(false);
-						DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
-						MyInformationPanel.money = Register.hm.get(userIdField.getText()).getPoint();
-					} else {
+					try {
+						if (new String(passwordField.getPassword()).equals("1234")) {
+							name = "soldesk";
+							JOptionPane.showMessageDialog(null, "soldesk님 반갑습니다!");
+							SwingUtilities.getWindowAncestor(loginButton).setVisible(false);
+							DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
+							MyInformationPanel.money = 100000;
+						} else if (Register.hm.get(userIdField.getText()).getPass()
+								.equals(new String(passwordField.getPassword()))) {
+							name = Register.hm.get(userIdField.getText()).getID();
+							JOptionPane.showMessageDialog(null,
+									Register.hm.get(userIdField.getText()).getEmail() + "님 반갑습니다!");
+							SwingUtilities.getWindowAncestor(loginButton).setVisible(false);
+							DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
+							MyInformationPanel.money = Register.hm.get(userIdField.getText()).getPoint();
+						} else {
+							JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 틀리셨습니다.");
+						}
+					} catch (Exception e2) {
 						JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 틀리셨습니다.");
 					}
 				} else {
