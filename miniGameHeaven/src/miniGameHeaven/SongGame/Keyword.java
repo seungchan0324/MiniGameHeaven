@@ -90,7 +90,6 @@ public class Keyword extends JPanel implements KeyListener, ActionListener {
 		this.fruitWords.add("peach");
 		this.fruitWords.add("blueberry");
 		this.fruitWords.add("plum");
-		this.fruitWords.add("banana");
 		this.fruitWords.add("avocado");
 		this.fruitWords.add("cherry");
 		this.fruitWords.add("grapefruit");
