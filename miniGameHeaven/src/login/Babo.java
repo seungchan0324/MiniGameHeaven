@@ -1,23 +1,15 @@
 package login;
 
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Random;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import javax.swing.Timer;
-import javax.swing.border.Border;
 
 public class Babo extends JFrame {
 
@@ -81,7 +73,7 @@ public class Babo extends JFrame {
         but2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 랜덤으로 메시지 선택
-                String[] messages = { "떡볶이를 추천할게", "돈까스를 추천할게", "덮밥을 추천할게", "굶어", "카레를 추천할게" };
+                String[] messages = { "떡볶이를 추천할게", "돈까스를 추천할게", "덮밥을 추천할게", "굶어", "카레를 추천할게","도시락을 추천할게" };
                 String message = messages[new Random().nextInt(messages.length)];
                 label.setBounds(180, 60, 400, 50);
                 label.setHorizontalAlignment(JLabel.CENTER);
@@ -95,7 +87,7 @@ public class Babo extends JFrame {
         but3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 랜덤으로 메시지 선택
-                String[] messages = { "안돼", "싫어", "하지마" };
+                String[] messages = { "안돼", "싫어", "좋아요", "가만히 있어" };
                 String message = messages[new Random().nextInt(messages.length)];
                 label.setBounds(180, 60, 400, 50);
                 label.setHorizontalAlignment(JLabel.CENTER);
