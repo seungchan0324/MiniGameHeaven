@@ -100,7 +100,7 @@ public class GameDescription extends JPanel {
 		RoundedButton infomebutton = new RoundedButton(40);
 		JLabel infomeLabel = new JLabel("³» Á¤º¸");
 		infomeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-		infomeLabel.setBounds(202, 50, 100, 40);
+		infomeLabel.setBounds(205, 50, 100, 40);
 		infomeLabel.setForeground(Color.white);
 		infomebutton.setBackground(new Color(94, 94, 94));
 		infomebutton.setBounds(180, 50, 100, 40);

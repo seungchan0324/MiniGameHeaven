@@ -65,10 +65,10 @@ public class FlyingFlying extends JFrame {
 
 	public void characterSelect() {
 		if (MyInformationCharacter.characterselect.equals("Gumi")) {
-			img = new ImageIcon("구미_고구마비행.png");
+			img = new ImageIcon("날아날아구미.png");
 
 		} else if (MyInformationCharacter.characterselect.equals("Dalri")) {
-			img = new ImageIcon("달리_슈퍼맨.png");
+			img = new ImageIcon("날아날아 달이.png");
 
 		} else {
 			img = new ImageIcon("토양이오른쪽.png");
