@@ -1,6 +1,7 @@
 package gameDescription;
 
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -43,10 +44,7 @@ public class GameDescription extends JPanel {
 			"영어 타자가 느리다고 ?!\n" + "걱정마 ! 내가 도와줄게 ! 시간은 30초 !\n" + "카테고리 별로 떨어지는 단어들을 최대한 빠르고 정확하게 입력해 봐 !\n"
 					+ "즐겁게 영어 타자 연습도 하고 포인트도 얻어가자 !",
 			"공을 다섯번찹니다 왼쪽, 가운데, 오른쪽 셋중 원하는 위치로 공을 차서 골을 성공시켜야 합니다 다섯번중 3번 이상 골을 넣으면 게임 에서 승리하여 n포인트를  받습니다.",
-			"알을 마구마구 클릭하여 높은 점수에 도전해보세요!\n"
-					+ "3번 클릭당 1점, 레벨당 배경도 바뀝니다.\n"
-					+ "5레벨당 클릭횟수+1차감!\n"
-					+ "※주의 너무 많은 클릭은 마우스의 수명과 손가락 통증을 유발합니다※" };
+			"아무생각없이 하기 좋은 게임\n" + "알을 마구마구 클릭하세요 3번 클릭당 1점\n" + "레벨이 바뀔때마다 배경도 바뀜.\n" + "노가다의 끝판왕 최고점에 도전하세요" };
 
 	// 게임 이미지 경로나 아이콘을 사용할 수 있습니다. \
 	private String[] gameImages = { "flyingflying.gif", "into space.gif", "the story of the sea.gif", "sprinkle.gif",
@@ -151,7 +149,7 @@ public class GameDescription extends JPanel {
 		gameDescriptionText.setBounds(0, 0, 210, 200);
 		gameDescriptionText.setOpaque(false);// 패널 투명하게
 		descriptionPanel.add(gameDescriptionText);
-		descriptionPanel.setBounds(500, 160, 210, 140);
+		descriptionPanel.setBounds(500, 180, 210, 120);
 		descriptionPanel.setOpaque(false);// 패널 투명하게
 		mainPanel.add(descriptionPanel);
 
@@ -194,13 +192,13 @@ public class GameDescription extends JPanel {
 		});
 		ImageIcon previmg = new ImageIcon("왼쪽.png");
 		Image prevchangeimg = previmg.getImage();
-		Image prevscaleimg = prevchangeimg.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		Image prevscaleimg = prevchangeimg.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 		previmg.setImage(prevscaleimg);
 		JLabel prevlabel = new JLabel(previmg);
 
 		ImageIcon nextimg = new ImageIcon("오른쪽.png");
 		Image nextchangeimg = nextimg.getImage();
-		Image nextscaleimg = nextchangeimg.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		Image nextscaleimg = nextchangeimg.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 		nextimg.setImage(nextscaleimg);
 		JLabel nextlabel = new JLabel(nextimg);
 
