@@ -65,7 +65,7 @@ public class Babo extends JPanel {
 		myinformation_button.add(my_button_text);
 		myinformation_button.setBackground(new Color(230, 230, 230));
 		myinformation_button.setLayout(null);
-		myinformation_button.setBounds(550, 50, 100, 40);
+		myinformation_button.setBounds(568, 50, 100, 40);
 		myinformation_button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -99,7 +99,7 @@ public class Babo extends JPanel {
 		patimg.setImage(patscaleimg);
 		RoundedButton but1 = new RoundedButton(60);
 		but1.setIcon(patimg);
-		but1.setBounds(140, 480, 60, 60);
+		but1.setBounds(140, 460, 60, 60);
 		but1.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 10));
 		but1.setOpaque(false);// ∆–≥Œ ≈ı∏Ì«œ∞‘
 		add(but1);
@@ -110,7 +110,7 @@ public class Babo extends JPanel {
 		eatimg.setImage(eatscaleimg);
 		RoundedButton but2 = new RoundedButton(60);
 		but2.setIcon(eatimg);
-		but2.setBounds(340, 480, 60, 60);
+		but2.setBounds(340, 460, 60, 60);
 		but2.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 10));
 		but2.setOpaque(false);// ∆–≥Œ ≈ı∏Ì«œ∞‘
 		add(but2);
@@ -121,7 +121,7 @@ public class Babo extends JPanel {
 		godongimg.setImage(godongscaleimg);
 		RoundedButton but3 = new RoundedButton(60);
 		but3.setIcon(godongimg);
-		but3.setBounds(540, 480, 60, 60);
+		but3.setBounds(540, 460, 60, 60);
 		but3.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 10));
 		but3.setOpaque(false);// ∆–≥Œ ≈ı∏Ì«œ∞‘
 		add(but3);
