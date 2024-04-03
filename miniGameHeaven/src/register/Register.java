@@ -12,9 +12,9 @@ public class Register {
 		String email;
 		String pass;
 		String birthday;
-		int point;
+		long point;
 
-		public Join(String id, String email, String pass, String birthday, int point) {
+		public Join(String id, String email, String pass, String birthday, long point) {
 			this.id = id;
 			this.email = email;
 			this.pass = pass;
@@ -28,6 +28,10 @@ public class Register {
 			return "아이디: " + id + "\n이메일: " + email + "\n비밀번호: " + pass + "\n생년월일" + birthday + "\n포인트" + point;
 		}
 
+		public String getID() {
+			return id;
+		}
+		
 		public String getEmail() {
 			return email;
 		}
@@ -40,7 +44,7 @@ public class Register {
 			return birthday;
 		}
 
-		public Object getPoint() {
+		public long getPoint() {
 			return point;
 		}
 

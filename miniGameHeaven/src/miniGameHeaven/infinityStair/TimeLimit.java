@@ -58,13 +58,13 @@ public class TimeLimit implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		gaugepanel.setBounds(155, 10, gauge, 30);
-		gauge -= 5;
+		gauge -= 3;
 		if (Brick.brickcnt >= 100) {
-			gauge -= 0.5;
-		} else if (Brick.brickcnt >= 500) {
-			gauge -= 0.5;
-		} else if (Brick.brickcnt >= 1000) {
 			gauge -= 1;
+		} else if (Brick.brickcnt >= 500) {
+			gauge -= 1;
+		} else if (Brick.brickcnt >= 1000) {
+			gauge -= 2;
 		}
 	}
 

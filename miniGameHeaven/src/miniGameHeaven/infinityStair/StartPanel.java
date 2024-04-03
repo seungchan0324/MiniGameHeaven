@@ -25,7 +25,7 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 	private int backgroundImgY = -435;
 	final static int screenWidth = 600;
 	final static int screenHeight = 1000;
-	private Timer timer1 = new Timer(300, this);
+	private Timer timer1 = new Timer(120, this);
 	private Font font = new Font("Impact", Font.BOLD, 40);
 	private Character character;
 	private Image brickimg[] = new Image[3];
@@ -162,22 +162,24 @@ public class StartPanel extends JPanel implements ActionListener, KeyListener {
 					GameOver();
 				}
 			}
-			brickmanager.addBrick();
-			if (cnt < 21) {
-				cnt++;
-			}
-			if (Brick.brickcnt > 88 && Brick.brickcnt <= 110) {
-				cloudY += 40;
-			}
-			if (Brick.brickcnt == 1000) {
-				backgroundImgY = -435;
-				backgroundImgYminus = 10;
-				setBackground(new Color(0, 2, 16));
-				score.setForeground(new Color(255, 255, 255));
-			}
-			timelimit.gauge += 10;
-			if (timelimit.gauge > 290) {
-				timelimit.gauge = 290;
+			if (statement == 1) {
+				brickmanager.addBrick();
+				if (cnt < 21) {
+					cnt++;
+				}
+				if (Brick.brickcnt > 88 && Brick.brickcnt <= 110) {
+					cloudY += 40;
+				}
+				if (Brick.brickcnt == 1000) {
+					backgroundImgY = -435;
+					backgroundImgYminus = 10;
+					setBackground(new Color(0, 2, 16));
+					score.setForeground(new Color(255, 255, 255));
+				}
+				timelimit.gauge += 10;
+				if (timelimit.gauge > 290) {
+					timelimit.gauge = 290;
+				}
 			}
 			score.setText(brick.brickcnt + "");
 			timer1.start();

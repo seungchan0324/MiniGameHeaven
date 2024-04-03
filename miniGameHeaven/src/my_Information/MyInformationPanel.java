@@ -23,21 +23,22 @@ import defaultFrame.DefaultFrame;
 import defaultFrame.RoundedButton;
 import gameDescription.GameDescription;
 import infinityStair.StartPanel;
+import login.Babo;
 
 public class MyInformationPanel extends JPanel implements ActionListener {
 	private RoundedButton characterupbutton[];
 	private JLabel characteruptext[];
 	private JPanel moneypanel, selectpanel;
 	private JLabel moneylabel, moneyimg;
-	private String characterupdetail[] = { "홈", "그외버튼" };
+	private String characterupdetail[] = { "홈", "놀이터" };
 	private RoundedButton gamescores[];
 	private JLabel gamename[];
 	private JLabel gamescore[];
 	private String gamenames[] = { "날아! 날아!", "우주로", "바다스토리", "이슬비", "패널티 24", "클릭! 클릭!", };
 	private Color bannercolor[] = { new Color(211, 84, 0), new Color(39, 174, 96), new Color(52, 152, 219),
 			new Color(241, 196, 15), new Color(155, 89, 182), new Color(64, 64, 64) };
-	private Font characteruptextfont = new Font(Font.SANS_SERIF, Font.BOLD, 16);
-	private Font moneyfont = new Font(Font.SANS_SERIF, Font.BOLD, 30);
+	private Font characteruptextfont = new Font("맑은 고딕", Font.BOLD, 16);
+	private Font moneyfont = new Font("맑은 고딕", Font.BOLD, 30);
 	private Font gamenamefont = new Font("맑은 고딕", Font.BOLD, 20);
 	private Font gamescorefont = new Font("맑은 고딕", Font.BOLD, 16);
 	private ImageIcon moneyimage = new ImageIcon("money.png");
@@ -46,10 +47,10 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 	private String moneycomma;
 	private MyInformationCharacter character;
 	private Timer timer = new Timer(2, this);
-	public static long money = 10000;
+	public static long money ;
 
 	public MyInformationPanel() {
-
+		
 		// frame 부분
 		setLayout(null);
 		setBounds(0, 0, 768, 600);
@@ -68,7 +69,7 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 		for (int i = 0; i < characteruptext.length; i++) {
 			characteruptext[i] = new JLabel(characterupdetail[i]);
 			characteruptext[i].setForeground(new Color(120, 120, 120));
-			characteruptext[i].setBounds(40 - 25 * i, 0, 100, 40);
+			characteruptext[i].setBounds(40 - 15 * i, 0, 100, 40);
 			characteruptext[i].setFont(characteruptextfont);
 			characterupbutton[i].add(characteruptext[i]);
 		}
@@ -141,6 +142,14 @@ public class MyInformationPanel extends JPanel implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				SwingUtilities.windowForComponent(characterupbutton[0]).setVisible(false);
 				DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
+			}
+		});
+		
+		characterupbutton[1].addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SwingUtilities.windowForComponent(characterupbutton[1]).setVisible(false);
+				DefaultFrame.getInstance(new Babo(), "놀이터");
 			}
 		});
 

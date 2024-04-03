@@ -25,6 +25,7 @@ import javax.swing.event.DocumentListener;
 import Main_Interface.Main_Interface;
 import defaultFrame.DefaultFrame;
 import defaultFrame.RoundedButton;
+import my_Information.MyInformationPanel;
 import register.FindingID;
 import register.FindingPASS;
 import register.Register;
@@ -209,13 +210,15 @@ public class Logintest extends JPanel {
 						JOptionPane.showMessageDialog(null, "soldesk님 반갑습니다!");
 						SwingUtilities.getWindowAncestor(loginButton).setVisible(false);
 						DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
+						MyInformationPanel.money = 100000;
 					} else if (Register.hm.get(userIdField.getText()).getPass()
 							.equals(new String(passwordField.getPassword()))) {
-						name = Register.hm.get(userIdField.getText()).getEmail();
+						name = Register.hm.get(userIdField.getText()).getID();
 						JOptionPane.showMessageDialog(null,
 								Register.hm.get(userIdField.getText()).getEmail() + "님 반갑습니다!");
 						SwingUtilities.getWindowAncestor(loginButton).setVisible(false);
 						DefaultFrame.getInstance(new Main_Interface(), "메인 화면");
+						MyInformationPanel.money = Register.hm.get(userIdField.getText()).getPoint();
 					} else {
 						JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 틀리셨습니다.");
 					}
