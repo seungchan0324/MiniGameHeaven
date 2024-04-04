@@ -22,14 +22,18 @@ public class Character {
 	public void characterSelect() {
 		if (MyInformationCharacter.characterselect.equals("Gumi")) {
 			frontimg = new ImageIcon("구미_고구마비행.png");
-			charY = (StartPanel.screenHeight - frontimg.getIconHeight()) / 2 - 25;
+			rightimg = new ImageIcon("구미_고구마비행_오른쪽.png");
+			leftimg = new ImageIcon("구미_고구마비행_왼쪽.png");
+			charY = (StartPanel.screenHeight - frontimg.getIconHeight()) / 2 - 21;
 			middlepointX = (StartPanel.screenWidth - frontimg.getIconWidth()) / 2;
 			rightmiddlepointX = middlepointX;
 			leftmiddlepointX = middlepointX;
 		} else if (MyInformationCharacter.characterselect.equals("Dalri")) {
 			frontimg = new ImageIcon("달리_슈퍼맨.png");
-			charY = (StartPanel.screenHeight - frontimg.getIconHeight()) / 2 - 20;
-			middlepointX = (StartPanel.screenWidth - frontimg.getIconWidth()) / 2;
+			rightimg = new ImageIcon("달리_슈퍼맨_오른쪽.png");
+			leftimg = new ImageIcon("달리_슈퍼맨_왼쪽.png");
+			charY = (StartPanel.screenHeight - frontimg.getIconHeight()) / 2 - 15;
+			middlepointX = (StartPanel.screenWidth - frontimg.getIconWidth()) / 2 + 5;
 			rightmiddlepointX = middlepointX;
 			leftmiddlepointX = middlepointX;
 		} else {

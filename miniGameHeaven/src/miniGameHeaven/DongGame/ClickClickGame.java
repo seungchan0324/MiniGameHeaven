@@ -28,7 +28,7 @@ public class ClickClickGame extends JFrame {
 	private int clickNeeded = 30;
 	private int level = 1;
 	private int score = 0;
-	private int i=1;
+	private int i = 1;
 
 	private JLabel clickLabel;
 	private JLabel remainingClicksLabel;
@@ -38,11 +38,13 @@ public class ClickClickGame extends JFrame {
 	private JLabel scoreLabel;
 	private JLabel breakLabel;
 
+	public static int ClickClickMaxScore;
+
 	public ClickClickGame() {
 		setTitle("ClickClick");
 		setSize(500, 500);
 		setLocationRelativeTo(null);
-		
+
 		// Creating main panel with pink background
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(null);
@@ -87,27 +89,29 @@ public class ClickClickGame extends JFrame {
 		mainPanel.add(levelLabel, BorderLayout.NORTH);
 		// Creating back
 		JButton but = new JButton();
-		but=new JButton("뒤로가기");
+		but = new JButton("뒤로가기");
 		but.setFont(new Font("맑은 고딕", Font.BOLD, 10));
 		but.setBounds(80, 380, 80, 30);
 		but.setVisible(true);
 		mainPanel.add(but);
 		but.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				MyInformationPanel.money += score;
+				ClickClickMaxScore = ClickClickMaxScore < score ? score : ClickClickMaxScore;
+				dispose();
 				DefaultFrame.getInstance(new GameDescription(5), "게임 설명 화면");
-				
 			}
 		});
 		// Adding main panel to frame
 		add(mainPanel);
-		
+
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				MyInformationPanel.money += score;
+				ClickClickMaxScore = ClickClickMaxScore < score ? score : ClickClickMaxScore;
 				dispose();
 				DefaultFrame.getInstance(new GameDescription(5), "게임 설명 화면");
 			}
@@ -124,15 +128,15 @@ public class ClickClickGame extends JFrame {
 					score++;
 					scoreLabel.setText("Score: " + score);
 				}
-				if (click < clickNeeded) {					
-					click=click+i;
+				if (click < clickNeeded) {
+					click = click + i;
 					clickLabel.setIcon(getEggIcon());
 					remainingClicksLabel.setText("남은 클릭 횟수: " + (clickNeeded - click));
 					if (click >= clickNeeded) {
 						level++;
-					if(level%5==0)	{
-						i++;
-					}
+						if (level % 5 == 0) {
+							i++;
+						}
 						clickNeeded = level * 15;
 						backgroundLabel.setIcon(backIcon());
 						breakLabel.setVisible(true);

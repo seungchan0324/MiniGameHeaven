@@ -19,9 +19,9 @@ import javax.swing.SwingUtilities;
 
 import defaultFrame.DefaultFrame;
 import gameDescription.GameDescription;
-import login.Babo;
 import login.Logintest;
 import my_Information.MyInformationPanel;
+import playgraund.Babo;
 
 public class Main_Interface extends JPanel {
 	int i;

@@ -54,7 +54,8 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 
 		if (dalripurchase == 1) {
 			characterimage[1] = new ImageIcon("내정보달리.png").getImage();
-		} else if (gumipurchase == 1) {
+		}
+		if (gumipurchase == 1) {
 			characterimage[2] = new ImageIcon("내정보구미.png").getImage();
 		}
 
@@ -67,7 +68,7 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 		leftselect.setBounds(35, 290, 35, 35);
 
 		leftselecttext = new JLabel("<");
-		leftselecttext.setBounds(45, 290, 35, 35);
+		leftselecttext.setBounds(45, 286, 35, 35);
 		leftselecttext.setFont(selectfont);
 		leftselecttext.setForeground(new Color(120, 120, 120));
 
@@ -76,7 +77,7 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 		rightselect.setBounds(220, 290, 35, 35);
 
 		rightselecttext = new JLabel(">");
-		rightselecttext.setBounds(232, 290, 35, 35);
+		rightselecttext.setBounds(232, 286, 35, 35);
 		rightselecttext.setFont(selectfont);
 		rightselecttext.setForeground(new Color(120, 120, 120));
 
@@ -245,12 +246,12 @@ public class MyInformationCharacter extends JPanel implements ActionListener {
 			selectbutton[0].setIcon(selected);
 			selectbutton[1].setIcon(noneselect);
 			selectbutton[2].setIcon(noneselect);
-		} else if (characterhorizontal < 0 && characterhorizontal >= -290 && !selectdirection.equals(">>")
-				|| selectdirection.equals("<")) {
+		} else if (characterhorizontal < 0 && characterhorizontal >= -290 && (!selectdirection.equals(">>")
+				|| selectdirection.equals("<"))) {
 			selectbutton[0].setIcon(noneselect);
 			selectbutton[1].setIcon(selected);
 			selectbutton[2].setIcon(noneselect);
-		} else {
+		} else if (characterhorizontal == -580 || selectdirection.equals(">") || selectdirection.equals(">>")) {
 			selectbutton[0].setIcon(noneselect);
 			selectbutton[1].setIcon(noneselect);
 			selectbutton[2].setIcon(selected);

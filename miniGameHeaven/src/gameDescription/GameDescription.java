@@ -36,14 +36,17 @@ public class GameDescription extends JPanel {
 	private RoundedPanel[] roundedPanels = new RoundedPanel[6];
 
 	// 게임 정보를 담을 배열
-	private String[] gameNames = { "날아! 날아!", "우주로", "바다이야기", "이슬비", "penalty24", "클릭클릭" };
-	private String[] gameDescriptions = { "날아!날아!는 숲속 친구들을 스페이스바 만으로 배관에 부딛치지 않고 피해 끝까지 날아가 최고점수를 따내는 게임이다.", "우주를 구경하고 싶은 숲속 친구들\n"
+	private String[] gameNames = { "날아! 날아!", "우주로", "바다스토리", "이슬비", "penalty24", "클릭클릭" };
+	private String[] gameDescriptions = { "스페이스바를 이용해 숲속 친구들이 배관을 피할 수 있도록 도와주자.\n"
+			+ "부딪치지 않고 끝까지 날아가 최고 점수를 따내자!", "우주를 구경하고 싶은 숲속 친구들\n"
 			+ "좌우 방향키를 활용해 계단을 올라 우주를 구경하자!",
-			"바다에 가서 잠수를 해 보자!\n" + "어쩌면 바닷속에 숨겨진 보물을 찾을 수 있을지도…?!",
+			"바다에 가서 잠수를 해 보자!\n"
+					+ "어쩌면 바닷속에 숨겨진 보물을 찾을 수 있을지도…?!",
 			"영어 타자가 느리다고 ?!\n" + "걱정마 ! 내가 도와줄게 ! 시간은 30초 !\n" + "카테고리 별로 떨어지는 단어들을 최대한 빠르고 정확하게 입력해 봐 !\n"
 					+ "즐겁게 영어 타자 연습도 하고 포인트도 얻어가자 !",
-			"공을 다섯번찹니다 왼쪽, 가운데, 오른쪽 셋중 원하는 위치로 공을 차서 골을 성공시켜야 합니다 다섯번중 3번 이상 골을 넣으면 게임 에서 승리하여 n포인트를  받습니다.",
-			"알을 마구마구 클릭하여 높은 점수에 도전해보세요!\n"
+					"마지막 승부차기의 순간. 왼쪽, 가운데, 오른쪽. 어느 쪽으로 공을 찰까?\n"
+							+ "기회는 다섯 번! 세 번 이상 골을 넣으면 승리, 포인트도 받을 수 있다구!!",
+			"알을 마구마구 클릭하여 높은 점수에 도전해 보세요!\n"
 					+ "3번 클릭당 1점, 레벨당 배경도 바뀝니다.\n"
 					+ "5레벨당 클릭횟수+1차감!\n"
 					+ "※주의 너무 많은 클릭은 마우스의 수명과 손가락 통증을 유발합니다※" };
@@ -102,7 +105,7 @@ public class GameDescription extends JPanel {
 		RoundedButton infomebutton = new RoundedButton(40);
 		JLabel infomeLabel = new JLabel("내 정보");
 		infomeLabel.setFont(new Font("맑은 고딕", Font.BOLD, 15));
-		infomeLabel.setBounds(202, 50, 100, 40);
+		infomeLabel.setBounds(205, 50, 100, 40);
 		infomeLabel.setForeground(Color.white);
 		infomebutton.setBackground(new Color(94, 94, 94));
 		infomebutton.setBounds(180, 50, 100, 40);
@@ -151,7 +154,7 @@ public class GameDescription extends JPanel {
 		gameDescriptionText.setBounds(0, 0, 210, 200);
 		gameDescriptionText.setOpaque(false);// 패널 투명하게
 		descriptionPanel.add(gameDescriptionText);
-		descriptionPanel.setBounds(500, 160, 210, 140);
+		descriptionPanel.setBounds(500, 180, 210, 120);
 		descriptionPanel.setOpaque(false);// 패널 투명하게
 		mainPanel.add(descriptionPanel);
 
@@ -194,13 +197,13 @@ public class GameDescription extends JPanel {
 		});
 		ImageIcon previmg = new ImageIcon("왼쪽.png");
 		Image prevchangeimg = previmg.getImage();
-		Image prevscaleimg = prevchangeimg.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		Image prevscaleimg = prevchangeimg.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 		previmg.setImage(prevscaleimg);
 		JLabel prevlabel = new JLabel(previmg);
 
 		ImageIcon nextimg = new ImageIcon("오른쪽.png");
 		Image nextchangeimg = nextimg.getImage();
-		Image nextscaleimg = nextchangeimg.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		Image nextscaleimg = nextchangeimg.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 		nextimg.setImage(nextscaleimg);
 		JLabel nextlabel = new JLabel(nextimg);
 

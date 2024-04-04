@@ -90,7 +90,6 @@ public class Keyword extends JPanel implements KeyListener, ActionListener {
 		this.fruitWords.add("peach");
 		this.fruitWords.add("blueberry");
 		this.fruitWords.add("plum");
-		this.fruitWords.add("banana");
 		this.fruitWords.add("avocado");
 		this.fruitWords.add("cherry");
 		this.fruitWords.add("grapefruit");
@@ -111,7 +110,7 @@ public class Keyword extends JPanel implements KeyListener, ActionListener {
 		this.animalWords.add("whale");
 		this.animalWords.add("shark");
 		this.animalWords.add("otter");
-		this.animalWords.add("dolpin");
+		this.animalWords.add("dolphin");
 		this.animalWords.add("beluga");
 		this.animalWords.add("eagle");
 		this.animalWords.add("duck");
@@ -332,7 +331,7 @@ public class Keyword extends JPanel implements KeyListener, ActionListener {
 
 		scoreLabel = new JLabel("«ˆ¿Á ¡°ºˆ : 0");
 		scoreLabel.setBorder((BorderFactory.createEmptyBorder(0, 10, 0, 0)));// øﬁ¬  ø©πÈ
-		scoreLabel.setPreferredSize(new Dimension(85, 0));// ªÁ¿Ã¡Ó
+		scoreLabel.setPreferredSize(new Dimension(100, 0));// ªÁ¿Ã¡Ó
 
 		JFrame frame = new JFrame("≠S≠S¿ÃΩΩ∫Ò");
 		frame.getContentPane().setLayout(new BorderLayout());
