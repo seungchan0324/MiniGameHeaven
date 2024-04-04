@@ -154,7 +154,7 @@ public class GameDescription extends JPanel {
 		gameDescriptionText.setBounds(0, 0, 210, 200);
 		gameDescriptionText.setOpaque(false);// 패널 투명하게
 		descriptionPanel.add(gameDescriptionText);
-		descriptionPanel.setBounds(500, 180, 210, 120);
+		descriptionPanel.setBounds(500, 170, 210, 130);
 		descriptionPanel.setOpaque(false);// 패널 투명하게
 		mainPanel.add(descriptionPanel);
 
